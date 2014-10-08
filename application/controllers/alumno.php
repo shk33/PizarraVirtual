@@ -9,11 +9,10 @@ class Alumno extends CI_Controller
 	/**
 	 * Muestra todos los alumnos
 	 */
-	function index($success=false)
+	function index()
 	{
 		$data = array();
 		$data['main_content'] = 'alumno_index';
-		$data['success'] = $success; //Quickfix to show wheter a new alumno has been created or not
 		$this->load->model('alumno_model');
 		
 		if ($query=$this->alumno_model->getAll()) {
@@ -43,9 +42,10 @@ class Alumno extends CI_Controller
 		$this->form_validation->set_rules('nombre','Nombre','trim|required');
 		$this->form_validation->set_rules('apellido','Apellidos','trim|required');
 		$this->form_validation->set_rules('matricula','Matricula','trim|required');
-		//$this->form_validation->set_rules('username','Username','trim|required|min_length[4]');
 		$this->form_validation->set_rules('correo','Correo','trim|required|valid_email');
 		$this->form_validation->set_rules('contrasena','Contraseña','trim|required');
+
+		$data = array();
 
 		if ($this->form_validation->run() == false) {
 			$data['main_content'] = 'alumno_create'; 
@@ -53,7 +53,8 @@ class Alumno extends CI_Controller
 		}else{
 			$this->load->model('alumno_model');
 			$this->alumno_model->save();
-			redirect('alumno/index/true');		
+			
+			redirect('alumno/index');			
 		}
 }
 	/**
@@ -72,11 +73,24 @@ class Alumno extends CI_Controller
 	/**
 	 * Update the specified resource in storage.
 	 */
-	public function update($id)
+	public function update()
 	{
+		$this->load->library('form_validation');
+		$this->form_validation->set_rules('nombre','Nombre','trim|required');
+		$this->form_validation->set_rules('apellido','Apellidos','trim|required');
+		$this->form_validation->set_rules('matricula','Matricula','trim|required');
+		$this->form_validation->set_rules('correo','Correo','trim|required|valid_email');
+		//$this->form_validation->set_rules('contrasena','Contraseña','trim|required');
 		$this->load->model('alumno_model');
-		$this->alumno_model->update($this->input->post('id'));
-		redirect('alumno/');	
+
+		if ($this->form_validation->run() == false) {
+			$data['main_content'] = 'alumno_update';
+			$data['alumno']=$this->alumno_model->get_by_id($this->input->post('id'));
+			$this->load->view('includes/template',$data);
+		}else{
+			$this->alumno_model->update($this->input->post('id'));
+			redirect('alumno/index/');
+		}
 	}
 
 	/**

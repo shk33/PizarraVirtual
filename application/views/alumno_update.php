@@ -9,6 +9,16 @@
 <!-- /.row -->
 
 <div class="row">
+  <?php if (validation_errors() != ""): ?>
+    <div class="col-lg-12">
+      <div class="alert alert-danger alert-dismissable">
+          <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+          <i class="fa fa-info-circle"></i> Existen errores en el formulario
+          <?php echo validation_errors(); ?>
+      </div>
+    </div>  
+  <?php endif ?>
+  
     <div class="col-lg-12">
         <div class="bs-example">
             <!-- <form class="form-horizontal"> -->
@@ -26,8 +36,7 @@
                               'class'       => 'form-control',
                               'id'          => 'inputNombre',
                               'placeholder' => 'Nombre',
-                              'value'       => "$alumno->nombre"
-                            );
+                              'value'       => "$alumno->nombre"                            );
                             echo form_input($config); 
                         ?>
                     </div>
@@ -42,7 +51,7 @@
                               'class'       => 'form-control',
                               'id'          => 'inputApellido',
                               'placeholder' => 'Apellido',
-                              'value'       => "$alumno->apellido" 
+                              'value'       => "$alumno->apellido"
                             );
                             echo form_input($config); 
                         ?>
@@ -59,8 +68,6 @@
                               'id'          => 'inputMatricula',
                               'placeholder' => 'Matricula',
                               'value'       => "$alumno->matricula"
-
-
                             );
                             echo form_input($config); 
                         ?>
