@@ -45,6 +45,8 @@
                                                 <th>Apellidos</th>
                                                 <th>Matricula</th>
                                                 <th>Correo</th>
+                                                <th>Editar</th>
+                                                <th>Eliminar</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -55,6 +57,16 @@
                                                     <td><?php echo $alumno->apellido; ?></td>
                                                     <td><?php echo $alumno->matricula; ?></td>
                                                     <td><?php echo $alumno->correo; ?></td>
+                                                    <td>
+                                                        <a href='<?php echo base_url()."alumno/edit/$alumno->id"; ?>'>
+                                                            <button class="btn btn-primary btn-md">Editar</button>
+                                                        </a>
+                                                    </td>
+                                                    <td>
+                                                        <a href='<?php echo base_url()."alumno/destroy/$alumno->id"; ?>'>
+                                                            <button class="btn btn-danger btn-md">Eliminar</button>
+                                                        </a>
+                                                    </td>
                                                     </tr>
                                                 <?php endforeach ?>
                                             <?php endif ?>
