@@ -17,7 +17,7 @@
                 </div>
                 <!-- /.row -->
 
-                <?php if (isset($save_success)): ?>
+                <?php if (isset($status) && ($status == "save_success")): ?>
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="alert alert-info alert-dismissable">

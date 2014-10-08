@@ -9,10 +9,11 @@ class Alumno extends CI_Controller
 	/**
 	 * Muestra todos los alumnos
 	 */
-	function index()
+	function index($status = '')
 	{
 		$data = array();
 		$data['main_content'] = 'alumno_index';
+		$data['status'] = $status;
 		$this->load->model('alumno_model');
 		
 		if ($query=$this->alumno_model->getAll()) {
@@ -53,8 +54,9 @@ class Alumno extends CI_Controller
 		}else{
 			$this->load->model('alumno_model');
 			$this->alumno_model->save();
-			
-			redirect('alumno/index');			
+			$status="save_success";
+
+			redirect('alumno/index/save_success');			
 		}
 }
 	/**
