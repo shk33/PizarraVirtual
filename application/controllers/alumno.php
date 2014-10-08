@@ -56,7 +56,7 @@ class Alumno extends CI_Controller
 			$this->alumno_model->save();
 			$status="save_success";
 
-			redirect('alumno/index/save_success');			
+			redirect("alumno/index/$status");			
 		}
 }
 	/**
@@ -91,7 +91,8 @@ class Alumno extends CI_Controller
 			$this->load->view('includes/template',$data);
 		}else{
 			$this->alumno_model->update($this->input->post('id'));
-			redirect('alumno/index/');
+			$status = "update_success";
+			redirect("alumno/index/$status");
 		}
 	}
 

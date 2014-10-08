@@ -17,12 +17,18 @@
                 </div>
                 <!-- /.row -->
 
-                <?php if (isset($status) && ($status == "save_success")): ?>
+                <?php if ($status != ""): ?>
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="alert alert-info alert-dismissable">
                                 <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                                <i class="fa fa-info-circle"></i>  Se ha registrado existósamente el nuevo alumno
+                                <i class="fa fa-info-circle"></i>  
+                                <?php if ($status == "save_success"): ?>
+                                    Se ha registrado existósamente el nuevo alumno
+                                <?php endif ?>
+                                <?php if ($status == "update_success"): ?>
+                                    Se ha actualizado existósamente el alumno                                    
+                                <?php endif ?>
                             </div>
                         </div>
                     </div>
