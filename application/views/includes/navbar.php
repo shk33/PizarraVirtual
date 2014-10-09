@@ -118,10 +118,10 @@
                         <a href="index.html"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
                     </li>
                     <li>
-                        <a href="charts.html"><i class="fa fa-fw fa-bar-chart-o"></i> Charts</a>
+                        <a href="<?php echo base_url(); ?>admin"><i class="fa fa-fw fa-user-md"></i>Administradores</a>
                     </li>
                     <li>
-                        <a href="tables.html"><i class="fa fa-fw fa-table"></i> Tables</a>
+                        <a href="<?php echo base_url(); ?>tutor"><i class="fa fa-fw fa-user"></i>Tutores</a>
                     </li>
                     <li>
                         <a href="<?php echo base_url(); ?>alumno"><i class="fa fa-fw fa-graduation-cap"></i>Alumnos</a>

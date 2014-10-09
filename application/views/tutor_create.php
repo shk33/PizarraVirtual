@@ -2,7 +2,7 @@
 <div class="row">
     <div class="col-lg-12">
         <h1 class="page-header">
-            Crear nuevo alumno
+            Crear nuevo tutor
         </h1>
     </div>
 </div>
@@ -21,7 +21,7 @@
     <div class="col-lg-12">
         <div class="bs-example">
             <!-- <form class="form-horizontal"> -->
-            <?php echo form_open('alumno/store', array('class' => 'form-horizontal')); ?>
+            <?php echo form_open('tutor/store', array('class' => 'form-horizontal')); ?>
                 <div class="form-group">
                     <label for="inputNombre" class="control-label col-xs-1">Nombre</label>
                     <div class="col-xs-5">
@@ -55,16 +55,16 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="inputMatricula" class="control-label col-xs-1">Matricula</label>
+                    <label for="inputMatricula" class="control-label col-xs-1">Seccion</label>
                     <div class="col-xs-5">
                         <?php 
                             $config = array(
-                              'name'        => 'matricula',
+                              'name'        => 'seccion',
                               'type'        => 'text',
                               'class'       => 'form-control',
-                              'id'          => 'inputMatricula',
-                              'placeholder' => 'Matricula',
-                              'value'       => set_value('matricula')
+                              'id'          => 'inputSeccion',
+                              'placeholder' => 'Seccion',
+                              'value'       => set_value('seccion')
                             );
                             echo form_input($config); 
                         ?>
@@ -107,7 +107,7 @@
                     </div>
                     <?php echo form_close(); ?>
                     <div class="col-xs-1">
-                        <a href="<?php echo base_url(); ?>alumno">
+                        <a href="<?php echo base_url(); ?>tutor">
                             <button type="button" class="btn btn-danger btn-md">Cancelar</button>
                         </a>
                     </div>

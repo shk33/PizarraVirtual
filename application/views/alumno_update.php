@@ -105,13 +105,13 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <div class="col-xs-offset-4 col-xs-2">
-                        <button type="submit" class="btn btn-primary btn-lg">Actualizar</button>
+                    <div class="col-xs-offset-4 col-xs-1">
+                        <button type="submit" class="btn btn-primary btn-md">Actualizar</button>
                     </div>
                     <?php echo form_close(); ?>
                     <div class="col-xs-1">
                         <a href="<?php echo base_url(); ?>alumno">
-                            <button type="button" class="btn btn-danger btn-lg">Cancelar</button>
+                            <button type="button" class="btn btn-danger btn-md">Cancelar</button>
                         </a>
                     </div>
                 </div>
