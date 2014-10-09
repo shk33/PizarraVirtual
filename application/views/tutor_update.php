@@ -58,7 +58,7 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="inputMatricula" class="control-label col-xs-1">Seccion</label>
+                    <label for="inputSeccion" class="control-label col-xs-1">Seccion</label>
                     <div class="col-xs-5">
                         <?php 
                             $config = array(

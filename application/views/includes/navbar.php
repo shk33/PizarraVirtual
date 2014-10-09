@@ -127,7 +127,7 @@
                         <a href="<?php echo base_url(); ?>alumno"><i class="fa fa-fw fa-graduation-cap"></i>Alumnos</a>
                     </li>
                     <li>
-                        <a href="bootstrap-elements.html"><i class="fa fa-fw fa-desktop"></i> Bootstrap Elements</a>
+                        <a href="<?php echo base_url(); ?>tarea"><i class="fa fa-fw  fa-pencil"></i> Tareas</a>
                     </li>
                     <li>
                         <a href="bootstrap-grid.html"><i class="fa fa-fw fa-wrench"></i> Bootstrap Grid</a>

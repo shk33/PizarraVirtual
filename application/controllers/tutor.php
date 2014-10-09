@@ -101,6 +101,7 @@ class Tutor extends CI_Controller
 	{
 		$this->load->model('tutor_model');
 		$this->tutor_model->delete($id);
-		redirect('tutor/');	
+		$status = "delete_success";
+		redirect("tutor/index/$status");
 	}
 }

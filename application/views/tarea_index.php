@@ -2,14 +2,14 @@
                 <div class="row">
                     <div class="col-lg-2">
                         <h1 class="page-header">
-                            Tutores
+                            Tareas
                         </h1>
                     </div>
                     <div class="col-lg-10">
                         <h1 class="page-header">
-                            <a href="<?php echo base_url(); ?>tutor/create">
+                            <a href="<?php echo base_url(); ?>tarea/create">
                                 <button type="button" class="btn btn-success btn-md">
-                                    Crear Nuevo Tutor
+                                    Crear Nuevo Tarea
                                </button>
                             </a>
                         </h1>
@@ -24,13 +24,12 @@
                                 <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
                                 <i class="fa fa-info-circle"></i>  
                                 <?php if ($status == "save_success"): ?>
-                                    Se ha registrado existósamente el nuevo tutor
+                                    Se ha registrado existósamente la nueva tarea
                                 <?php endif ?>
                                 <?php if ($status == "update_success"): ?>
-                                    Se ha actualizado existósamente el tutor                                  
-                                <?php endif ?>
-                                <?php if ($status == "delete_success"): ?>
-                                    Se ha eliminado existósamente el tutor                                  
+                                    Se ha actualizado existósamente la tarea                                  
+                                <?php endif ?><?php if ($status == "delete_success"): ?>
+                                    Se ha eliminado existósamente la tarea                                  
                                 <?php endif ?>
                             </div>
                         </div>
@@ -43,7 +42,7 @@
                     <div class="col-lg-12">
                         <div class="panel panel-default">
                             <div class="panel-heading">
-                                <h3 class="panel-title"><i class="fa fa-user user-fw"></i>Alumnos</h3>
+                                <h3 class="panel-title"><i class="fa fa-pencil fa-fw"></i>Alumnos</h3>
                             </div>
                             <div class="panel-body">
                                 <div class="table-responsive">
@@ -51,28 +50,24 @@
                                         <thead>
                                             <tr>
                                                 <th>Nombre</th>
-                                                <th>Apellidos</th>
-                                                <th>Correo</th>
-                                                <th>Sección</th>
+                                                <th>Descripción</th>
                                                 <th>Editar</th>
                                                 <th>Eliminar</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <?php if (isset($tutores)): ?>
-                                                <?php foreach ($tutores as $tutor): ?>
+                                            <?php if (isset($tareas)): ?>
+                                                <?php foreach ($tareas as $tarea): ?>
                                                     <tr>
-                                                    <td><?php echo $tutor->nombre; ?></td>
-                                                    <td><?php echo $tutor->apellido; ?></td>
-                                                    <td><?php echo $tutor->correo; ?></td>
-                                                    <td><?php echo $tutor->seccion; ?></td>
+                                                    <td><?php echo $tarea->nombre; ?></td>
+                                                    <td><?php echo $tarea->descripcion; ?></td>
                                                     <td>
-                                                        <a href='<?php echo base_url()."tutor/edit/$tutor->id"; ?>'>
+                                                        <a href='<?php echo base_url()."tarea/edit/$tarea->id"; ?>'>
                                                             <button class="btn btn-primary btn-md">Editar</button>
                                                         </a>
                                                     </td>
                                                     <td>
-                                                        <button class="btn btn-danger btn-md show-modal-confirm" data-toggle="modal" data-id='<?php echo $tutor->id; ?>'>
+                                                        <button class="btn btn-danger btn-md show-modal-confirm" data-toggle="modal" data-id='<?php echo $tarea->id; ?>'>
                                                           Eliminar
                                                         </button>
                                                     </td>
@@ -104,7 +99,7 @@
                         <h4>¿Está seguro que desea eliminar este registro?</h4>
                       </div>
                       <div class="modal-footer">
-                        <a href='<?php echo base_url()."tutor/destroy/$alumno->id"; ?>' id="delete_ref">
+                        <a href='<?php echo base_url()."tarea/destroy/$tarea->id"; ?>' id="delete_ref">
                             <button type="button" class="btn btn-danger" id="btn-delete">Eliminar</button>
                         </a> 
                         <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
@@ -113,10 +108,10 @@
                   </div>
                 </div>
 
-                <SCRIPT TYPE="text/javascript">
+                <script TYPE="text/javascript">
                     $(".show-modal-confirm").click(function(){
                         $('#myModal').modal();
                         id= $(this).attr('data-id');
-                        $("#delete_ref").attr('href', '<?php echo base_url()."tutor/destroy/"; ?>'+id);
+                        $("#delete_ref").attr('href', '<?php echo base_url()."tarea/destroy/"; ?>'+id);
                     });
-                </SCRIPT>
+                </script>
