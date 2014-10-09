@@ -29,6 +29,16 @@
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
+    <!-- jQuery Version 1.11.0 -->
+    <script src="<?php echo base_url(); ?>js/jquery-1.11.0.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="<?php echo base_url(); ?>js/bootstrap.min.js"></script>
+
+    <!-- Morris Charts JavaScript -->
+    <script src="<?php echo base_url(); ?>js/plugins/morris/raphael.min.js"></script>
+    <script src="<?php echo base_url(); ?>js/plugins/morris/morris.min.js"></script>
+    <script src="<?php echo base_url(); ?>js/plugins/morris/morris-data.js"></script>
 
 </head>
 
@@ -51,16 +61,6 @@
     </div>
     <!-- /#wrapper -->
 
-    <!-- jQuery Version 1.11.0 -->
-    <script src="<?php echo base_url(); ?>js/jquery-1.11.0.js"></script>
-
-    <!-- Bootstrap Core JavaScript -->
-    <script src="<?php echo base_url(); ?>js/bootstrap.min.js"></script>
-
-    <!-- Morris Charts JavaScript -->
-    <script src="<?php echo base_url(); ?>js/plugins/morris/raphael.min.js"></script>
-    <script src="<?php echo base_url(); ?>js/plugins/morris/morris.min.js"></script>
-    <script src="<?php echo base_url(); ?>js/plugins/morris/morris-data.js"></script>
 
 </body>
 
