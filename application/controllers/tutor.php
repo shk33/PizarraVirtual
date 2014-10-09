@@ -99,8 +99,8 @@ class Tutor extends CI_Controller
 	 */
 	public function destroy($id)
 	{
-		$this->load->model('alumno_model');
-		$this->alumno_model->delete($id);
-		redirect('alumno/');	
+		$this->load->model('tutor_model');
+		$this->tutor_model->delete($id);
+		redirect('tutor/');	
 	}
 }
