@@ -78,19 +78,19 @@ class Tutor extends CI_Controller
 		$this->load->library('form_validation');
 		$this->form_validation->set_rules('nombre','Nombre','trim|required');
 		$this->form_validation->set_rules('apellido','Apellidos','trim|required');
-		$this->form_validation->set_rules('matricula','Matricula','trim|required');
+		$this->form_validation->set_rules('seccion','Seccion','trim|required');
 		$this->form_validation->set_rules('correo','Correo','trim|required|valid_email');
 		//$this->form_validation->set_rules('contrasena','Contraseña','trim|required');
-		$this->load->model('alumno_model');
+		$this->load->model('tutor_model');
 
 		if ($this->form_validation->run() == false) {
-			$data['main_content'] = 'alumno_update';
-			$data['alumno']=$this->alumno_model->get_by_id($this->input->post('id'));
+			$data['main_content'] = 'tutor_update';
+			$data['tutor']=$this->tutor_model->get_by_id($this->input->post('id'));
 			$this->load->view('includes/template',$data);
 		}else{
-			$this->alumno_model->update($this->input->post('id'));
+			$this->tutor_model->update($this->input->post('id'));
 			$status = "update_success";
-			redirect("alumno/index/$status");
+			redirect("tutor/index/$status");
 		}
 	}
 
