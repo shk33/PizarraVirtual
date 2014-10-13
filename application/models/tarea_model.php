@@ -7,7 +7,7 @@ class Tarea_model extends CI_Model
 	/* 	Relationships
 	*	Tarea has_many Plan
 	*/
-	
+
 	function getAll()
 	{
 		$query=$this->db->get('tarea');
@@ -25,6 +25,7 @@ class Tarea_model extends CI_Model
 		foreach ($query->result() as $tarea) {
 			$found_tarea = $tarea;			
 		}
+		$found_tarea= $this->insert_planes_in_tarea($found_tarea);
 		return $found_tarea;
 	}
 
@@ -53,6 +54,19 @@ class Tarea_model extends CI_Model
 		$this->db->where('id',$id);
 		$this->db->delete('tarea');
 	}
+	/*End of basic CRUD functionality*/
+
+	function get_options_array()
+	{
+		$options = array();
+
+		foreach ($this->getAll() as $tarea) {
+			$options[$tarea->id] = $tarea->nombre;
+		}
+
+		return $options;
+		
+	}
 
 	/*
 	* Imitates behaviour of has_many in Rails in this case
@@ -61,12 +75,17 @@ class Tarea_model extends CI_Model
 	private function insert_planes_in_tarea(&$tareas)
 	{
 		$this->load->model('plan_model');
-		
-		foreach ($tareas as $tarea) {
-			$planes = $this->plan_model->get_all_planes_from_tarea($tarea->id);
-			$tarea->planes = $planes;
-		}
 
+		if (gettype($tareas) == "array") {
+			foreach ($tareas as $tarea) {
+				$planes = $this->plan_model->get_all_planes_from_tarea($tarea->id);
+				$tarea->planes = $planes;
+			}
+		}else{ //Asuming is an object type
+			$planes = $this->plan_model->get_all_planes_from_tarea($tareas->id);
+			$tareas->planes = $planes;
+		}
+		
 		return $tareas;
 	}
 	

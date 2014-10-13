@@ -27,39 +27,37 @@
 		foreach ($query->result() as $plan) {
 			$found_plan = $plan;			
 		}
+		$found_plan= $this->insert_tarea_in_plan($found_plan);
 		return $found_plan;
 	}
 
 	function save()
 	{
-		$new_tutor_data = array(
+		$new_plan_data = array(
 				'nombre'     => $this->input->post('nombre'),
-				'apellido'   => $this->input->post('apellido'),
-				'seccion'  => $this->input->post('seccion'),
-				'correo'     => $this->input->post('correo'),
-				'contrasena' => md5($this->input->post('password'))
+				'materiales'   => $this->input->post('materiales'),
+				'ruta_carpeta'  => $this->input->post('ruta_carpeta'),
+				'tarea_id'     => $this->input->post('tarea_id')
 			);
-		$insert = $this->db->insert('tutor',$new_tutor_data);
+		$insert = $this->db->insert('plan',$new_plan_data);
 		return $insert;
 	}
 
 	function update($id)
 	{
-		$tutor_data = array(
+		$plan_data = array(
 				'nombre'     => $this->input->post('nombre'),
-				'apellido'   => $this->input->post('apellido'),
-				'seccion'  => $this->input->post('seccion'),
-				'correo'     => $this->input->post('correo'),
-				'contrasena' => md5($this->input->post('password'))
+				'materiales'   => $this->input->post('materiales'),
+				'ruta_carpeta'  => $this->input->post('ruta_carpeta')
 			);
 		$this->db->where('id',$id);
-		$this->db->update('tutor',$tutor_data);
+		$this->db->update('plan',$plan_data);
 	}
 
 	function delete($id)
 	{
 		$this->db->where('id',$id);
-		$this->db->delete('tutor');
+		$this->db->delete('plan');
 	}
 
 	function get_all_planes_from_tarea($tarea_id)
@@ -77,9 +75,16 @@
 	{
 		$this->load->model('tarea_model');
 		
-		foreach ($planes as $plan) {
-			$tarea = $this->tarea_model->get_by_id($plan->tarea_id);
-			$plan->tarea = $tarea;
+		if (gettype($planes) == "array") {
+			foreach ($planes as $plan) {
+				$tarea = $this->tarea_model->get_by_id($plan->tarea_id);
+				$plan->tarea = $tarea;
+			}
+		}else{ //Asuming is an single object type
+			$tarea = $this->tarea_model->get_by_id($planes->tarea_id);
+			/*var_dump($planes->ruta_carpeta);
+			die();*/
+			$planes->tarea = $tarea;
 		}
 
 		return $planes;
