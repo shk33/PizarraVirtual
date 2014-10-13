@@ -3,9 +3,17 @@
 
 class Tarea_model extends CI_Model
 {
+
+	/* 	Relationships
+	*	Tarea has_many Plan
+	*/
+	
 	function getAll()
 	{
 		$query=$this->db->get('tarea');
+
+		$tareas = $query->result();
+		$tareas= $this->insert_planes_in_tarea($tareas);
 		
 		return $query->result();
 	}
@@ -44,6 +52,22 @@ class Tarea_model extends CI_Model
 	{
 		$this->db->where('id',$id);
 		$this->db->delete('tarea');
+	}
+
+	/*
+	* Imitates behaviour of has_many in Rails in this case
+	* Tarea has_many Plan
+	*/
+	private function insert_planes_in_tarea(&$tareas)
+	{
+		$this->load->model('plan_model');
+		
+		foreach ($tareas as $tarea) {
+			$planes = $this->plan_model->get_all_planes_from_tarea($tarea->id);
+			$tarea->planes = $planes;
+		}
+
+		return $tareas;
 	}
 	
 }

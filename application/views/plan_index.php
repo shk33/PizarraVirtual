@@ -2,14 +2,14 @@
                 <div class="row">
                     <div class="col-lg-2">
                         <h1 class="page-header">
-                            Tareas
+                            Planes
                         </h1>
                     </div>
                     <div class="col-lg-10">
                         <h1 class="page-header">
-                            <a href="<?php echo base_url(); ?>tarea/create">
+                            <a href="<?php echo base_url(); ?>plan/create">
                                 <button type="button" class="btn btn-success btn-md">
-                                    Crear Nuevo Tarea
+                                    Crear Nuevo Plan
                                </button>
                             </a>
                         </h1>
@@ -24,12 +24,13 @@
                                 <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
                                 <i class="fa fa-info-circle"></i>  
                                 <?php if ($status == "save_success"): ?>
-                                    Se ha registrado existósamente la nueva tarea
+                                    Se ha registrado existósamente el nuevo plan
                                 <?php endif ?>
                                 <?php if ($status == "update_success"): ?>
-                                    Se ha actualizado existósamente la tarea                                  
-                                <?php endif ?><?php if ($status == "delete_success"): ?>
-                                    Se ha eliminado existósamente la tarea                                  
+                                    Se ha actualizado existósamente el plan                                  
+                                <?php endif ?>
+                                <?php if ($status == "delete_success"): ?>
+                                    Se ha eliminado existósamente el plan                                 
                                 <?php endif ?>
                             </div>
                         </div>
@@ -42,7 +43,7 @@
                     <div class="col-lg-12">
                         <div class="panel panel-default">
                             <div class="panel-heading">
-                                <h3 class="panel-title"><i class="fa fa-pencil fa-fw"></i>Tareas</h3>
+                                <h3 class="panel-title"><i class="fa fa-user fa-file-text-o"></i>Planes</h3>
                             </div>
                             <div class="panel-body">
                                 <div class="table-responsive">
@@ -50,30 +51,30 @@
                                         <thead>
                                             <tr>
                                                 <th>Nombre</th>
-                                                <th>Descripción</th>
-                                                <th>Planes</th>
+                                                <th>Materiales</th>
+                                                <th>Ruta de la carpeta</th>
+                                                <th>Plan Precedente</th>
+                                                <th>Tarea perteneciente</th>
                                                 <th>Editar</th>
                                                 <th>Eliminar</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <?php if (isset($tareas)): ?>
-                                                <?php foreach ($tareas as $tarea): ?>
+                                            <?php if (isset($planes)): ?>
+                                                <?php foreach ($planes as $plan): ?>
                                                     <tr>
-                                                    <td><?php echo $tarea->nombre; ?></td>
-                                                    <td><?php echo $tarea->descripcion; ?></td>
+                                                    <td><?php echo $plan->nombre; ?></td>
+                                                    <td><?php echo $plan->materiales; ?></td>
+                                                    <td><?php echo $plan->ruta_carpeta; ?></td>
+                                                    <td><?php echo $plan->plan_ant_id; ?></td>
+                                                    <td><?php echo $plan->tarea->nombre; ?></td>
                                                     <td>
-                                                        <?php foreach ($tarea->planes as $plan): ?>
-                                                            <?php echo $plan->nombre ?>
-                                                        <?php endforeach ?>
-                                                    </td>
-                                                    <td>
-                                                        <a href='<?php echo base_url()."tarea/edit/$tarea->id"; ?>'>
+                                                        <a href='<?php echo base_url()."plan/edit/$plan->id"; ?>'>
                                                             <button class="btn btn-primary btn-md">Editar</button>
                                                         </a>
                                                     </td>
                                                     <td>
-                                                        <button class="btn btn-danger btn-md show-modal-confirm" data-toggle="modal" data-id='<?php echo $tarea->id; ?>'>
+                                                        <button class="btn btn-danger btn-md show-modal-confirm" data-toggle="modal" data-id='<?php echo $plan->id; ?>'>
                                                           Eliminar
                                                         </button>
                                                     </td>
@@ -105,7 +106,7 @@
                         <h4>¿Está seguro que desea eliminar este registro?</h4>
                       </div>
                       <div class="modal-footer">
-                        <a href='<?php echo base_url()."tarea/destroy/$tarea->id"; ?>' id="delete_ref">
+                        <a href='<?php echo base_url()."plan/destroy/$alumno->id"; ?>' id="delete_ref">
                             <button type="button" class="btn btn-danger" id="btn-delete">Eliminar</button>
                         </a> 
                         <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
@@ -114,10 +115,10 @@
                   </div>
                 </div>
 
-                <script TYPE="text/javascript">
+                <SCRIPT TYPE="text/javascript">
                     $(".show-modal-confirm").click(function(){
                         $('#myModal').modal();
                         id= $(this).attr('data-id');
-                        $("#delete_ref").attr('href', '<?php echo base_url()."tarea/destroy/"; ?>'+id);
+                        $("#delete_ref").attr('href', '<?php echo base_url()."plan/destroy/"; ?>'+id);
                     });
-                </script>
+                </SCRIPT>

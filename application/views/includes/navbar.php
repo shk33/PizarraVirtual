@@ -74,22 +74,6 @@
                         <li>
                             <a href="#">Alert Name <span class="label label-primary">Alert Badge</span></a>
                         </li>
-                        <li>
-                            <a href="#">Alert Name <span class="label label-success">Alert Badge</span></a>
-                        </li>
-                        <li>
-                            <a href="#">Alert Name <span class="label label-info">Alert Badge</span></a>
-                        </li>
-                        <li>
-                            <a href="#">Alert Name <span class="label label-warning">Alert Badge</span></a>
-                        </li>
-                        <li>
-                            <a href="#">Alert Name <span class="label label-danger">Alert Badge</span></a>
-                        </li>
-                        <li class="divider"></li>
-                        <li>
-                            <a href="#">View All</a>
-                        </li>
                     </ul>
                 </li>
                 <li class="dropdown">
@@ -118,19 +102,19 @@
                         <a href="index.html"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
                     </li>
                     <li>
-                        <a href="<?php echo base_url(); ?>admin"><i class="fa fa-fw fa-user-md"></i>Administradores</a>
+                        <a href="<?php echo base_url(); ?>admin"><i class="fa fa-fw fa-user-md"></i> Administradores</a>
                     </li>
                     <li>
-                        <a href="<?php echo base_url(); ?>tutor"><i class="fa fa-fw fa-user"></i>Tutores</a>
+                        <a href="<?php echo base_url(); ?>tutor"><i class="fa fa-fw fa-user"></i> Tutores</a>
                     </li>
                     <li>
-                        <a href="<?php echo base_url(); ?>alumno"><i class="fa fa-fw fa-graduation-cap"></i>Alumnos</a>
+                        <a href="<?php echo base_url(); ?>alumno"><i class="fa fa-fw fa-graduation-cap"></i> Alumnos</a>
                     </li>
                     <li>
-                        <a href="<?php echo base_url(); ?>tarea"><i class="fa fa-fw  fa-pencil"></i> Tareas</a>
+                        <a href="<?php echo base_url(); ?>tarea"><i class="fa fa-fw fa-pencil"></i> Tareas</a>
                     </li>
                     <li>
-                        <a href="bootstrap-grid.html"><i class="fa fa-fw fa-wrench"></i> Bootstrap Grid</a>
+                        <a href="<?php echo base_url(); ?>plan"><i class="fa fa-fw fa-file-text-o"></i> Planes</a>
                     </li>
                     <li>
                         <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-arrows-v"></i> Dropdown <i class="fa fa-fw fa-caret-down"></i></a>
