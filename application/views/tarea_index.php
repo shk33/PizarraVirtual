@@ -40,17 +40,20 @@
 
 <div class="row">
     <div class="col-lg-12">
-        <div class="panel panel-default">
+        <div class="panel panel-default filterable">
             <div class="panel-heading">
-                <h3 class="panel-title"><i class="fa fa-pencil fa-fw"></i>Tareas</h3>
+                <h3 class="panel-title">
+                    <i class="fa fa-pencil user-fw"></i>Tareas<span class="space"></span>
+                    <button class="btn btn-info btn-filter"><span class="glyphicon glyphicon-filter"></span>Filtrar Resultados</button>
+                </h3>
             </div>
             <div class="panel-body">
                 <div class="table-responsive">
                     <table class="table table-bordered table-hover table-striped">
                         <thead>
-                            <tr>
-                                <th>Nombre</th>
-                                <th>Descripción</th>
+                            <tr class="filters">
+                                <th><input type="text" class="form-control" placeholder="Nombre" disabled></th>
+                                <th><input type="text" class="form-control" placeholder="Descripción" disabled></th>
                                 <th>Planes</th>
                                 <th>Editar</th>
                                 <th>Eliminar</th>
@@ -73,8 +76,9 @@
                                         </a>
                                     </td>
                                     <td>
-                                        <button class="btn btn-danger btn-md show-modal-confirm" data-toggle="modal" data-id='<?php echo $tarea->id; ?>'>
-                                          Eliminar
+                                        <button class="btn btn-danger btn-md show-modal-confirm" data-toggle="modal"
+                                         data-url='<?php echo base_url()."tarea/destroy/$tarea->id"; ?>'>
+                                            Eliminar
                                         </button>
                                     </td>
                                     </tr>
@@ -114,10 +118,8 @@
   </div>
 </div>
 
-<script TYPE="text/javascript">
-    $(".show-modal-confirm").click(function(){
-        $('#myModal').modal();
-        id= $(this).attr('data-id');
-        $("#delete_ref").attr('href', '<?php echo base_url()."tarea/destroy/"; ?>'+id);
-    });
-</script>
+<!-- Table filters logic -->
+<script src="<?php echo base_url(); ?>js/table-filter.js"></script>
+
+<!-- Confirm delete logic -->
+<script src="<?php echo base_url(); ?>js/confirm-delete.js"></script>

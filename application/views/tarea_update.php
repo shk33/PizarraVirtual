@@ -73,26 +73,29 @@
   </div>  
   <!-- Table with Planes de la tarea -->
   <div class="col-lg-6">
-    <div class="panel panel-default">
+    <div class="panel panel-default filterable">
         <div class="panel-heading">
             <h3 class="panel-title">
               <!-- I know this is a terrible way to add horizontal space -->
-              Planes de la tarea <span style="display:inline-block; width: 65px;"></span> 
+              Planes de la tarea <span class="space"></span>
               <a href="<?php echo base_url(); ?>plan/create/<?php echo $tarea->id; ?>">
                 <button type="button" class="btn btn-success btn-md">
-                      Agregar nuevo plan
+                  Nuevo plan
                  </button>
-              </a>
+              </a> 
+              <button class="btn btn-info btn-filter">
+                <span class="glyphicon glyphicon-filter"></span>Filtrar Resultados
+              </button>
             </h3>
         </div>
         <div class="panel-body">
             <div class="table-responsive">
                 <table class="table table-bordered table-hover table-striped">
                     <thead>
-                        <tr>
-                            <th>Nombre</th>
-                            <th>Editar</th>
-                            <th>Eliminar</th>
+                        <tr class="filters">
+                          <th><input type="text" class="form-control" placeholder="Nombre" disabled></th>
+                          <th>Editar</th>
+                          <th>Eliminar</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -106,7 +109,8 @@
                                   </a>
                               </td>
                               <td>
-                                  <button class="btn btn-danger btn-md show-modal-confirm" data-toggle="modal" data-id='<?php echo $plan->id; ?>'>
+                                <button class="btn btn-danger btn-md show-modal-confirm" data-toggle="modal"
+                                   data-url='<?php echo base_url()."tutor/destroy/$plan->id"; ?>'>
                                     Eliminar
                                   </button>
                               </td>
@@ -146,10 +150,8 @@
   </div>
 </div>
 
-<script TYPE="text/javascript">
-    $(".show-modal-confirm").click(function(){
-        $('#myModal').modal();
-        id= $(this).attr('data-id');
-        $("#delete_ref").attr('href', '<?php echo base_url()."plan/destroy/"; ?>'+id);
-    });
-</script>
+<!-- Table filters logic -->
+<script src="<?php echo base_url(); ?>js/table-filter.js"></script>
+
+<!-- Confirm delete logic -->
+<script src="<?php echo base_url(); ?>js/confirm-delete.js"></script>
