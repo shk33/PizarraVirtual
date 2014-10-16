@@ -5,6 +5,7 @@ class Tarea_model extends CI_Model
 {
 
 	/* 	Relationships
+	* Tarea belongs_to Tutor
 	*	Tarea has_many Plan
 	*/
 
@@ -13,8 +14,8 @@ class Tarea_model extends CI_Model
 		$query=$this->db->get('tarea');
 
 		$tareas = $query->result();
-		$tareas= $this->insert_planes_in_tarea($tareas);
-		
+		$this->insert_model_associations($tareas);
+
 		return $query->result();
 	}
 
@@ -25,7 +26,7 @@ class Tarea_model extends CI_Model
 		foreach ($query->result() as $tarea) {
 			$found_tarea = $tarea;			
 		}
-		$found_tarea= $this->insert_planes_in_tarea($found_tarea);
+		$this->insert_model_associations($found_tarea);
 		return $found_tarea;
 	}
 
@@ -68,6 +69,17 @@ class Tarea_model extends CI_Model
 		
 	}
 
+	function get_all_tareas_from_tutor($tutor_id)
+	{
+		$query = $this->db->get_where('tarea', array('tutor_id' => $tarea_id));
+
+		return $query->result();
+	}
+
+	/*
+	* Rails Active Record Associations imitations starts here
+	*/
+
 	/*
 	* Imitates behaviour of has_many in Rails in this case
 	* Tarea has_many Plan
@@ -86,6 +98,40 @@ class Tarea_model extends CI_Model
 			$tareas->planes = $planes;
 		}
 		
+		return $tareas;
+	}
+
+	/*
+	* Imitates behaviour of belongs_to in Rails in this case
+	* Tarea belongs_to Tutor
+	*/
+	private function insert_tutor_in_tarea(&$tareas)
+	{
+		$this->load->model('tutor_model');
+		
+		if (gettype($tareas) == "array") {
+			foreach ($tareas as $tarea) {
+				$tutor = $this->tutor_model->get_by_id($tarea->tutor_id);
+				$tarea->tutor = $tutor;
+			}
+		}else{ //Asuming is an single object type
+			$tutor = $this->tutor_model->get_by_id($tareas->tutor_id);
+			/*var_dump($tareas->ruta_carpeta);
+			die();*/
+			$tareas->tutor = $tutor;
+		}
+
+		return $tareas;
+	}
+
+	/*
+	*	Hydrate the object with the others objects of model acoordings its associations
+ 	*/
+	private function insert_model_associations(&$tareas)
+	{
+		$tareas= $this->insert_planes_in_tarea($tareas);
+		$tareas= $this->insert_tutor_in_tarea($tareas);
+
 		return $tareas;
 	}
 	

@@ -3,6 +3,9 @@
 
 class Tutor_model extends CI_Model
 {
+	/* 	Relationships
+	*		Tutor has_many Tarea
+	*/
 	function getAll()
 	{
 		$query=$this->db->get('tutor');
@@ -50,5 +53,26 @@ class Tutor_model extends CI_Model
 	{
 		$this->db->where('id',$id);
 		$this->db->delete('tutor');
+	}
+
+	/*
+	* Imitates behaviour of has_many in Rails in this case
+	* Tutor has_many Tarea
+	*/
+	private function insert_tareas_in_tutor(&$tutores)
+	{
+		$this->load->model('tarea_model');
+
+		if (gettype($tutores) == "array") {
+			foreach ($tutores as $tutor) {
+				$tareas = $this->tarea_model->get_all_tareas_from_tutor($tutor->id);
+				$tutor->tareas = $tareas;
+			}
+		}else{ //Asuming is an object type
+			$tareas = $this->plan_model->get_all_tareas_from_tarea($tutores->id);
+			$tutores->tareas = $tareas;
+		}
+		
+		return $tutores;
 	}
 }

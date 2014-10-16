@@ -2,16 +2,7 @@
 <div class="row">
     <div class="col-lg-2">
         <h1 class="page-header">
-            Tareas
-        </h1>
-    </div>
-    <div class="col-lg-10">
-        <h1 class="page-header">
-            <a href="<?php echo base_url(); ?>tarea/create">
-                <button type="button" class="btn btn-success btn-md">
-                    Crear Nuevo Tarea
-               </button>
-            </a>
+            Grupos
         </h1>
     </div>
 </div>
@@ -23,13 +14,8 @@
             <div class="alert alert-info alert-dismissable">
                 <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
                 <i class="fa fa-info-circle"></i>  
-                <?php if ($status == "save_success"): ?>
-                    Se ha registrado existósamente la nueva tarea
-                <?php endif ?>
                 <?php if ($status == "update_success"): ?>
-                    Se ha actualizado existósamente la tarea                                  
-                <?php endif ?><?php if ($status == "delete_success"): ?>
-                    Se ha eliminado existósamente la tarea                                  
+                    Se ha actualizado existósamente el grupo                                  
                 <?php endif ?>
             </div>
         </div>
@@ -43,7 +29,7 @@
         <div class="panel panel-default filterable">
             <div class="panel-heading">
                 <h3 class="panel-title">
-                    <i class="fa fa-pencil user-fw"></i>Tareas<span class="space"></span>
+                    <i class="fa fa-users user-fw"></i>Grupos<span class="space"></span>
                     <button class="btn btn-info btn-filter"><span class="glyphicon glyphicon-filter"></span>Filtrar Resultados</button>
                 </h3>
             </div>
@@ -53,34 +39,30 @@
                         <thead>
                             <tr class="filters">
                                 <th><input type="text" class="form-control" placeholder="Nombre" disabled></th>
-                                <th><input type="text" class="form-control" placeholder="Descripción" disabled></th>
+                                <th><input type="text" class="form-control" placeholder="Observaciones" disabled></th>
+                                <th><input type="text" class="form-control" placeholder="Plan" disabled></th>
                                 <th><input type="text" class="form-control" placeholder="Tutor" disabled></th>
-                                <th>Planes</th>
                                 <th>Editar</th>
                                 <th>Eliminar</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <?php if (isset($tareas)): ?>
-                                <?php foreach ($tareas as $tarea): ?>
+                            <?php if (isset($grupos)): ?>
+                                <?php foreach ($grupos as $grupo): ?>
                                     <tr>
-                                    <td><?php echo $tarea->nombre; ?></td>
-                                    <td><?php echo $tarea->descripcion; ?></td>
-                                    <?php $tutor =  $tarea->tutor;?>
+                                    <td><?php echo $grupo->nombre; ?></td>
+                                    <td><?php echo $grupo->observaciones; ?></td>
+                                    <?php $plan = $grupo->plan ?>
+                                    <td><?php echo $plan->nombre; ?></td>
+                                    <?php $tutor = $plan->tarea->tutor; ?>
                                     <td><?php echo "$tutor->nombre $tutor->apellido"; ?></td>
                                     <td>
-                                        <a href='<?php echo base_url()."tarea/edit/$tarea->id"; ?>'>
-                                            <button class="btn btn-primary btn-md">Gestionar planes</button>
-                                        </a>
-                                    </td>
-                                    <td>
-                                        <a href='<?php echo base_url()."tarea/edit/$tarea->id"; ?>'>
+                                        <a href='<?php echo base_url()."grupo/edit/$grupo->id"; ?>'>
                                             <button class="btn btn-primary btn-md">Editar</button>
                                         </a>
                                     </td>
                                     <td>
-                                        <button class="btn btn-danger btn-md show-modal-confirm" data-toggle="modal"
-                                         data-url='<?php echo base_url()."tarea/destroy/$tarea->id"; ?>'>
+                                        <button class="btn btn-danger btn-md show-modal-confirm" data-toggle="modal">
                                             Eliminar
                                         </button>
                                     </td>
@@ -109,13 +91,10 @@
         <h3 class="modal-title" id="myModalLabel">Eliminar Registro <i class="fa fa-warning"></i></h3>
       </div>
       <div class="modal-body">
-        <h4>¿Está seguro que desea eliminar este registro?</h4>
+        <h4>Para eliminar un grupo es necesario eliminar el plan al cual pertenece.</h4>
       </div>
       <div class="modal-footer">
-        <a href='<?php echo base_url()."tarea/destroy/$tarea->id"; ?>' id="delete_ref">
-            <button type="button" class="btn btn-danger" id="btn-delete">Eliminar</button>
-        </a> 
-        <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">Aceptar</button>
       </div>
     </div>
   </div>

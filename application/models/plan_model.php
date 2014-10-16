@@ -7,6 +7,7 @@
  {
  	/* 	Relationships
 	*	Plan belongs_to Tarea
+	* Plan has_one Grupo
 	*/
 
  	function getAll()

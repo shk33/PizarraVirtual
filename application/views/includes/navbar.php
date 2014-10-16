@@ -117,6 +117,9 @@
                         <a href="<?php echo base_url(); ?>plan"><i class="fa fa-fw fa-file-text-o"></i> Planes</a>
                     </li>
                     <li>
+                        <a href="<?php echo base_url(); ?>grupo"><i class="fa fa-fw fa-users"></i> Grupos</a>
+                    </li>
+                    <li>
                         <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-arrows-v"></i> Dropdown <i class="fa fa-fw fa-caret-down"></i></a>
                         <ul id="demo" class="collapse">
                             <li>
@@ -126,9 +129,6 @@
                                 <a href="#">Dropdown Item</a>
                             </li>
                         </ul>
-                    </li>
-                    <li>
-                        <a href="blank-page.html"><i class="fa fa-fw fa-file"></i> Blank Page</a>
                     </li>
                 </ul>
             </div>
