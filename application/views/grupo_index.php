@@ -8,6 +8,14 @@
 </div>
 <!-- /.row -->
 
+<div class="row">
+    <div class="col-lg-12">
+        <div class="alert alert-info alert-dismissable">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            <i class="fa fa-info-circle"></i> <b>Un grupo se crea únicamente al crear un Plan.</b>  
+        </div>
+    </div>
+</div>
 <?php if ($status != ""): ?>
     <div class="row">
         <div class="col-lg-12">

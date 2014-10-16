@@ -44,9 +44,10 @@
 		$insert = $this->db->insert('plan',$new_plan_data);
 
 		//Then creates the Grupo belonging to this Plan
+		//A Grupo is totally dependent of Plan
 		$new_grupo_data = array(
 				'nombre'     => "Grupo de ".$new_plan_data['nombre'],
-				'plan_id'     => $this->db->insert_id()
+				'plan_id'     => $this->db->insert_id() //Gets the last id inserted
 			);
 		$this->load->model('grupo_model');
 		$this->grupo_model->save($new_grupo_data);
