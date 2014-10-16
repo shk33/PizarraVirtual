@@ -34,6 +34,7 @@
 
 	function save()
 	{
+		//Creates the Plan Model
 		$new_plan_data = array(
 				'nombre'     => $this->input->post('nombre'),
 				'materiales'   => $this->input->post('materiales'),
@@ -41,6 +42,15 @@
 				'tarea_id'     => $this->input->post('tarea_id')
 			);
 		$insert = $this->db->insert('plan',$new_plan_data);
+
+		//Then creates the Grupo belonging to this Plan
+		$new_grupo_data = array(
+				'nombre'     => "Grupo de ".$new_plan_data['nombre'],
+				'plan_id'     => $this->db->insert_id()
+			);
+		$this->load->model('grupo_model');
+		$this->grupo_model->save($new_grupo_data);
+
 		return $insert;
 	}
 

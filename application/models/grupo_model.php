@@ -34,15 +34,9 @@ class Grupo_model extends CI_Model
 		return $found_grupo;
 	}
 
-	function save()
+	function save($grupo_data)
 	{
-		$new_plan_data = array(
-				'nombre'     => $this->input->post('nombre'),
-				'materiales'   => $this->input->post('materiales'),
-				'ruta_carpeta'  => $this->input->post('ruta_carpeta'),
-				'tarea_id'     => $this->input->post('tarea_id')
-			);
-		$insert = $this->db->insert('plan',$new_plan_data);
+		$insert = $this->db->insert('grupo',$grupo_data);
 		return $insert;
 	}
 

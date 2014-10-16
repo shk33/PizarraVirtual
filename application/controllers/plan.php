@@ -41,7 +41,7 @@ class Plan extends CI_Controller
 	}
 
 	/**
-	 * Guarda un nuevo tutor en la base de datos
+	 * Guarda un nuevo plan en la base de datos
 	 */
 	public function store()
 	{
@@ -67,7 +67,7 @@ class Plan extends CI_Controller
 		}
 }
 	/**
-	 * Show the form for editing the specified tutor.
+	 * Show the form for editing the specified plan.
 	 */
 	public function edit($id)
 	{
