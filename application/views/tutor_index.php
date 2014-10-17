@@ -45,7 +45,7 @@
             <div class="panel-heading">
                 <h3 class="panel-title">
                     <i class="fa fa-user user-fw"></i>Tutores<span class="space"></span>
-                    <button class="btn btn-info btn-filter"><span class="glyphicon glyphicon-filter"></span>Filtrar Resultados</button>
+                    <button class="btn btn-info btn-filter"><span class="glyphicon glyphicon-search"></span> Buscar</button>
                 </h3>
             </div>
             <div class="panel-body">
