@@ -54,6 +54,7 @@
                                 <th><input type="text" class="form-control" placeholder="Apellidos" disabled></th>
                                 <th><input type="text" class="form-control" placeholder="Matricula" disabled></th>
                                 <th><input type="text" class="form-control" placeholder="Correo" disabled></th>
+                                <th><input type="text" class="form-control" placeholder="Grupo" disabled></th>
                                 <th>Editar</th>
                                 <th>Eliminar</th>
                             </tr>
@@ -66,6 +67,12 @@
                                     <td><?php echo $alumno->apellido; ?></td>
                                     <td><?php echo $alumno->matricula; ?></td>
                                     <td><?php echo $alumno->correo; ?></td>
+                                    <!-- Printing the grupo of alumno -->
+                                    <?php if (isset($alumno->grupo->nombre)): ?>
+                                        <td><?php echo $alumno->grupo->nombre; ?></td>
+                                    <?php else: ?>
+                                        <td>Sin Grupo</td>
+                                    <?php endif ?>
                                     <td>
                                         <a href='<?php echo base_url()."alumno/edit/$alumno->id"; ?>'>
                                             <button class="btn btn-primary btn-md">Editar</button>

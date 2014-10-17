@@ -227,7 +227,7 @@ ul.alert-dropdown {
 .bs-example{
         margin: 20px;
     }
-    /* Fix alignment issue of label on extra small devices in Bootstrap 3.2 */
+/* Fix alignment issue of label on extra small devices in Bootstrap 3.2 */
 .form-horizontal .control-label{
     padding-top: 7px;
 }
@@ -246,6 +246,16 @@ ul.alert-dropdown {
     box-shadow: none;
     padding: 0;
     height: auto;
+}
+
+
+/* Checklist css  */
+.state-icon {
+    left: -5px;
+}
+.list-group-item-primary {
+    color: rgb(255, 255, 255);
+    background-color: rgb(66, 139, 202);
 }
 
 /*Padding section*/

@@ -27,7 +27,7 @@ class Alumno_model extends CI_Model
 			$found_alumno = $alumno;			
 		}
 
-		$found_alumno = insert_model_associations($found_alumno);
+		$found_alumno = $this->insert_model_associations($found_alumno);
 
 		return $found_alumno;
 	}
@@ -80,6 +80,24 @@ class Alumno_model extends CI_Model
 		$this->db->update('alumno',$alumno_data);
 	}
 
+	function assign_grupo($alumno_id,$grupo_id)
+	{
+		$alumno_data = array(
+				'grupo_id'   => $grupo_id
+			);
+		$this->db->where('id',$alumno_id);
+		$this->db->update('alumno',$alumno_data);	
+	}
+
+	function get_alumnos_without_grupo()
+	{
+		$query = $this->db->get_where('alumno', array('grupo_id' => NULL));
+
+		$alumnos = $query->result();
+
+		return $alumnos;
+	}
+
 	/*
 	* Rails Active Record Associations imitations starts here
 	*/
@@ -94,12 +112,16 @@ class Alumno_model extends CI_Model
 		
 		if (gettype($alumnos) == "array") {
 			foreach ($alumnos as $alumno) {
-				$grupo = $this->grupo_model->get_by_id($alumno->grupo_id);
-				$alumno->grupo = $grupo;
+				if (isset($alumno->grupo_id)) {
+					$grupo = $this->grupo_model->get_by_id($alumno->grupo_id);
+					$alumno->grupo = $grupo;
+				}
 			}
 		}else{ //Asuming is an single object type
-			$grupo = $this->grupo_model->get_by_id($alumnos->grupo_id);
-			$alumnos->grupo = $grupo;
+			if (isset($alumno->grupo_id)) {
+				$grupo = $this->grupo_model->get_by_id($alumnos->grupo_id);
+				$alumnos->grupo = $grupo;
+			}
 		}
 
 		return $alumnos;

@@ -108,7 +108,7 @@
         <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
         <h3 class="modal-title" id="myModalLabel">Eliminar Registro <i class="fa fa-warning"></i></h3>
       </div>
-      <div class="modal-body">
+      <div class="modal-body list-group checked-list-box">
         <h4>¿Está seguro que desea eliminar este registro?</h4>
       </div>
       <div class="modal-footer">
