@@ -101,4 +101,16 @@ class Grupo extends CI_Controller
 		$status = "delete_success";
 		redirect("grupo/index/$status");
 	}
+
+	/**
+	* Remove the a Alumno from the grupo
+	*/
+	function remove_alumno()
+	{
+		$this->load->model('alumno_model');
+		$this->alumno_model->remove_grupo($this->input->post('alumno_id'));
+		$grupo_id = $this->input->post('grupo_id');
+
+		redirect("grupo/edit/$grupo_id");
+	}
 }

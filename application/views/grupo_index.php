@@ -50,6 +50,7 @@
                                 <th><input type="text" class="form-control" placeholder="Observaciones" disabled></th>
                                 <th><input type="text" class="form-control" placeholder="Plan" disabled></th>
                                 <th><input type="text" class="form-control" placeholder="Tutor" disabled></th>
+                                <th>Gestionar Alumos</th>
                                 <th>Editar</th>
                                 <th>Eliminar</th>
                             </tr>
@@ -64,6 +65,11 @@
                                     <td><?php echo $plan->nombre; ?></td>
                                     <?php $tutor = $plan->tarea->tutor; ?>
                                     <td><?php echo "$tutor->nombre $tutor->apellido"; ?></td>
+                                    <td>
+                                        <a href='<?php echo base_url()."grupo/edit/$grupo->id"; ?>'>
+                                            <button class="btn btn-primary btn-md">Gestionar Alumnos</button>
+                                        </a>
+                                    </td>
                                     <td>
                                         <a href='<?php echo base_url()."grupo/edit/$grupo->id"; ?>'>
                                             <button class="btn btn-primary btn-md">Editar</button>

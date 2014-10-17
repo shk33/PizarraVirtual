@@ -56,7 +56,13 @@ class Grupo_model extends CI_Model
 		$this->db->delete('plan');
 	}
 
-		/*
+	function get_all_alumnos_from_grupo($grupo_id)
+		{
+			$query = $this->db->get_where('grupo', array('grupo_id' => $grupo_id));
+
+			return $query->result();
+		}
+	/*
 	* Rails Active Record Associations imitations starts here
 	*/
 
@@ -82,11 +88,33 @@ class Grupo_model extends CI_Model
 	}
 
 	/*
+	* Imitates behaviour of has_many in Rails in this case
+	* Grupo has_many Alumnos
+	*/
+	private function insert_alumnos_in_grupo(&$grupos)
+	{
+		$this->load->model('alumno_model');
+
+		if (gettype($grupos) == "array") {
+			foreach ($grupos as $grupo) {
+				$alumnos = $this->alumno_model->get_all_alumnos_from_grupo($grupo->id);
+				$grupo->alumnos = $alumnos;
+			}
+		}else{ //Asuming is an object type
+			$alumnos = $this->alumno_model->get_all_alumnos_from_grupo($grupos->id);
+			$grupos->alumnos = $alumnos;
+		}
+		
+		return $grupos;
+	}
+
+	/*
 	*	Hydrate the object with the others objects of model acoordings its associations
  	*/
 	private function insert_model_associations(&$grupos)
 	{
 		$grupos= $this->insert_plan_in_grupo($grupos);
+		$grupos= $this->insert_alumnos_in_grupo($grupos);
 
 		return $grupos;
 	}

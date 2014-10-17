@@ -26,7 +26,7 @@ class Alumno extends CI_Controller
 	/**
 	 * Muestra el formulario para crear un nuevo alumno
 	 */
-	public function create()
+	function create()
 	{
 		$data = array();
 		$data['main_content'] = 'alumno_create';
@@ -37,7 +37,7 @@ class Alumno extends CI_Controller
 	/**
 	 * Guarda un nuevo alumno en la base de datos
 	 */
-	public function store()
+	function store()
 	{
 		$this->load->library('form_validation');
 		$this->form_validation->set_rules('nombre','Nombre','trim|required');
@@ -62,7 +62,7 @@ class Alumno extends CI_Controller
 	/**
 	 * Show the form for editing the specified alumno.
 	 */
-	public function edit($id)
+	function edit($id)
 	{
 		$data= array();
 		$data['main_content'] = 'alumno_update';
@@ -75,7 +75,7 @@ class Alumno extends CI_Controller
 	/**
 	 * Update the specified resource in storage.
 	 */
-	public function update()
+	function update()
 	{
 		$this->load->library('form_validation');
 		$this->form_validation->set_rules('nombre','Nombre','trim|required');
@@ -99,10 +99,11 @@ class Alumno extends CI_Controller
 	/**
 	 * Remove the specified resource from storage.
 	 */
-	public function destroy($id)
+	function destroy($id)
 	{
 		$this->load->model('alumno_model');
 		$this->alumno_model->delete($id);
 		redirect('alumno/');	
 	}
+
 }

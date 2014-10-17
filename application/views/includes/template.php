@@ -11,7 +11,7 @@
 
     <title>Entorno Colobarorativo - Pizarra Virtual</title>
     <!-- Favicon -->
-    <link rel="shortcut icon" type="image/png" href="<?php base_url() ?>css/favicon.ico"/>
+    <link href="<?php echo base_url() ?>css/favicon.ico" rel="shortcut icon" type="image/png" />
 
     <!-- Bootstrap Core CSS -->
     <link href="<?php echo base_url(); ?>css/bootstrap.min.css" rel="stylesheet">
