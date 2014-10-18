@@ -21,7 +21,7 @@
   <div class="col-lg-6">
     <div class="panel panel-default">
       <div class="panel-heading">
-          <h3 class="panel-title">Datos Generales</h3>
+          <h3 class="panel-title space_heading">Datos Generales</h3>
       </div>
       <?php 
           echo form_open("tarea/update/", array('class' => 'form-horizontal'));

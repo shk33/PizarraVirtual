@@ -233,9 +233,6 @@ ul.alert-dropdown {
 }
 
 /*Table with filters per column styles*/
-.filterable {
-    margin-top: 15px;
-}
 .filterable .panel-heading .pull-right {
     margin-top: -20px;
 }
@@ -262,4 +259,9 @@ ul.alert-dropdown {
 .space{
     display:inline-block;
     width: 65px;
+}
+
+.space_heading{
+    padding: 6px 12px; 
+    line-height: 1.42857143
 }
