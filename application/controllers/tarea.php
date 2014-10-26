@@ -1,6 +1,6 @@
 <?php 
 
-class Tarea extends CI_Controller
+class Tarea extends MY_Controller
 {
 	
 	/**

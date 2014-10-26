@@ -1,6 +1,6 @@
 <?php 
 
-class Tutor extends CI_Controller
+class Tutor extends MY_Controller
 {
 	
 	/**

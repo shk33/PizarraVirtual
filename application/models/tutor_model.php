@@ -1,7 +1,6 @@
 <?php 
 
-include('usuario_model.php');
-class Tutor_model extends Usuario_Model
+class Tutor_model extends CI_model
 {
 	/* 	Relationships
 	*		Tutor has_many Tarea

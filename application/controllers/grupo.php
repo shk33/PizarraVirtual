@@ -1,6 +1,6 @@
 <?php 
 
-class Grupo extends CI_Controller
+class Grupo extends MY_Controller
 {
 	
 	/**

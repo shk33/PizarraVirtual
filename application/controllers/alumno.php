@@ -3,7 +3,7 @@
 /**
 * 
 */
-class Alumno extends CI_Controller
+class Alumno extends MY_Controller
 {
 	
 	/**
