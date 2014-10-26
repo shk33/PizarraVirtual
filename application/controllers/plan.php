@@ -3,14 +3,8 @@
 /**
 * 
 */
-class Plan extends CI_Controller
+class Plan extends MY_Controller
 {
-	function __construct()
-  {
-    parent::__construct();
-    $this->load->model('sesion');
-    $this->sesion->validate_session();
-  }
 	/**
 	 * Muestra todos los Planes
 	 */

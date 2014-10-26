@@ -4,7 +4,7 @@
 /**
 * Session Class
 */
-class Sesion extends CI_model
+class Sesion_model extends CI_model
 {
 	
 	function validate_session()
