@@ -37,7 +37,8 @@
                     'class'       => 'form-control',
                     'id'          => 'inputNombre',
                     'placeholder' => 'Nombre',
-                    'value'       => "$tarea->nombre"                            );
+                    'value'       => "$tarea->nombre"
+                    );
                   echo form_input($config); 
               ?>
           </div>

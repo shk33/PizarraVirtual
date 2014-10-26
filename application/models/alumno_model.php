@@ -3,7 +3,8 @@
 /**
 * 
 */
-class Alumno_model extends CI_Model
+include('usuario_model.php');
+class Alumno_model extends Usuario_Model
 {
 	/* 	Relationships
 	*	 Alumnos belongs_to Grupo
