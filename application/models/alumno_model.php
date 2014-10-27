@@ -98,6 +98,11 @@ class Alumno_model extends CI_model
 		return $alumnos;
 	}
 
+	function count_all()
+	{
+		return $this->db->count_all('alumno');
+	}
+
 	/*
 	* Rails Active Record Associations imitations starts here
 	*/

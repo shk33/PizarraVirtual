@@ -25,7 +25,7 @@ class login extends CI_Controller
         //Ensure values exist for email and pass, and validate the user's credentials
         if( $email && $pass && $this->usuario_model->validate_user($email,$pass)) {
             // If the user is valid, redirect to the main view
-            redirect('plan');
+            redirect('/sitio/admin');
         } else {
             // Otherwise show the login screen with an error message.
             $this->show_login(true);
@@ -36,7 +36,7 @@ class login extends CI_Controller
         $data['error'] = $show_error;
 
         $this->load->helper('form');
-        $this->load->view('login',$data);
+        $this->load->view('login2',$data);
     }
 
     function close()

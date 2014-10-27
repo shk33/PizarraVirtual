@@ -76,6 +76,11 @@ class Tarea_model extends CI_Model
 		return $query->result();
 	}
 
+	function count_all()
+	{
+		return $this->db->count_all('tarea');
+	}
+
 	/*
 	* Rails Active Record Associations imitations starts here
 	*/

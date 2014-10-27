@@ -54,6 +54,11 @@ class Tutor_model extends CI_model
 		$this->db->delete('tutor');
 	}
 
+	function count_all()
+	{
+		return $this->db->count_all('tutor');
+	}
+
 	/*
 	* Imitates behaviour of has_many in Rails in this case
 	* Tutor has_many Tarea

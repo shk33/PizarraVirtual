@@ -62,6 +62,11 @@ class Grupo_model extends CI_Model
 
 			return $query->result();
 		}
+
+	function count_all()
+	{
+		return $this->db->count_all('grupo');
+	}
 	/*
 	* Rails Active Record Associations imitations starts here
 	*/

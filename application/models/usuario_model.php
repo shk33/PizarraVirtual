@@ -6,8 +6,6 @@
 class Usuario_Model extends CI_model
 {
 	
-	var $details;
-
     function validate_user( $correo, $contrasena ) {
         
         if ($this->validate_credentials($correo, $contrasena, 'admin')) {
@@ -23,7 +21,7 @@ class Usuario_Model extends CI_model
         return false;
     }
 
-    function set_session() {
+    function set_session($tipo_usuario) {
         // session->set_userdata is a CodeIgniter function that
         // stores data in CodeIgniter's session storage.  Some of the values are built in
         // to CodeIgniter, others are added.  See CodeIgniter's documentation for details.
@@ -38,11 +36,12 @@ class Usuario_Model extends CI_model
                 'isLoggedIn'=>true
             )
         );*/
-
         $this->session->set_userdata( array(
-                'isLoggedIn'=>true
+                'isLoggedIn'=>true,
+                'userType' => $tipo_usuario
             )
         );
+        
     }
 
     //Validates login credentials
