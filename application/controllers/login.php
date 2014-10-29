@@ -8,7 +8,7 @@ class login extends CI_Controller
 	
 	function index() {
         if( $this->session->userdata('isLoggedIn') ) { // Accesing a unset userdata returns false
-            redirect('/main/show_main');
+            redirect('sitio/admin'); //Por mientras redirecciona al ADMIN home
         } else {
           $this->show_login(false);
         }
@@ -28,11 +28,11 @@ class login extends CI_Controller
             redirect('/sitio/admin');
         } else {
             // Otherwise show the login screen with an error message.
-            $this->show_login(true);
+            redirect('/login');
         }
     }
 
-    function show_login( $show_error = false ) {
+    function show_login( $show_error = false ) { //Corregir el redirecionamiento de esto
         $data['error'] = $show_error;
 
         $this->load->helper('form');
