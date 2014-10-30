@@ -113,6 +113,6 @@ class Plan extends MY_Controller
 		$this->load->model('plan_model');
 		$this->plan_model->delete($id);
 		$status = "delete_success";
-		redirect("tarea/index/$status");
+		redirect("plan/index/$status");
 	}
 }

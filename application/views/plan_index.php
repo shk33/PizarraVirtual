@@ -109,7 +109,7 @@
         <h4>¿Está seguro que desea eliminar este registro?</h4>
       </div>
       <div class="modal-footer">
-        <a href='<?php echo base_url()."plan/destroy/$alumno->id"; ?>' id="delete_ref">
+        <a href='<?php echo base_url()."plan/destroy/$plan->id"; ?>' id="delete_ref">
             <button type="button" class="btn btn-danger" id="btn-delete">Eliminar</button>
         </a> 
         <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>

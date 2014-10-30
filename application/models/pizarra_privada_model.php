@@ -30,18 +30,11 @@ class Pizarra_privada_model extends CI_model
 		return $found_pizarra;
 	}
 
-	/*function save()
+	function save($grupo_data)
 	{
-		$new_tutor_data = array(
-				'nombre'     => $this->input->post('nombre'),
-				'apellido'   => $this->input->post('apellido'),
-				'seccion'  => $this->input->post('seccion'),
-				'correo'     => $this->input->post('correo'),
-				'contrasena' => md5($this->input->post('password'))
-			);
-		$insert = $this->db->insert('tutor',$new_tutor_data);
+		$insert = $this->db->insert('grupo',$grupo_data);
 		return $insert;
-	}*/
+	}
 
 	function update($id)
 	{
