@@ -52,7 +52,7 @@
                                 <th><input type="text" class="form-control" placeholder="Plan" disabled></th>
                                 <th>Gestionar Archivos</th>
                                 <th>Editar</th>
-                                <th>Eliminar</th>
+                                <th>Vista Colaborativa</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -76,9 +76,9 @@
                                         </a>
                                     </td>
                                     <td>
-                                        <button class="btn btn-danger btn-md show-modal-confirm" data-toggle="modal">
-                                            Eliminar
-                                        </button>
+                                        <a href='<?php echo base_url()."pizarra_privada/vista_colaborativa/$pizarra->id"; ?>'>
+                                            <button class="btn btn-primary btn-md">Vista Colaborativa</button>
+                                        </a>
                                     </td>
                                     </tr>
                                 <?php endforeach ?>
@@ -96,26 +96,5 @@
 </div>
 <!-- End Row -->
 
-<!-- Delete Confirmation Modal -->
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-        <h3 class="modal-title" id="myModalLabel">Eliminar Registro <i class="fa fa-warning"></i></h3>
-      </div>
-      <div class="modal-body">
-        <h4>Para eliminar una pizarra es necesario eliminar el plan al cual pertenece.</h4>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Aceptar</button>
-      </div>
-    </div>
-  </div>
-</div>
-
 <!-- Table filters logic -->
 <script src="<?php echo base_url(); ?>js/table-filter.js"></script>
-
-<!-- Confirm delete logic -->
-<script src="<?php echo base_url(); ?>js/confirm-delete.js"></script>

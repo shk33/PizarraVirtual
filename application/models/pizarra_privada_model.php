@@ -46,6 +46,15 @@ class Pizarra_privada_model extends CI_model
 		$this->db->update('pizarra_privada',$pizarra_data);
 	}
 
+	function update_content($id,$content)
+	{
+		$pizarra_data = array('contenido' => $content );
+
+		$this->db->where('id',$id);
+		$this->db->update('pizarra_privada',$pizarra_data);
+
+	}
+
 	/*function delete($id)
 	{
 		$this->db->where('id',$id);

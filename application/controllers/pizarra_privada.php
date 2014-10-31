@@ -4,6 +4,11 @@ class Pizarra_privada extends MY_Controller
 {
 	
 	/**
+	 * Admin Exclusive functions starts here
+	 * Require Level 3 Access
+	 */
+
+	/**
 	 * Muestra todos los grupos
 	 */
 	function index($status = '')
@@ -33,31 +38,6 @@ class Pizarra_privada extends MY_Controller
 	}
 
 	/**
-	 * Guarda un nuevo grupo en la base de datos
-	 */
-	/*public function store()
-	{
-		$this->load->library('form_validation');
-		$this->form_validation->set_rules('nombre','Nombre','trim|required');
-		$this->form_validation->set_rules('apellido','Apellidos','trim|required');
-		$this->form_validation->set_rules('seccion','Seccion','trim|required');
-		$this->form_validation->set_rules('correo','Correo','trim|required|valid_email');
-		$this->form_validation->set_rules('contrasena','Contraseña','trim|required');
-
-		$data = array();
-
-		if ($this->form_validation->run() == false) {
-			$data['main_content'] = 'grupo_create'; 
-			$this->load->view('includes/template',$data);
-		}else{
-			$this->load->model('grupo_model');
-			$this->tutor_model->save();
-			$status="save_success";
-
-			redirect("grupo/index/$status");			
-		}
-}*/
-	/**
 	 * Show the form for editing the specified grupo.
 	 */
 	public function edit($id)
@@ -68,9 +48,6 @@ class Pizarra_privada extends MY_Controller
 		$this->load->model('pizarra_privada_model');
 		$data['pizarra_privada']=$this->pizarra_privada_model->get_by_id($id);
 
-		/*$this->load->model('alumno_model');
-		$data['not_in_group_alumnos'] = $this->alumno_model->get_alumnos_without_grupo();
-*/
 		$this->load->view('includes/template',$data);
 	}
 
@@ -99,41 +76,51 @@ class Pizarra_privada extends MY_Controller
 	}
 
 	/**
-	 * Remove the specified resource from storage.
+	 * Admin Exclusive functions ends here
+	 * Require Level 3 Access
 	 */
-	/*public function destroy($id)
-	{
-		$this->load->model('grupo_model');
-		$this->grupo_model->delete($id);
-		$status = "delete_success";
-		redirect("grupo/index/$status");
-	}*/
 
 	/**
-	* Remove the a Alumno from the grupo
-	*/
-	function remove_alumno()
-	{
-		$this->load->model('alumno_model');
-		$this->alumno_model->remove_grupo($this->input->post('alumno_id'));
-		$grupo_id = $this->input->post('grupo_id');
+	 * Require Level 1 Access starts here
+	 */
+		public function vista_colaborativa($pizarra_id)
+		{
+			$data= array();
+			$data['main_content'] = 'pizarra_privada_vista_colaborativa';
 
-		redirect("grupo/edit/$grupo_id");
-	}
+			$this->load->model('pizarra_privada_model');
+			$data['pizarra'] = $this->pizarra_privada_model->get_by_id($pizarra_id);
 
-	/**
-	* Add a array of Alumnos to the grupo
-	*/
-	function add_alumnos()
-	{
-		$grupo_id = $this->input->post('grupo_id'); 
-		$this->load->model('alumno_model');
+			$this->load->view('includes/template',$data);
 
-		foreach ($this->input->post() as $alumno => $alumno_id) {
-			if ($alumno != "grupo_id") { //One post parameter its the grupi_id and its not an alumno
-				$this->alumno_model->assign_grupo($alumno_id, $grupo_id);
-			}
 		}
-		redirect("grupo/edit/$grupo_id");
-	}
+
+		public function get_new_content()
+		{
+			$this->load->model('pizarra_privada_model');
+			$pizarra_id      = $this->input->get('id');
+
+			$pizarra = $this->pizarra_privada_model->get_by_id($pizarra_id);
+
+			$json_respond = array('new_content' =>  $pizarra->contenido);
+
+			header('Content-Type: application/json');
+    	echo json_encode( $json_respond );
+		}
+
+		public function update_content()
+		{
+			$id      = $this->input->post('id');
+			$content = $this->input->post('content');
+
+			$this->load->model('pizarra_privada_model');
+			$pizarra = $this->pizarra_privada_model->update_content($id,$content);
+
+		}
+		
+	/**
+	 * Require Level 1 Access ends here
+	 */
+
+	
 }
