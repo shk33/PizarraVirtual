@@ -12,11 +12,5 @@ class ValidadorDeEcuaciones_model extends CI_Model
             return false;
         }  
     }
-    function dividirPorEspacio($expresionMatematica){
-        return preg_split ("/[\s]+/", $expresionMatematica);
-    }
-
-
-    dividirPorVueltaDeCarro("(a + b) = ( a + b )\n(a + b) = ( a + b )\n(a + b) = ( a + b )  ");
 }
 ?>
