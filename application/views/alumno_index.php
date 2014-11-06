@@ -104,6 +104,7 @@
 </div>
 <!-- End Row -->
 
+<?php if ($this->session->userdata('permitionLevel') >= 3): ?>
 <!-- Delete Confirmation Modal -->
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog">
@@ -124,6 +125,7 @@
     </div>
   </div>
 </div>
+<?php endif ?>
 
 <!-- Table filters logic -->
 <script src="<?php echo base_url(); ?>js/table-filter.js"></script>

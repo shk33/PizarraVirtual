@@ -9,6 +9,22 @@ class Tarea_model extends CI_Model
 	*	Tarea has_many Plan
 	*/
 
+	function get_tareas_by_user_type()
+	{
+		$tareas = array();
+		
+		if ($this->permiso_model->is_level_admin()) {
+			$tareas = $this->getAll();
+		}
+
+		if ($this->permiso_model->is_level_tutor()) {
+			$tutor_id = $this->session->userdata("userId");
+			$tareas = $this->get_by_tutor_id($tutor_id);
+		}
+
+		return $tareas;
+	}
+
 	function getAll()
 	{
 		$query=$this->db->get('tarea');

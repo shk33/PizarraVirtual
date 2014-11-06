@@ -5,15 +5,18 @@ class Tarea extends MY_Controller
 	
 	/**
 	 * Muestra todos los tareas
+	 * Require TUTOR Level Permition
 	 */
 	function index($status = '')
 	{
+		$this->permiso_model->need_tutor_permition_level();	
+
 		$data = array();
 		$data['main_content'] = 'tarea_index';
 		$data['status'] = $status;
 		$this->load->model('tarea_model');
 		
-		if ($query=$this->tarea_model->getAll()) {
+		if ($query=$this->tarea_model->get_tareas_by_user_type()) {
 			$data['tareas'] =$query;
 		}
 
@@ -23,9 +26,12 @@ class Tarea extends MY_Controller
 
 	/**
 	 * Muestra el formulario para crear un nuevo alumno
+	 * Require TUTOR Level Permition
 	 */
 	public function create()
 	{
+		$this->permiso_model->need_tutor_permition_level();	
+
 		$data = array();
 		$data['main_content'] = 'tarea_create';
 
@@ -34,9 +40,12 @@ class Tarea extends MY_Controller
 
 	/**
 	 * Guarda un nuevo tutor en la base de datos
+	 * Require TUTOR Level Permition
 	 */
 	public function store()
 	{
+		$this->permiso_model->need_tutor_permition_level();	
+
 		$this->load->library('form_validation');
 		$this->form_validation->set_rules('nombre','Nombre','trim|required');
 		$this->form_validation->set_rules('descripcion','descripcion','trim|required');
@@ -55,10 +64,13 @@ class Tarea extends MY_Controller
 		}
 }
 	/**
-	 * Show the form for editing the specified tutor.
+	 * Show the form for editing the specified tarea.
+	 * Require TUTOR Level Permition
 	 */
 	public function edit($id)
 	{
+		$this->permiso_model->need_tutor_permition_level();	
+
 		$data= array();
 		$data['main_content'] = 'tarea_update';
 		$this->load->model('tarea_model');
@@ -69,9 +81,12 @@ class Tarea extends MY_Controller
 
 	/**
 	 * Update the specified resource in storage.
+	 * Require TUTOR Level Permition
 	 */
 	public function update()
 	{
+		$this->permiso_model->need_tutor_permition_level();	
+
 		$this->load->library('form_validation');
 		$this->form_validation->set_rules('nombre','Nombre','trim|required');
 		$this->form_validation->set_rules('descripcion','Descripción','trim|required');
@@ -91,9 +106,12 @@ class Tarea extends MY_Controller
 
 	/**
 	 * Remove the specified resource from storage.
+	 * Require TUTOR Level Permition
 	 */
 	public function destroy($id)
 	{
+		$this->permiso_model->need_tutor_permition_level();	
+		
 		$this->load->model('tarea_model');
 		$this->tarea_model->delete($id);
 		$status = "delete_success";

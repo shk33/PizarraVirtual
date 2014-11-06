@@ -10,6 +10,22 @@ class Pizarra_privada_model extends CI_model
 	* Pizarra Privada belongs_to Grupo
 	*/
 
+	function get_pizarras_by_user_type()
+	{
+		$pizarras = array();
+
+		if ($this->permiso_model->is_level_admin()) {
+			$pizarras = $this->getAll();
+		}
+
+		if ($this->permiso_model->is_level_tutor()) {
+			$tutor_id = $this->session->userdata("userId");
+			$pizarras = $this->get_pizarras_by_tutor($tutor_id);
+		}
+
+		return $pizarras;
+	}
+
 	function getAll()
 	{
 		$query=$this->db->get('pizarra_privada');
@@ -20,6 +36,39 @@ class Pizarra_privada_model extends CI_model
 		return $pizarras;
 	}
 
+	function get_pizarras_by_tutor($tutor_id)
+	{
+		$this->load->model('tarea_model');
+		$this->load->model('grupo_model');
+		$tareas = $this->tarea_model->get_by_tutor_id($tutor_id);
+
+		$pizarras = array();
+
+		foreach ($tareas as $tarea) {
+			$planes = $tarea->planes; 
+
+			if (isset($planes)) {
+
+				foreach ($planes as $plan) {
+
+					$grupo = $this->grupo_model->get_by_plan_id($plan->id);
+					
+					if ($grupo) {
+						$pizarras[] = $grupo->pizarra_privada;
+					} //end if
+
+				} //end foreach
+
+			}//end if
+
+		} //end foreach
+
+		$pizarras = $this->insert_model_associations($pizarras);
+
+		return $pizarras;
+
+	}
+
 	function get_by_id($id)
 	{
 		$query = $this->db->get_where('pizarra_privada', array('id' => $id));
@@ -27,6 +76,17 @@ class Pizarra_privada_model extends CI_model
 		foreach ($query->result() as $pizarra) {
 			$found_pizarra = $pizarra;			
 		}
+		return $found_pizarra;
+	}
+
+	function get_by_grupo($grupo_id)
+	{
+		$query = $this->db->get_where('pizarra_privada', array('grupo_id' => $grupo_id));
+		
+		foreach ($query->result() as $pizarra) {
+			$found_pizarra = $pizarra;			
+		}
+
 		return $found_pizarra;
 	}
 

@@ -10,6 +10,21 @@
 	* Plan has_one Grupo
 	*/
 
+	function get_planes_by_user_type()
+	{
+		$planes;
+		if ($this->permiso_model->is_level_admin()) {
+			$planes = $this->getAll();
+		}
+
+		if ($this->permiso_model->is_level_tutor()) {
+			$tutor_id = $this->session->userdata("userId");
+			$planes = $this->get_planes_by_tutor($tutor_id);
+		}
+
+		return $planes;
+	}
+
  	function getAll()
 	{
 		$query=$this->db->get('plan');
@@ -19,6 +34,34 @@
 		$planes = $this->insert_model_associations($planes);
 		
 		return $planes;
+	}
+
+	function get_planes_by_tutor($tutor_id)
+	{
+		$this->load->model('tarea_model');
+		$tareas = $this->tarea_model->get_by_tutor_id($tutor_id);
+
+		$all_planes = array();
+		$partial_planes = array();
+		$i = 0;
+
+		foreach ($tareas as $tarea) {
+			$planes = $tarea->planes;
+
+			if (isset($planes)) {
+
+				$partial_planes[$i] = $planes;
+				$all_planes = array_merge( $all_planes, $partial_planes[$i] );  
+				$i++;
+
+			}//end if
+			
+		} //end foreach
+		
+		$all_planes = $this->insert_model_associations($all_planes);
+
+		return $all_planes;
+
 	}
 
 	function get_by_id($id)

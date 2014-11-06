@@ -7,15 +7,18 @@ class Plan extends MY_Controller
 {
 	/**
 	 * Muestra todos los Planes
+	 * Require TUTOR Level Permition
 	 */
 	function index($status = '')
 	{
+		$this->permiso_model->need_tutor_permition_level();	
+
 		$data = array();
 		$data['main_content'] = 'plan_index';
 		$data['status'] = $status;
 		$this->load->model('plan_model');
 		
-		if ($query=$this->plan_model->getAll()) {
+		if ($query=$this->plan_model->get_planes_by_user_type()) {
 			$data['planes'] =$query;
 		}
 
@@ -25,9 +28,12 @@ class Plan extends MY_Controller
 
 	/**
 	 * Muestra el formulario para crear un nuevo plan
+		* Require TUTOR Level Permition
 	 */
 	public function create($tarea_id="")
 	{
+		$this->permiso_model->need_tutor_permition_level();	
+
 		$data = array();
 		$data['main_content'] = 'plan_create';
 
@@ -41,9 +47,12 @@ class Plan extends MY_Controller
 
 	/**
 	 * Guarda un nuevo plan en la base de datos
+	* Require TUTOR Level Permition
 	 */
 	public function store()
 	{
+		$this->permiso_model->need_tutor_permition_level();	
+
 		$this->load->library('form_validation');
 		$this->form_validation->set_rules('tarea_id','Tarea pertenciente','required');
 		$this->form_validation->set_rules('nombre','Nombre','trim|required');
@@ -67,9 +76,12 @@ class Plan extends MY_Controller
 }
 	/**
 	 * Show the form for editing the specified plan.
+	 * Require TUTOR Level Permition
 	 */
 	public function edit($id)
 	{
+		$this->permiso_model->need_tutor_permition_level();	
+
 		$data= array();
 		$data['main_content'] = 'plan_update';
 
@@ -84,9 +96,12 @@ class Plan extends MY_Controller
 
 	/**
 	 * Update the specified resource in storage.
+	 * Require TUTOR Level Permition
 	 */
 	public function update()
 	{
+		$this->permiso_model->need_tutor_permition_level();
+
 		$this->load->library('form_validation');
 		$this->form_validation->set_rules('nombre','Nombre','trim|required');
 		$this->form_validation->set_rules('materiales','materiales','trim|required');
@@ -107,9 +122,12 @@ class Plan extends MY_Controller
 
 	/**
 	 * Remove the specified resource from storage.
+	 * Require TUTOR Level Permition
 	 */
 	public function destroy($id)
 	{
+		$this->permiso_model->need_tutor_permition_level();	
+		
 		$this->load->model('plan_model');
 		$this->plan_model->delete($id);
 		$status = "delete_success";

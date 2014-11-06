@@ -8,8 +8,24 @@ class Grupo_model extends CI_Model
 	
 	/* 	Relationships
 	*	Grupo has_many Alumno
+	* Grupo has_one Pizarra_Privada
 	* Grupo belongs_to Plan
 	*/
+	function get_grupos_by_user_type()
+	{
+		$grupos = array();
+
+		if ($this->permiso_model->is_level_admin()) {
+			$grupos = $this->getAll();
+		}
+
+		if ($this->permiso_model->is_level_tutor()) {
+			$tutor_id = $this->session->userdata("userId");
+			$grupos = $this->get_grupos_by_tutor($tutor_id);
+		}
+
+		return $grupos;
+	}
 
  	function getAll()
 	{
@@ -20,6 +36,39 @@ class Grupo_model extends CI_Model
 		$grupos = $this->insert_model_associations($grupos);
 		
 		return $grupos;
+	}
+
+	function get_grupos_by_tutor($tutor_id)
+	{
+		$this->load->model('tarea_model');
+		$this->load->model('grupo_model');
+		$tareas = $this->tarea_model->get_by_tutor_id($tutor_id);
+
+		$grupos = array();
+
+		foreach ($tareas as $tarea) {
+			$planes = $tarea->planes; 
+
+			if (isset($planes)) {
+
+				foreach ($planes as $plan) {
+
+					$grupo = $this->grupo_model->get_by_plan_id($plan->id);
+
+					if ($grupo) {
+						$grupos[] = $grupo;
+					} //end if
+
+				} //end foreach
+
+			}//end if
+
+		} //end foreach
+
+		$grupos = $this->insert_model_associations($grupos);
+
+		return $grupos;
+
 	}
 
 	function get_by_id($id)
@@ -44,9 +93,9 @@ class Grupo_model extends CI_Model
 
 		if ($grupo) {
 			$found_grupo = $grupo[0]; //Getting the first element
-			//var_dump($found_grupo);
-			$this->load->model('alumno_model');
+
 			$found_grupo = $this->insert_alumnos_in_grupo($found_grupo);
+			$found_grupo = $this->insert_pizarra_in_grupo($found_grupo);
 		}
 		
 		return $found_grupo; 
@@ -126,12 +175,34 @@ class Grupo_model extends CI_Model
 	}
 
 	/*
+	* Imitates behaviour of has_one in Rails in this case
+	* Grupo has_one Pizarra_Privada
+	*/
+	private function insert_pizarra_in_grupo(&$grupos)
+	{
+		$this->load->model('pizarra_privada_model');
+
+		if (gettype($grupos) == "array") {
+			foreach ($grupos as $grupo) {
+				$pizarra = $this->pizarra_privada_model->get_by_grupo($grupo->id);
+				$grupo->pizarra_privada = $pizarra;
+			}
+		}else{ //Asuming is an object type
+			$pizarra = $this->pizarra_privada_model->get_by_grupo($grupos->id);
+			$grupos->pizarra_privada = $pizarra;
+		}
+		
+		return $grupos;
+	}
+
+	/*
 	*	Hydrate the object with the others objects of model acoordings its associations
  	*/
 	private function insert_model_associations(&$grupos)
 	{
-		$grupos= $this->insert_plan_in_grupo($grupos);
-		$grupos= $this->insert_alumnos_in_grupo($grupos);
+		$grupos = $this->insert_plan_in_grupo($grupos);
+		$grupos = $this->insert_alumnos_in_grupo($grupos);
+		$grupos = $this->insert_pizarra_in_grupo($grupos);
 
 		return $grupos;
 	}

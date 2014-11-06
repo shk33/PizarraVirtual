@@ -4,21 +4,19 @@ class Pizarra_privada extends MY_Controller
 {
 	
 	/**
-	 * Admin Exclusive functions starts here
-	 * Require Level 3 Access
-	 */
-
-	/**
-	 * Muestra todos los grupos
+	 * Muestra todos las pizarras privadas
+	 * Require TUTOR Level Permition
 	 */
 	function index($status = '')
 	{
+		$this->permiso_model->need_tutor_permition_level();	
+
 		$data = array();
 		$data['main_content'] = 'pizarra_privada_index';
 		$data['status'] = $status;
 		$this->load->model('pizarra_privada_model');
 		
-		if ($query=$this->pizarra_privada_model->getAll()) {
+		if ($query=$this->pizarra_privada_model->get_pizarras_by_user_type()) {
 			$data['pizarras'] =$query;
 		}
 
@@ -27,21 +25,13 @@ class Pizarra_privada extends MY_Controller
 	}
 
 	/**
-	 * Muestra el formulario para crear un nuevo grupo
-	 */
-	public function create()
-	{
-		$data = array();
-		$data['main_content'] = 'grupo_create';
-
-		$this->load->view('includes/template',$data);
-	}
-
-	/**
 	 * Show the form for editing the specified grupo.
+	 * Require TUTOR Level Permition
 	 */
 	public function edit($id)
 	{
+		$this->permiso_model->need_tutor_permition_level();	
+
 		$data= array();
 		$data['main_content'] = 'pizarra_privada_update';
 
@@ -53,9 +43,12 @@ class Pizarra_privada extends MY_Controller
 
 	/**
 	 * Update the specified resource in storage.
+	 * Require TUTOR Level Permition
 	 */
 	public function update()
 	{
+		$this->permiso_model->need_tutor_permition_level();	
+
 		$this->load->library('form_validation');
 
 		$this->form_validation->set_rules('nombre','Nombre','trim|required');
@@ -75,52 +68,60 @@ class Pizarra_privada extends MY_Controller
 		}
 	}
 
-	/**
-	 * Admin Exclusive functions ends here
-	 * Require Level 3 Access
-	 */
+	/*
+	* Show the pizarra virtual in a colaborative mode
+	* Require ALUMNO Level Permition
+	*/
+	public function vista_colaborativa($pizarra_id)
+	{
+		$this->permiso_model->need_alumno_permition_level();	
 
-	/**
-	 * Require Level 1 Access starts here
-	 */
-		public function vista_colaborativa($pizarra_id)
-		{
-			$data= array();
-			$data['main_content'] = 'pizarra_privada_vista_colaborativa';
+		$data= array();
+		$data['main_content'] = 'pizarra_privada_vista_colaborativa';
 
-			$this->load->model('pizarra_privada_model');
-			$data['pizarra'] = $this->pizarra_privada_model->get_by_id($pizarra_id);
+		$this->load->model('pizarra_privada_model');
+		$data['pizarra'] = $this->pizarra_privada_model->get_by_id($pizarra_id);
 
-			$this->load->view('includes/template',$data);
+		$this->load->view('includes/template',$data);
 
-		}
+	}
 
-		public function get_new_content()
-		{
-			$this->load->model('pizarra_privada_model');
-			$pizarra_id      = $this->input->get('id');
+	/*
+	* Used for ajax Petition
+	* It gets the new content for the pizarra Privada
+	* Require ALUMNO Level Permition
+	*/
+	public function get_new_content()
+	{
+		$this->permiso_model->need_alumno_permition_level();
 
-			$pizarra = $this->pizarra_privada_model->get_by_id($pizarra_id);
+		$this->load->model('pizarra_privada_model');
+		$pizarra_id      = $this->input->get('id');
 
-			$json_respond = array('new_content' =>  $pizarra->contenido);
+		$pizarra = $this->pizarra_privada_model->get_by_id($pizarra_id);
 
-			header('Content-Type: application/json');
-    	echo json_encode( $json_respond );
-		}
+		$json_respond = array('new_content' =>  $pizarra->contenido);
 
-		public function update_content()
-		{
-			$id      = $this->input->post('id');
-			$content = $this->input->post('content');
+		header('Content-Type: application/json');
+  	echo json_encode( $json_respond );
+	}
 
-			$this->load->model('pizarra_privada_model');
-			$pizarra = $this->pizarra_privada_model->update_content($id,$content);
+	/*
+	* Used for ajax Petition
+	* It updates the content of the pizarra virtual when an user
+	* decides to share his/her pizarra local content
+	* Require ALUMNO Level Permition
+	*/
+	public function update_content()
+	{
+		$this->permiso_model->need_alumno_permition_level();
 
-		}
-		
-	/**
-	 * Require Level 1 Access ends here
-	 */
+		$id      = $this->input->post('id');
+		$content = $this->input->post('content');
 
+		$this->load->model('pizarra_privada_model');
+		$pizarra = $this->pizarra_privada_model->update_content($id,$content);
+
+	}
 	
 }

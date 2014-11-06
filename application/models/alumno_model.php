@@ -37,26 +37,38 @@ class Alumno_model extends CI_model
 	function get_alumnos_by_tutor($tutor_id)
 	{
 		$this->load->model('tarea_model');
-		$this->load->model('plan_model');
 		$this->load->model('grupo_model');
-
 		$tareas = $this->tarea_model->get_by_tutor_id($tutor_id);
-		$alumnos = array();
+
+		$all_alumnos = array();
+		$partial_alumnos = array();
+		$i = 0;
 
 		foreach ($tareas as $tarea) {
 			$planes = $tarea->planes; 
-			//Fix this foreach it only gets the alumnos of the last plan
+
 			if (isset($planes)) {
+
 				foreach ($planes as $plan) {
+
 					$grupo = $this->grupo_model->get_by_plan_id($plan->id);
+
 					if (isset($grupo->alumnos)) {
-						$alumnos = $grupo->alumnos;
+
+						$partial_alumnos[$i] = $grupo->alumnos;
+						$all_alumnos = array_merge( $all_alumnos, $partial_alumnos[$i] );
+						$i++;
 					} //end if
+
 				} //end foreach
+
 			}//end if
+
 		} //end foreach
-		
-		return $alumnos;
+
+		$all_alumnos = $this->insert_model_associations($all_alumnos);
+
+		return $all_alumnos;
 
 	}
 
