@@ -16,7 +16,7 @@
 
 		$planes = $query->result();
 
-		$planes = $this->insert_tarea_in_plan($planes);
+		$planes = $this->insert_model_associations($planes);
 		
 		return $planes;
 	}
@@ -28,7 +28,9 @@
 		foreach ($query->result() as $plan) {
 			$found_plan = $plan;			
 		}
-		$found_plan= $this->insert_tarea_in_plan($found_plan);
+
+		$found_plan = $this->insert_model_associations($found_plan);
+
 		return $found_plan;
 	}
 
@@ -107,6 +109,17 @@
 			die();*/
 			$planes->tarea = $tarea;
 		}
+
+		return $planes;
+	}
+
+	/*
+	*	Hydrate the object with the others objects of model acoordings its associations
+ 	*/
+	private function insert_model_associations(&$planes)
+	{
+		$planes= $this->insert_tarea_in_plan($planes);
+		//$planes= $this->insert_grupo_in_plan($planes);
 
 		return $planes;
 	}

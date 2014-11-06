@@ -7,7 +7,6 @@
     </div>
 </div>
 <!-- /.row -->
-<!-- probando starts here -->
 <div class="row">
   <div class="col-lg-12">
   <div class="board" style="margin-top: -35px;">
@@ -18,7 +17,6 @@
       <li class="active">
         <a href="#home" data-toggle="tab" title="Pizarras">
           <span class="round-tabs one">
-            <!-- <i class="glyphicon glyphicon-home"></i> -->
             <i class="fa fa-fw fa-slideshare"></i>
           </span> 
         </a>
@@ -195,8 +193,6 @@
   </div>
   <!-- end col lg 12 -->
 </div>
-                   
-<!-- probando ends here -->
 
 <!-- Table filters logic -->
 <script src="<?php echo base_url(); ?>js/update-pizarra-content.js"></script>

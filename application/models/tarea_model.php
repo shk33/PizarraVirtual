@@ -14,9 +14,9 @@ class Tarea_model extends CI_Model
 		$query=$this->db->get('tarea');
 
 		$tareas = $query->result();
-		$this->insert_model_associations($tareas);
+		$tareas = $this->insert_model_associations($tareas);
 
-		return $query->result();
+		return $tareas;
 	}
 
 	function get_by_id($id)
@@ -28,6 +28,16 @@ class Tarea_model extends CI_Model
 		}
 		$this->insert_model_associations($found_tarea);
 		return $found_tarea;
+	}
+
+	function get_by_tutor_id($tutor_id)
+	{
+		$query = $this->db->get_where('tarea', array('tutor_id' => $tutor_id));
+		
+		$tareas = $query->result();
+		$this->insert_model_associations($tareas);
+
+		return $query->result();
 	}
 
 	function save()

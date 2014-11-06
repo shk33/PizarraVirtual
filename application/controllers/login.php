@@ -45,4 +45,11 @@ class login extends CI_Controller
     	redirect('login');
     }
 
+    function not_allowed()
+    {
+        $data = array();
+        $data['main_content'] = 'errors/not_allowed';
+        $this->load->view('includes/template',$data);
+    }
+
 }

@@ -5,15 +5,17 @@
             Alumnos
         </h1>
     </div>
-    <div class="col-lg-10">
-        <h1 class="page-header">
-            <a href="<?php echo base_url(); ?>alumno/create">
-                <button type="button" class="btn btn-success btn-md">
-                    Crear Nuevo Alumno
-               </button>
-            </a>
-        </h1>
-    </div>
+    <?php if ($this->session->userdata('permitionLevel') >= 3): ?>
+        <div class="col-lg-10">
+            <h1 class="page-header">
+                <a href="<?php echo base_url(); ?>alumno/create">
+                    <button type="button" class="btn btn-success btn-md">
+                        Crear Nuevo Alumno
+                   </button>
+                </a>
+            </h1>
+        </div>
+    <?php endif ?>
 </div>
 <!-- /.row -->
 
@@ -55,8 +57,10 @@
                                 <th><input type="text" class="form-control" placeholder="Matricula" disabled></th>
                                 <th><input type="text" class="form-control" placeholder="Correo" disabled></th>
                                 <th><input type="text" class="form-control" placeholder="Grupo" disabled></th>
+                                <?php if ($this->session->userdata('permitionLevel') >= 3): ?>
                                 <th>Editar</th>
                                 <th>Eliminar</th>
+                                <?php endif ?>
                             </tr>
                         </thead>
                         <tbody>
@@ -67,12 +71,12 @@
                                     <td><?php echo $alumno->apellido; ?></td>
                                     <td><?php echo $alumno->matricula; ?></td>
                                     <td><?php echo $alumno->correo; ?></td>
-                                    <!-- Printing the grupo of alumno -->
                                     <?php if (isset($alumno->grupo->nombre)): ?>
                                         <td><?php echo $alumno->grupo->nombre; ?></td>
                                     <?php else: ?>
                                         <td>Sin Grupo</td>
                                     <?php endif ?>
+                                    <?php if ($this->session->userdata('permitionLevel') >= 3): ?>
                                     <td>
                                         <a href='<?php echo base_url()."alumno/edit/$alumno->id"; ?>'>
                                             <button class="btn btn-primary btn-md">Editar</button>
@@ -83,6 +87,7 @@
                                          data-url='<?php echo base_url()."alumno/destroy/$alumno->id"; ?>'>                                          Eliminar
                                         </button>
                                     </td>
+                                    <?php endif ?>
                                     </tr>
                                 <?php endforeach ?>
                             <?php endif ?>

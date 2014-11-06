@@ -8,6 +8,21 @@ class Alumno_model extends CI_model
 	/* 	Relationships
 	*	 Alumnos belongs_to Grupo
 	*/
+	function get_alumnos_by_user_type()
+	{
+		$alumnos;
+		if ($this->permiso_model->is_level_admin()) {
+			$alumnos = $this->getAll();
+		}
+
+		if ($this->permiso_model->is_level_tutor()) {
+			$tutor_id = $this->session->userdata("userId");
+			$alumnos = $this->get_alumnos_by_tutor($tutor_id);
+		}
+
+		return $alumnos;
+	}
+
 	function getAll()
 	{
 		$query=$this->db->get('alumno');
@@ -17,6 +32,32 @@ class Alumno_model extends CI_model
 		$alumnos = $this->insert_model_associations($alumnos);
 		
 		return $alumnos;
+	}
+
+	function get_alumnos_by_tutor($tutor_id)
+	{
+		$this->load->model('tarea_model');
+		$this->load->model('plan_model');
+		$this->load->model('grupo_model');
+
+		$tareas = $this->tarea_model->get_by_tutor_id($tutor_id);
+		$alumnos = array();
+
+		foreach ($tareas as $tarea) {
+			$planes = $tarea->planes; 
+			//Fix this foreach it only gets the alumnos of the last plan
+			if (isset($planes)) {
+				foreach ($planes as $plan) {
+					$grupo = $this->grupo_model->get_by_plan_id($plan->id);
+					if (isset($grupo->alumnos)) {
+						$alumnos = $grupo->alumnos;
+					} //end if
+				} //end foreach
+			}//end if
+		} //end foreach
+		
+		return $alumnos;
+
 	}
 
 	function get_by_id($id)
@@ -67,7 +108,7 @@ class Alumno_model extends CI_model
 	function get_all_alumnos_from_grupo($grupo_id)
 	{
 		$query = $this->db->get_where('alumno', array('grupo_id' => $grupo_id));
-
+		//var_dump($query->result());
 		return $query->result();
 	}
 

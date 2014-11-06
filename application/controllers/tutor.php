@@ -5,14 +5,17 @@ class Tutor extends MY_Controller
 	
 	/**
 	 * Muestra todos los tutores
+	 * Require ADMIN Level Permition
 	 */
 	function index($status = '')
 	{
+		$this->permiso_model->need_admin_permition_level();	
+
 		$data = array();
 		$data['main_content'] = 'tutor_index';
 		$data['status'] = $status;
 		$this->load->model('tutor_model');
-		
+
 		if ($query=$this->tutor_model->getAll()) {
 			$data['tutores'] =$query;
 		}
@@ -23,9 +26,12 @@ class Tutor extends MY_Controller
 
 	/**
 	 * Muestra el formulario para crear un nuevo alumno
+	 * Require ADMIN Level Permition
 	 */
 	public function create()
 	{
+		$this->permiso_model->need_admin_permition_level();	
+
 		$data = array();
 		$data['main_content'] = 'tutor_create';
 
@@ -34,9 +40,12 @@ class Tutor extends MY_Controller
 
 	/**
 	 * Guarda un nuevo tutor en la base de datos
+	 * Require ADMIN Level Permition
 	 */
 	public function store()
 	{
+		$this->permiso_model->need_admin_permition_level();	
+
 		$this->load->library('form_validation');
 		$this->form_validation->set_rules('nombre','Nombre','trim|required');
 		$this->form_validation->set_rules('apellido','Apellidos','trim|required');
@@ -59,9 +68,12 @@ class Tutor extends MY_Controller
 }
 	/**
 	 * Show the form for editing the specified tutor.
+	 * Require ADMIN Level Permition
 	 */
 	public function edit($id)
 	{
+		$this->permiso_model->need_admin_permition_level();	
+
 		$data= array();
 		$data['main_content'] = 'tutor_update';
 		$this->load->model('tutor_model');
@@ -72,15 +84,17 @@ class Tutor extends MY_Controller
 
 	/**
 	 * Update the specified resource in storage.
+	 * Require ADMIN Level Permition
 	 */
 	public function update()
 	{
+		$this->permiso_model->need_admin_permition_level();	
+
 		$this->load->library('form_validation');
 		$this->form_validation->set_rules('nombre','Nombre','trim|required');
 		$this->form_validation->set_rules('apellido','Apellidos','trim|required');
 		$this->form_validation->set_rules('seccion','Seccion','trim|required');
 		$this->form_validation->set_rules('correo','Correo','trim|required|valid_email');
-		//$this->form_validation->set_rules('contrasena','Contraseña','trim|required');
 		$this->load->model('tutor_model');
 
 		if ($this->form_validation->run() == false) {
@@ -96,9 +110,12 @@ class Tutor extends MY_Controller
 
 	/**
 	 * Remove the specified resource from storage.
+	 * Require ADMIN Level Permition
 	 */
 	public function destroy($id)
 	{
+		$this->permiso_model->need_admin_permition_level();	
+		
 		$this->load->model('tutor_model');
 		$this->tutor_model->delete($id);
 		$status = "delete_success";

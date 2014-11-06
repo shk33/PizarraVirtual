@@ -32,7 +32,7 @@ class Pizarra_privada_model extends CI_model
 
 	function save($grupo_data)
 	{
-		$insert = $this->db->insert('grupo',$grupo_data);
+		$insert = $this->db->insert('pizarra_privada',$grupo_data);
 		return $insert;
 	}
 
@@ -54,12 +54,6 @@ class Pizarra_privada_model extends CI_model
 		$this->db->update('pizarra_privada',$pizarra_data);
 
 	}
-
-	/*function delete($id)
-	{
-		$this->db->where('id',$id);
-		$this->db->delete('tutor');
-	}*/
 
 	function count_all()
 	{

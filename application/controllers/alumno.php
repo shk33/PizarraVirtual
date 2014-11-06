@@ -8,16 +8,19 @@ class Alumno extends MY_Controller
 	
 	/**
 	 * Muestra todos los alumnos
+	 * Require TUTOR Level Permition
 	 */
 	function index($status = '')
 	{
+		$this->permiso_model->need_tutor_permition_level();	
+
 		$data = array();
 		$data['main_content'] = 'alumno_index';
 		$data['status'] = $status;
 		$this->load->model('alumno_model');
 		
-		if ($query=$this->alumno_model->getAll()) {
-			$data['alumnos'] =$query;
+		if ($query = $this->alumno_model->get_alumnos_by_user_type()) {
+			$data['alumnos'] = $query;
 		}
 
 		$this->load->view('includes/template',$data);
@@ -25,9 +28,12 @@ class Alumno extends MY_Controller
 
 	/**
 	 * Muestra el formulario para crear un nuevo alumno
+	 * Require ADMIN Level Permition
 	 */
 	function create()
 	{
+		$this->permiso_model->need_admin_permition_level();	
+
 		$data = array();
 		$data['main_content'] = 'alumno_create';
 
@@ -36,9 +42,12 @@ class Alumno extends MY_Controller
 
 	/**
 	 * Guarda un nuevo alumno en la base de datos
+	 * Require ADMIN Level Permition
 	 */
 	function store()
 	{
+		$this->permiso_model->need_admin_permition_level();	
+
 		$this->load->library('form_validation');
 		$this->form_validation->set_rules('nombre','Nombre','trim|required');
 		$this->form_validation->set_rules('apellido','Apellidos','trim|required');
@@ -61,9 +70,12 @@ class Alumno extends MY_Controller
 }
 	/**
 	 * Show the form for editing the specified alumno.
+	 * Require ADMIN Level Permition
 	 */
 	function edit($id)
 	{
+		$this->permiso_model->need_admin_permition_level();	
+
 		$data= array();
 		$data['main_content'] = 'alumno_update';
 		$this->load->model('alumno_model');
@@ -74,9 +86,12 @@ class Alumno extends MY_Controller
 
 	/**
 	 * Update the specified resource in storage.
+	 * Require ADMIN Level Permition
 	 */
 	function update()
 	{
+		$this->permiso_model->need_admin_permition_level();	
+
 		$this->load->library('form_validation');
 		$this->form_validation->set_rules('nombre','Nombre','trim|required');
 		$this->form_validation->set_rules('apellido','Apellidos','trim|required');
@@ -98,9 +113,12 @@ class Alumno extends MY_Controller
 
 	/**
 	 * Remove the specified resource from storage.
+	 * Require ADMIN Level Permition
 	 */
 	function destroy($id)
 	{
+		$this->permiso_model->need_admin_permition_level();	
+		
 		$this->load->model('alumno_model');
 		$this->alumno_model->delete($id);
 		redirect('alumno/');	

@@ -34,6 +34,24 @@ class Grupo_model extends CI_Model
 		return $found_grupo;
 	}
 
+	function get_by_plan_id($plan_id)
+	{
+		$this->db->where('plan_id' , $plan_id);
+		$query = $this->db->get('grupo'); 
+		$found_grupo = array();
+
+		$grupo = $query->result();
+
+		if ($grupo) {
+			$found_grupo = $grupo[0]; //Getting the first element
+			//var_dump($found_grupo);
+			$this->load->model('alumno_model');
+			$found_grupo = $this->insert_alumnos_in_grupo($found_grupo);
+		}
+		
+		return $found_grupo; 
+	}
+
 	function save($grupo_data)
 	{
 		$insert = $this->db->insert('grupo',$grupo_data);
@@ -55,13 +73,6 @@ class Grupo_model extends CI_Model
 		$this->db->where('id',$id);
 		$this->db->delete('plan');
 	}
-
-	function get_all_alumnos_from_grupo($grupo_id)
-		{
-			$query = $this->db->get_where('grupo', array('grupo_id' => $grupo_id));
-
-			return $query->result();
-		}
 
 	function count_all()
 	{
@@ -106,6 +117,7 @@ class Grupo_model extends CI_Model
 				$grupo->alumnos = $alumnos;
 			}
 		}else{ //Asuming is an object type
+			//echo $grupos->id;
 			$alumnos = $this->alumno_model->get_all_alumnos_from_grupo($grupos->id);
 			$grupos->alumnos = $alumnos;
 		}

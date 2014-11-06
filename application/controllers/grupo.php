@@ -33,31 +33,6 @@ class Grupo extends MY_Controller
 	}
 
 	/**
-	 * Guarda un nuevo grupo en la base de datos
-	 */
-	/*public function store()
-	{
-		$this->load->library('form_validation');
-		$this->form_validation->set_rules('nombre','Nombre','trim|required');
-		$this->form_validation->set_rules('apellido','Apellidos','trim|required');
-		$this->form_validation->set_rules('seccion','Seccion','trim|required');
-		$this->form_validation->set_rules('correo','Correo','trim|required|valid_email');
-		$this->form_validation->set_rules('contrasena','Contraseña','trim|required');
-
-		$data = array();
-
-		if ($this->form_validation->run() == false) {
-			$data['main_content'] = 'grupo_create'; 
-			$this->load->view('includes/template',$data);
-		}else{
-			$this->load->model('grupo_model');
-			$this->tutor_model->save();
-			$status="save_success";
-
-			redirect("grupo/index/$status");			
-		}
-}*/
-	/**
 	 * Show the form for editing the specified grupo.
 	 */
 	public function edit($id)
