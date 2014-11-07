@@ -49,7 +49,7 @@
                                           'type'        => 'text',
                                           'class'       => 'form-control',
                                           'id'          => 'inputEmail',
-                                          'placeholder' => 'Email Address',
+                                          'placeholder' => 'Correo Electrónico',
                                           'value'       => set_value('email')
                                         );
                                         echo form_input($config); 

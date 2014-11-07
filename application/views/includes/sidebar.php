@@ -26,6 +26,9 @@
         <?php endif ?>
         <?php if ($permition_level >= 1): ?>
         <li>
+            <a href="<?php echo base_url(); ?>pizarra_general"><i class="fa fa-fw fa-slideshare"></i> Pizarra General</a>
+        </li>
+        <li>
             <a href="<?php echo base_url(); ?>pizarra_privada"><i class="fa fa-fw fa-slideshare"></i> Pizarras Privadas</a>
         </li>
         <?php endif ?>

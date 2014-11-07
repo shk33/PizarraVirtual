@@ -16,10 +16,10 @@ setInterval(function(){
 		pizarra_compartida.val(data.new_content);
 	})
 	.fail(function() {
-		console.log("error");
+		//console.log("error");
 	})
 	.always(function() {
-		console.log("complete");
+		//console.log("complete");
 	});
 },1000);
 
@@ -40,9 +40,9 @@ $("#btn-share").click(function(){
 	.done(function(data) {
 	})
 	.fail(function() {
-		console.log("error");
+		//console.log("error");
 	})
 	.always(function() {
-		console.log("complete");
+		//console.log("complete");
 	});
 });
