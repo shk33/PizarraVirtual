@@ -59,8 +59,9 @@ class Tarea_model extends CI_Model
 	function save()
 	{
 		$new_tarea_data = array(
-				'nombre'     => $this->input->post('nombre'),
-				'descripcion'   => $this->input->post('descripcion')
+				'nombre'     	=> $this->input->post('nombre'),
+				'descripcion' => $this->input->post('descripcion'),
+				'tutor_id'    => $this->input->post('tutor_id')
 			);
 		$insert = $this->db->insert('tarea',$new_tarea_data);
 		return $insert;

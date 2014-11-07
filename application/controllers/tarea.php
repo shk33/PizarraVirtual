@@ -35,6 +35,15 @@ class Tarea extends MY_Controller
 		$data = array();
 		$data['main_content'] = 'tarea_create';
 
+		if ($this->permiso_model->is_level_admin()) {
+			$this->load->model('tutor_model');
+			$data['select_tutor'] = $this->tutor_model->get_options_array();
+			$data['tutor_id'] = "1";
+			$data['is_admin'] = true;
+		}else{ //This else assumes is a Tutor
+
+		}
+
 		$this->load->view('includes/template',$data);
 	}
 

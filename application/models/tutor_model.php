@@ -54,6 +54,18 @@ class Tutor_model extends CI_model
 		$this->db->delete('tutor');
 	}
 
+	function get_options_array()
+	{
+		$options = array();
+
+		foreach ($this->getAll() as $tutor) {
+			$options[$tutor->id] = $tutor->nombre;
+		}
+
+		return $options;
+		
+	}
+
 	function count_all()
 	{
 		return $this->db->count_all('tutor');
