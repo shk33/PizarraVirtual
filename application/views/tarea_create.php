@@ -32,7 +32,7 @@
         </div>
       </div>
       <?php else: //This else assumes is a Tutor?>
-
+        <?php echo form_hidden('tutor_id', $tutor_id);  ?>
       <?php endif ?>
       <div class="form-group">
         <label for="inputNombre" class="control-label col-xs-1">Nombre</label>

@@ -41,7 +41,8 @@ class Tarea extends MY_Controller
 			$data['tutor_id'] = "1";
 			$data['is_admin'] = true;
 		}else{ //This else assumes is a Tutor
-
+			$data['is_admin'] = false;
+			$data['tutor_id'] =$this->session->userdata('userId');
 		}
 
 		$this->load->view('includes/template',$data);
@@ -71,7 +72,8 @@ class Tarea extends MY_Controller
 				$data['tutor_id'] = "1";
 				$data['is_admin'] = true;
 			}else{ //Assumes its a Tutor user
-
+				$data['is_admin'] = false;
+				$data['tutor_id'] =$this->session->userdata('userId');
 			} 
 
 			$this->load->view('includes/template',$data);
