@@ -2,7 +2,7 @@
 <div class="row">
     <div class="col-lg-12">
         <h1 class="page-header">
-            Editar tutor <?php echo "$tutor->apellido $tutor->nombre" ?>
+            Editar tutor: <?php echo "$tutor->apellido $tutor->nombre" ?>
         </h1>
     </div>
 </div>
@@ -20,8 +20,6 @@
   <?php endif ?>
   
     <div class="col-lg-12">
-        <div class="bs-example">
-            <!-- <form class="form-horizontal"> -->
             <?php 
                 echo form_open("tutor/update/", array('class' => 'form-horizontal'));
                 echo form_hidden('id', "$tutor->id"); 
@@ -58,7 +56,7 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="inputSeccion" class="control-label col-xs-1">Seccion</label>
+                    <label for="inputSeccion" class="control-label col-xs-1">Sección</label>
                     <div class="col-xs-5">
                         <?php 
                             $config = array(
@@ -89,8 +87,24 @@
                         ?>
                     </div>
                 </div>
+                <hr>
                 <div class="form-group">
-                    <label for="inputContrasena" class="control-label col-xs-1">Contraseña</label>
+                    <label for="checkNewPassword" class="control-label col-xs-1">
+                      ¿Cambiar contraseña?
+                    </label>
+                    <div class="col-xs-1">
+                        <?php 
+                            $config = array(
+                              'name'        => 'checkNuevaContrasena',
+                              'id'          => 'checkNewPassword',
+                              'value'       => true,
+                            );
+                            echo form_checkbox($config); 
+                        ?>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputContrasena" class="control-label col-xs-1">Nueva Contraseña</label>
                     <div class="col-xs-5">
                         <?php 
                             $config = array(
@@ -98,7 +112,22 @@
                               'type'        => 'password',
                               'class'       => 'form-control',
                               'id'          => 'inputContrasena',
-                              'placeholder' => 'Contraseña'
+                              'placeholder' => 'Nueva Contraseña'
+                            );
+                            echo form_input($config); 
+                        ?>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputContrasena2" class="control-label col-xs-1">Confirmar Contraseña</label>
+                    <div class="col-xs-5">
+                        <?php 
+                            $config = array(
+                              'name'        => 'contrasena2',
+                              'type'        => 'password',
+                              'class'       => 'form-control',
+                              'id'          => 'inputContrasena2',
+                              'placeholder' => 'Confirmar Nueva Contraseña'
                             );
                             echo form_input($config); 
                         ?>
@@ -116,7 +145,8 @@
                     </div>
                 </div>
             <!-- </form> -->
-        </div>
-
     </div>
 </div>
+
+<!-- Disable/Eneable Passwords Fields -->
+<script src="<?php echo base_url(); ?>js/change_password.js"></script>

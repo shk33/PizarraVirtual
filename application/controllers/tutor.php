@@ -96,6 +96,11 @@ class Tutor extends MY_Controller
 		$this->form_validation->set_rules('apellido','Apellidos','trim|required');
 		$this->form_validation->set_rules('seccion','Seccion','trim|required');
 		$this->form_validation->set_rules('correo','Correo','trim|required|valid_email');
+		//If the user wants to change the password
+		if ($this->input->post('checkNuevaContrasena')){
+			$this->form_validation->set_rules('contrasena','Contraseña','required');
+			$this->form_validation->set_rules('contrasena2','Confirmación Contraseña','required|matches[contrasena]');
+		}
 		$this->load->model('tutor_model');
 
 		if ($this->form_validation->run() == false) {

@@ -41,9 +41,13 @@ class Tutor_model extends CI_model
 				'nombre'     => $this->input->post('nombre'),
 				'apellido'   => $this->input->post('apellido'),
 				'seccion'  => $this->input->post('seccion'),
-				'correo'     => $this->input->post('correo'),
-				'contrasena' => md5($this->input->post('contrasena'))
+				'correo'     => $this->input->post('correo')
 			);
+
+		if ($this->input->post('checkNuevaContrasena')){
+			$tutor_data['contrasena'] = md5($this->input->post('contrasena'));
+		}
+
 		$this->db->where('id',$id);
 		$this->db->update('tutor',$tutor_data);
 	}
