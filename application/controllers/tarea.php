@@ -62,9 +62,20 @@ class Tarea extends MY_Controller
 		$data = array();
 
 		if ($this->form_validation->run() == false) {
-			$data['main_content'] = 'tarea_create'; 
+			$data['main_content'] = 'tarea_create';
+
+			//Add objects to the dropdown according the type of user
+			if ($this->permiso_model->is_level_admin()) {
+				$this->load->model('tutor_model');
+				$data['select_tutor'] = $this->tutor_model->get_options_array();
+				$data['tutor_id'] = "1";
+				$data['is_admin'] = true;
+			}else{ //Assumes its a Tutor user
+
+			} 
+
 			$this->load->view('includes/template',$data);
-		}else{
+		}else{ //All Validations were correct
 			$this->load->model('tarea_model');
 			$this->tarea_model->save();
 			$status="save_success";
