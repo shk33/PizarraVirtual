@@ -15,7 +15,7 @@
     <!-- Top Menu Items -->
     <ul class="nav navbar-right top-nav">
         <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> <?php echo $this->session->userdata('userType'); ?><b class="caret"></b></a>
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> <?php echo $this->session->userdata('userName'); ?><b class="caret"></b></a>
             <ul class="dropdown-menu">
                 <li>
                     <a href="<?php echo base_url('login/close'); ?>"><i class="fa fa-fw fa-power-off"></i> Cerrar Sesión</a>
