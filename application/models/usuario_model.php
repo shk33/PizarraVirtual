@@ -27,13 +27,13 @@ class Usuario_Model extends CI_model
 
     function validate_user( $correo, $contrasena ) {
         
-        if ($this->validate_credentials($correo, $contrasena, Usuario_Model::USER_TYPE_ALUMNO)) {
-        	return true;
-        }
-        if ($this->validate_credentials($correo, $contrasena, Usuario_Model::USER_TYPE_TUTOR)) {
+        if ($this->validate_credentials($correo, $contrasena, Usuario_Model::USER_TYPE_ADMIN)) {
             return true;
         }
-        if ($this->validate_credentials($correo, $contrasena, Usuario_Model::USER_TYPE_ADMIN)) {
+        if ($this->validate_credentials($correo, $contrasena, Usuario_Model::USER_TYPE_ALUMNO)) {
+            return true;
+        }
+        if ($this->validate_credentials($correo, $contrasena, Usuario_Model::USER_TYPE_TUTOR)) {
             return true;
         }
 
@@ -54,6 +54,7 @@ class Usuario_Model extends CI_model
     // The results of the query are stored in $login.
     // If a value exists, then the user account exists and is validated
     if ( is_array($login) && count($login) == 1 ) {
+        var_dump($login);
         $this->set_session($tipo_usuario,$login[0]->id,$login[0]->nombre);
         return true;
     }

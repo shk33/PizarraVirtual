@@ -10,7 +10,8 @@ class login extends CI_Controller
         if( $this->session->userdata('isLoggedIn') ) { // Accesing a unset userdata returns false
             redirect('sitio/admin'); //Por mientras redirecciona al ADMIN home
         } else {
-          $this->show_login(false);
+            $data['error'] = false;
+            $this->load->view('login2',$data);
         }
     }
 
@@ -18,25 +19,25 @@ class login extends CI_Controller
         // Create an instance of the user model
         $this->load->model('usuario_model');
 
-        // Grab the email and password from the form POST
-        $email = $this->input->post('email');
-        $pass  = $this->input->post('password');
+        $this->load->library('form_validation');
+        $this->form_validation->set_rules('correo','Correo','trim|required|valid_email');
+        $this->form_validation->set_rules('contrasena','Contraseña','required');
 
-        //Ensure values exist for email and pass, and validate the user's credentials
-        if( $email && $pass && $this->usuario_model->validate_user($email,$pass)) {
-            // If the user is valid, redirect to the main view
-            redirect('/sitio/admin');
-        } else {
-            // Otherwise show the login screen with an error message.
-            redirect('/login');
+        if ($this->form_validation->run() == false) { //Fails Validation
+            $this->load->view('login2');
+        }else{//Pass all validations
+            $email = $this->input->post('correo');
+            $pass  = $this->input->post('contrasena');
+                    
+            if( $this->usuario_model->validate_user($email,$pass)) {
+                // If the user is valid, redirect to the main view
+                redirect('/sitio/admin');
+            } else {
+                $data['error'] = true;
+                $this->load->view('login2',$data);
+            }
         }
-    }
 
-    function show_login( $show_error = false ) { //Corregir el redirecionamiento de esto
-        $data['error'] = $show_error;
-
-        $this->load->helper('form');
-        $this->load->view('login2',$data);
     }
 
     function close()

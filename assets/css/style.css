@@ -1,17 +1,4 @@
-﻿/*=============================================================
-    Authour URI: www.binarytheme.com
-    License: Commons Attribution 3.0
-
-    http://creativecommons.org/licenses/by/3.0/
-
-    100% To use For Personal And Commercial Use.
-    IN EXCHANGE JUST GIVE US CREDITS AND TELL YOUR FRIENDS ABOUT US
-   
-    ========================================================  */
-
-
-
-/*=======================================
+﻿/*=======================================
     GENERAL STYLES
 ==================================================*/
 body {
@@ -114,7 +101,7 @@ section {
 .div-trans {
     padding:5px;
     background-color: rgba(27, 106, 131,0.75);
-    min-height: 250px;
+    min-height: 300px;
     margin-top: 200px;
     color: #fff;
     -webkit-border-radius: 5px;
