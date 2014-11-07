@@ -104,9 +104,13 @@ class Alumno_model extends CI_model
 				'nombre'     => $this->input->post('nombre'),
 				'apellido'   => $this->input->post('apellido'),
 				'matricula'  => $this->input->post('matricula'),
-				'correo'     => $this->input->post('correo'),
-				'contrasena' => md5($this->input->post('contrasena'))
+				'correo'     => $this->input->post('correo')
 			);
+
+		if ($this->input->post('checkNuevaContrasena')){
+			$alumno_data['contrasena'] = md5($this->input->post('contrasena'));
+		}
+
 		$this->db->where('id',$id);
 		$this->db->update('alumno',$alumno_data);
 	}

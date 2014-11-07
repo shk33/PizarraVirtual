@@ -104,6 +104,51 @@
                         ?>
                     </div>
                 </div>
+                 <div class="form-group">
+                    <label for="checkNewPassword" class="control-label col-xs-1">
+                      ¿Cambiar contraseña?
+                    </label>
+                    <div class="col-xs-1">
+                        <?php 
+                            $config = array(
+                              'name'        => 'checkNuevaContrasena',
+                              'id'          => 'checkNewPassword',
+                              'value'       => true,
+                            );
+                            echo form_checkbox($config); 
+                        ?>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputContrasena" class="control-label col-xs-1">Nueva Contraseña</label>
+                    <div class="col-xs-5">
+                        <?php 
+                            $config = array(
+                              'name'        => 'contrasena',
+                              'type'        => 'password',
+                              'class'       => 'form-control',
+                              'id'          => 'inputContrasena',
+                              'placeholder' => 'Nueva Contraseña'
+                            );
+                            echo form_input($config); 
+                        ?>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputContrasena2" class="control-label col-xs-1">Confirmar Contraseña</label>
+                    <div class="col-xs-5">
+                        <?php 
+                            $config = array(
+                              'name'        => 'contrasena2',
+                              'type'        => 'password',
+                              'class'       => 'form-control',
+                              'id'          => 'inputContrasena2',
+                              'placeholder' => 'Confirmar Nueva Contraseña'
+                            );
+                            echo form_input($config); 
+                        ?>
+                    </div>
+                </div>
                 <div class="form-group">
                     <div class="col-xs-offset-4 col-xs-1">
                         <button type="submit" class="btn btn-primary btn-md">Actualizar</button>
@@ -120,3 +165,6 @@
 
     </div>
 </div>
+
+<!-- Disable/Eneable Passwords Fields -->
+<script src="<?php echo base_url(); ?>js/change_password.js"></script>
