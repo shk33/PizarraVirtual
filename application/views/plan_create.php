@@ -85,7 +85,14 @@
                   </div>
                   <?php echo form_close(); ?>
                   <div class="col-xs-1">
-                      <a href='<?php echo base_url()."tarea/edit/$tarea_id" ?>'>
+                    <?php 
+                      if ($tarea_id) {
+                        $cancel_route = base_url()."tarea/edit/$tarea_id";
+                      }else{
+                        $cancel_route = base_url()."plan";
+                      }
+                    ?>
+                      <a href='<?php echo $cancel_route ?>'>
                           <button type="button" class="btn btn-danger btn-md">Cancelar</button>
                       </a>
                   </div>

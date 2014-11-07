@@ -84,11 +84,26 @@ class Tarea_model extends CI_Model
 	}
 	/*End of basic CRUD functionality*/
 
+	/*
+	* Return and associative array with
+	* key tarea_id value tarea_nombre
+	* Used for filling a dropdown
+	* It gets tareas according the user type
+	*/
 	function get_options_array()
 	{
 		$options = array();
+		$tareas = array();
 
-		foreach ($this->getAll() as $tarea) {
+		if ($this->permiso_model->is_level_admin()) {
+			$tareas = $this->getAll();
+		}
+		if ($this->permiso_model->is_level_tutor()) {
+			$tutor_id = $this->session->userdata('userId');
+			$tareas = $this->get_by_tutor_id($tutor_id);
+		}
+
+		foreach ($tareas as $tarea) {
 			$options[$tarea->id] = $tarea->nombre;
 		}
 

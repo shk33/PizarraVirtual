@@ -38,7 +38,6 @@ class Plan extends MY_Controller
 		$data['main_content'] = 'plan_create';
 
 		$this->load->model('tarea_model');
-		$data['tarea'] = $this->tarea_model->get_by_id($tarea_id);
 		$data['select_tarea'] = $this->tarea_model->get_options_array();
 		$data['tarea_id'] = $tarea_id;
 
@@ -65,13 +64,14 @@ class Plan extends MY_Controller
 			$this->load->model('tarea_model');
 			$data['select_tarea'] = $this->tarea_model->get_options_array(); 
 			$data['main_content'] = 'plan_create';
+			$data['tarea_id'] = $this->input->post('tarea_id');
 			$this->load->view('includes/template',$data);
 		}else{
 			$this->load->model('plan_model');
 			$this->plan_model->save();
 			$status="save_success";
 
-			redirect("tarea/index/$status");			
+			redirect("plan");			
 		}
 }
 	/**
