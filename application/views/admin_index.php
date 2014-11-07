@@ -2,7 +2,7 @@
 <div class="row">
     <div class="col-lg-12">
         <h1 class="page-header">
-            Bienvenido <small>Estadísiticas administrativas</small>
+            Bienvenido <small>Estadísticas administrativas</small>
         </h1>
     </div>
 </div>

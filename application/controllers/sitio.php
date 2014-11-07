@@ -9,12 +9,10 @@ class Sitio extends MY_Controller
 	/*Require ADMIN Level Permition*/
 	function admin()
 	{
-		/*var_dump($this->session->userdata('isLoggedIn'));
-		die();*/
 		$this->permiso_model->need_admin_permition_level();	
 		
 		$data = array();
-		$data['main_content']    = 'admin_index';
+		$data['main_content']  = 'admin_index';
 
 		$this->load->model('tutor_model');
 		$data['num_tutor'] = $this->tutor_model->count_all();

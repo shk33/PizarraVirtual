@@ -27,14 +27,14 @@ class Usuario_Model extends CI_model
 
     function validate_user( $correo, $contrasena ) {
         
-        if ($this->validate_credentials($correo, $contrasena, Usuario_Model::USER_TYPE_ADMIN)) {
+        if ($this->validate_credentials($correo, $contrasena, Usuario_Model::USER_TYPE_ALUMNO)) {
         	return true;
         }
         if ($this->validate_credentials($correo, $contrasena, Usuario_Model::USER_TYPE_TUTOR)) {
-        	return true;
+            return true;
         }
-        if ($this->validate_credentials($correo, $contrasena, Usuario_Model::USER_TYPE_ALUMNO)) {
-        	return true;
+        if ($this->validate_credentials($correo, $contrasena, Usuario_Model::USER_TYPE_ADMIN)) {
+            return true;
         }
 
         return false;

@@ -54,7 +54,8 @@ class Alumno extends MY_Controller
 		$this->form_validation->set_rules('matricula','Matricula','trim|required');
 		$this->form_validation->set_rules('correo','Correo','trim|required|valid_email');
 		$this->form_validation->set_rules('contrasena','Contraseña','trim|required');
-
+		$this->form_validation->set_rules('contrasena2','Confirmación Contraseña','required|matches[contrasena]');
+		
 		$data = array();
 
 		if ($this->form_validation->run() == false) {

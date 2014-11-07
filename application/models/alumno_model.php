@@ -92,7 +92,7 @@ class Alumno_model extends CI_model
 				'apellido'   => $this->input->post('apellido'),
 				'matricula'  => $this->input->post('matricula'),
 				'correo'     => $this->input->post('correo'),
-				'contrasena' => md5($this->input->post('password'))
+				'contrasena' => md5($this->input->post('contrasena'))
 			);
 		$insert = $this->db->insert('alumno',$new_alumno_data);
 		return $insert;
@@ -105,7 +105,7 @@ class Alumno_model extends CI_model
 				'apellido'   => $this->input->post('apellido'),
 				'matricula'  => $this->input->post('matricula'),
 				'correo'     => $this->input->post('correo'),
-				'contrasena' => md5($this->input->post('password'))
+				'contrasena' => md5($this->input->post('contrasena'))
 			);
 		$this->db->where('id',$id);
 		$this->db->update('alumno',$alumno_data);
