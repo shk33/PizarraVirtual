@@ -13,4 +13,22 @@ class Sesion_model extends CI_model
         redirect('/login');
     }
 	}
+
+	function succes_login_redirect()
+	{
+		$this->load->model('Usuario_Model');
+		$user_type = $this->session->userdata('userType');
+		
+		if ($user_type == $this->usuario_model->get_user_type_admin()) {
+			redirect('sitio/admin');
+		}
+
+		if ($user_type == $this->usuario_model->get_user_type_tutor()) {
+			redirect('pizarra_general');
+		}
+
+		if ($user_type == $this->usuario_model->get_user_type_alumno()) {
+			redirect('pizarra_general');
+		}
+	}
 }

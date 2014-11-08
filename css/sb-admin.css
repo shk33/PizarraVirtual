@@ -11,6 +11,10 @@ body {
     background-color: white;
 }
 
+.page-header{
+    margin-top: 20px;
+}
+
 @media(min-width:768px) {
     body {
         margin-top: 50px;

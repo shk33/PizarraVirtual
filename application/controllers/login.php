@@ -7,8 +7,10 @@ class login extends CI_Controller
 {
 	
 	function index() {
+        $this->load->model('sesion_model');
+
         if( $this->session->userdata('isLoggedIn') ) { // Accesing a unset userdata returns false
-            redirect('sitio/admin'); //Por mientras redirecciona al ADMIN home
+            $this->sesion_model->succes_login_redirect();
         } else {
             $data['error'] = false;
             $this->load->view('login2',$data);
@@ -18,7 +20,8 @@ class login extends CI_Controller
     function login_user() {
         // Create an instance of the user model
         $this->load->model('usuario_model');
-
+        $this->load->model('sesion_model');
+        
         $this->load->library('form_validation');
         $this->form_validation->set_rules('correo','Correo','trim|required|valid_email');
         $this->form_validation->set_rules('contrasena','Contraseña','required');
@@ -31,7 +34,7 @@ class login extends CI_Controller
                     
             if( $this->usuario_model->validate_user($email,$pass)) {
                 // If the user is valid, redirect to the main view
-                redirect('/sitio/admin');
+                $this->sesion_model->succes_login_redirect();
             } else {
                 $data['error'] = true;
                 $this->load->view('login2',$data);

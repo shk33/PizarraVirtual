@@ -54,7 +54,6 @@ class Usuario_Model extends CI_model
     // The results of the query are stored in $login.
     // If a value exists, then the user account exists and is validated
     if ( is_array($login) && count($login) == 1 ) {
-        var_dump($login);
         $this->set_session($tipo_usuario,$login[0]->id,$login[0]->nombre);
         return true;
     }
