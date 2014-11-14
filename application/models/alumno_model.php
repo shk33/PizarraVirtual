@@ -121,6 +121,21 @@ class Alumno_model extends CI_model
 		$this->db->delete('alumno');
 	}
 
+	public function get_pizarra_privada_id($alumno_id)
+	{
+		$alumno = $this->get_by_id($alumno_id);
+		$this->load->model('grupo_model');
+
+		if (isset($alumno->grupo_id)) {
+			$grupo = $this->grupo_model->get_by_id($alumno->grupo_id);
+			$id = $grupo->pizarra_privada->id;
+		}else{
+			return NULL;
+		}
+
+		return $id;
+	}
+
 	function get_all_alumnos_from_grupo($grupo_id)
 	{
 		$query = $this->db->get_where('alumno', array('grupo_id' => $grupo_id));

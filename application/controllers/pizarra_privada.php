@@ -87,6 +87,29 @@ class Pizarra_privada extends MY_Controller
 	}
 
 	/*
+	* Show the pizarra virtual in a colaborative mode to the proper alumno
+	* Require ALUMNO Level Permition
+	*/
+	public function show_pizarra_to_alumno()
+	{
+		$this->permiso_model->need_alumno_permition_level();	
+
+		$this->load->model('alumno_model');
+		$alumno_id = $this->session->userdata('userId');
+		$pizarra_id = $this->alumno_model->get_pizarra_privada_id($alumno_id);
+		
+		if (isset($pizarra_id)) {
+			redirect("pizarra_privada/vista_colaborativa/$pizarra_id");
+		}else{
+			$data= array();
+			$data['main_content'] = 'pizarra_privada_null';
+
+			$this->load->view('includes/template',$data);
+		}
+
+	}
+
+	/*
 	* Used for ajax Petition
 	* It gets the new content for the pizarra Privada
 	* Require ALUMNO Level Permition

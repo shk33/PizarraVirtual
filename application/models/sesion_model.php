@@ -16,7 +16,7 @@ class Sesion_model extends CI_model
 
 	function succes_login_redirect()
 	{
-		$this->load->model('Usuario_Model');
+		$this->load->model('usuario_model');
 		$user_type = $this->session->userdata('userType');
 		
 		if ($user_type == $this->usuario_model->get_user_type_admin()) {

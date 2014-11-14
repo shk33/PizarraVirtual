@@ -21,7 +21,7 @@ class login extends CI_Controller
         // Create an instance of the user model
         $this->load->model('usuario_model');
         $this->load->model('sesion_model');
-        
+
         $this->load->library('form_validation');
         $this->form_validation->set_rules('correo','Correo','trim|required|valid_email');
         $this->form_validation->set_rules('contrasena','Contraseña','required');

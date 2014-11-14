@@ -89,21 +89,6 @@
                         ?>
                     </div>
                 </div>
-                <div class="form-group">
-                    <label for="inputContrasena" class="control-label col-xs-1">Contraseña</label>
-                    <div class="col-xs-5">
-                        <?php 
-                            $config = array(
-                              'name'        => 'contrasena',
-                              'type'        => 'password',
-                              'class'       => 'form-control',
-                              'id'          => 'inputContrasena',
-                              'placeholder' => 'Contraseña'
-                            );
-                            echo form_input($config); 
-                        ?>
-                    </div>
-                </div>
                  <div class="form-group">
                     <label for="checkNewPassword" class="control-label col-xs-1">
                       ¿Cambiar contraseña?
