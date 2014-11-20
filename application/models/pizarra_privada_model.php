@@ -76,6 +76,9 @@ class Pizarra_privada_model extends CI_model
 		foreach ($query->result() as $pizarra) {
 			$found_pizarra = $pizarra;			
 		}
+
+		$found_pizarra = $this->insert_model_associations($found_pizarra);
+		
 		return $found_pizarra;
 	}
 
@@ -130,16 +133,12 @@ class Pizarra_privada_model extends CI_model
 		
 		if (gettype($pizarras) == "array") {
 			foreach ($pizarras as $pizarra) {
-				if (isset($pizarra->grupo_id)) {
-					$grupo = $this->grupo_model->get_by_id($pizarra->grupo_id);
-					$pizarra->grupo = $grupo;
-				}
+				$grupo = $this->grupo_model->get_by_id($pizarra->grupo_id);
+				$pizarra->grupo = $grupo;
 			}
 		}else{ //Asuming is an single object type
-			if (isset($pizarra->grupo_id)) {
-				$grupo = $this->grupo_model->get_by_id($pizarras->grupo_id);
-				$pizarras->grupo = $grupo;
-			}
+			$grupo = $this->grupo_model->get_by_id($pizarras->grupo_id);
+			$pizarras->grupo = $grupo;			
 		}
 
 		return $pizarras;
@@ -150,7 +149,8 @@ class Pizarra_privada_model extends CI_model
  	*/
 	private function insert_model_associations(&$pizarras)
 	{
-		$pizarras= $this->insert_grupo_in_pizarra($pizarras);
+
+		$pizarras = $this->insert_grupo_in_pizarra($pizarras);
 
 		return $pizarras;
 	}

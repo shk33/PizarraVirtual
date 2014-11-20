@@ -6,7 +6,7 @@
  class Plan_model extends CI_model
  {
  	/* 	Relationships
-	*	Plan belongs_to Tarea
+	* Plan belongs_to Tarea
 	* Plan has_one Grupo
 	*/
 
@@ -99,12 +99,22 @@
 
 		//Then creates the Pizarra Privada belonging to the new Grupo
 		//A Pizarra Privada is totally dependent of a Grupo
+		$grupo_id = $this->db->insert_id();
+
 		$new_pizarra_data = array(
 				'nombre'     => "Pizarra de ".$new_plan_data['nombre'],
-				'grupo_id'   => $this->db->insert_id() //Gets the last id inserted
+				'grupo_id'   => $grupo_id //Gets the last id inserted
 			);
 		$this->load->model('pizarra_privada_model');
 		$this->pizarra_privada_model->save($new_pizarra_data);
+
+		//Then creates the Chat belonging to the new Grupo
+		//A Chat is totally dependent of a Grupo
+		$new_chat_data = array(
+				'grupo_id'   => $grupo_id //Gets the last id inserted
+			);
+		$this->load->model('chat_model');
+		$this->chat_model->save($new_chat_data);
 
 		return $insert;
 	}

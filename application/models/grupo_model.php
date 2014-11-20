@@ -7,8 +7,9 @@ class Grupo_model extends CI_Model
 {
 	
 	/* 	Relationships
-	*	Grupo has_many Alumno
+	* Grupo has_many Alumno
 	* Grupo has_one Pizarra_Privada
+	* Grupo has_one Chat
 	* Grupo belongs_to Plan
 	*/
 	function get_grupos_by_user_type()
@@ -117,12 +118,6 @@ class Grupo_model extends CI_Model
 		$this->db->update('grupo',$grupo_data);
 	}
 
-	function delete($id)
-	{
-		$this->db->where('id',$id);
-		$this->db->delete('plan');
-	}
-
 	function count_all()
 	{
 		return $this->db->count_all('grupo');
@@ -195,6 +190,27 @@ class Grupo_model extends CI_Model
 		return $grupos;
 	}
 
+		/*
+	* Imitates behaviour of has_one in Rails in this case
+	* Grupo has_one Chat
+	*/
+	private function insert_chat_in_grupo(&$grupos)
+	{
+		$this->load->model('chat_model');
+
+		if (gettype($grupos) == "array") {
+			foreach ($grupos as $grupo) {
+				$chat = $this->chat_model->get_by_grupo_id($grupo->id);
+				$grupo->chat = $chat;
+			}
+		}else{ //Asuming is an object type
+			$chat = $this->chat_model->get_by_grupo_id($grupos->id);
+			$grupos->chat = $chat;
+		}
+		
+		return $grupos;
+	}
+
 	/*
 	*	Hydrate the object with the others objects of model acoordings its associations
  	*/
@@ -203,6 +219,7 @@ class Grupo_model extends CI_Model
 		$grupos = $this->insert_plan_in_grupo($grupos);
 		$grupos = $this->insert_alumnos_in_grupo($grupos);
 		$grupos = $this->insert_pizarra_in_grupo($grupos);
+		$grupos = $this->insert_chat_in_grupo($grupos);
 
 		return $grupos;
 	}

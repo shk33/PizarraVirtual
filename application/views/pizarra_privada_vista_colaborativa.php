@@ -58,209 +58,27 @@
   </div>
 
     <div class="tab-content">
-      <div class="tab-pane fade in active" id="home">
-        <!-- Panel de Pizarra Privada local starts here -->
-        <div class="col-lg-6">
-          <div class="panel panel-default">
-              <div class="panel-heading">
-                <h3 class="panel-title">
-                  <i class="fa fa-2x fa-fw fa-slideshare"></i>
-                  Pizarra Local  <span class="space"></span>
-                  <button class="btn btn-primary btn-md">
-                    <span class="glyphicon glyphicon-search"></span> Verificar
-                  </button>
-                  <button type="button" id="btn-share" class="btn btn-success btn-md">
-                    <i class="fa fa-fw fa-share-alt"></i> Compartir
-                  </button>
-                </h3>
-              </div>
-              <div class="panel-body">
-                <input type="hidden" id="pizarra_id" name="pizarra_id" value="<?php echo $pizarra->id ?>" />
-                <div class="form-group">
-                    <label for="inputNombre" class="control-label col-xs-offset-1 col-xs-4">Pizarra Virtual</label>
-                    <div class="col-xs-offset-1 col-xs-10">
-                        <?php 
-                            $config = array(
-                              'name'        => 'pizarra_contenido',
-                              'class'       => 'form-control',
-                              'id'          => 'pizarra_local',
-                              'placeholder' => 'Escribe las ecuaciones aquí',
-                              'data-ajax'   => base_url()."pizarra_privada/update_content",
-                              'value'       => $pizarra->contenido
-                            );
-                            echo form_textarea($config);
-                        ?>
-                    </div>
-                </div>
-                <div class="form-group">
-                  <div class="col-xs-offset-6 col-xs-3">
-                  </div>
-                </div>
-              </div>
-          </div>
-        </div>
-        <!-- Panel de Pizarra Privada local ends  here -->
 
-        <!-- Panel de Pizarra Privada  remota starts  here -->
-        <div class="col-lg-6">
-          <div class="panel panel-default">
-              <div class="panel-heading">
-                  <h3 class="panel-title">
-                    <i class="fa fa-2x fa-fw fa-cloud"></i>
-                    Pizarra Compartida <span class="space"></span>
-                    <button class="btn btn-primary btn-md">
-                      <span class="glyphicon glyphicon-search"></span> Verificar
-                    </button>
-                  </h3>
-              </div>
-              <div class="panel-body">
-                <div class="form-group">
-                  <label for="inputNombre" class="control-label col-xs-offset-1 col-xs-4">Pizarra Virtual</label>
-                  <div class="col-xs-offset-1 col-xs-10">
-                      <?php 
-                          $config = array(
-                            'name'        => 'pizarra_compartida',
-                            'class'       => 'form-control',
-                            'id'          => 'pizarra_compartida',
-                            'placeholder' => 'Escribe las ecuaciones aquí',
-                            'disabled'    => 'true',
-                            'data-ajax'   => base_url()."pizarra_privada/get_new_content",
-                            'value'       => $pizarra->contenido
-                          );
-                          echo form_textarea($config);
-                      ?>
-                  </div>
-                </div>
-              </div>
-                  <!-- End Panel body -->
-            </div>
-              <!-- End Panel Default -->
-        </div>
-        <!-- End Col lg 6 -->
-        <!-- Panel de Pizarra Privada  remota ends  here -->
-      </div>
-      <div class="tab-pane fade" id="chat">
+      <?php $this->load->view('partials/_pizarra_privada.php'); ?>
 
-        <!-- Init Chat -->
-        <div class="panel-chat panel-primary">
-            <div class="panel-heading">
-                <span class="glyphicon glyphicon-comment"></span> Chat Colaborativo
-                <div class="btn-group pull-right">
-                  <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
-                    <span class="glyphicon glyphicon-chevron-down"></span>
-                  </button>
-                  <ul class="dropdown-menu slidedown">
-                    <li>
-                      <a href="http://www.jquery2dotnet.com">
-                        <span class="glyphicon glyphicon-refresh"></span>Refresh
-                      </a>
-                    </li>
-                  </ul>
-                </div>
-            </div>
-            <div class="panel-body-chat">
-                <ul class="chat">
-                    <li class="left clearfix"><span class="chat-img pull-left">
-                        <img src="http://placehold.it/50/55C1E7/fff&text=U" alt="User Avatar" class="img-circle" />
-                    </span>
-                        <div class="chat-body clearfix">
-                            <div class="header">
-                                <strong class="primary-font">Jack Sparrow</strong>
-                            </div>
-                            <p>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare
-                                dolor, quis ullamcorper ligula sodales.
-                            </p>
-                        </div>
-                    </li>
-                    <li class="right clearfix"><span class="chat-img pull-right">
-                        <img src="http://placehold.it/50/FA6F57/fff&text=ME" alt="User Avatar" class="img-circle" />
-                    </span>
-                        <div class="chat-body clearfix">
-                            <div class="header">
-                                <strong class="pull-right primary-font">Bhaumik Patel</strong>
-                            </div>
-                            <p>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare
-                                dolor, quis ullamcorper ligula sodales.
-                            </p>
-                        </div>
-                    </li>
-                    <li class="left clearfix"><span class="chat-img pull-left">
-                        <img src="http://placehold.it/50/55C1E7/fff&text=U" alt="User Avatar" class="img-circle" />
-                    </span>
-                        <div class="chat-body clearfix">
-                            <div class="header">
-                                <strong class="primary-font">Jack Sparrow</strong>
-                            </div>
-                            <p>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare
-                                dolor, quis ullamcorper ligula sodales.
-                            </p>
-                        </div>
-                    </li>
-                    <li class="right clearfix"><span class="chat-img pull-right">
-                        <img src="http://placehold.it/50/FA6F57/fff&text=ME" alt="User Avatar" class="img-circle" />
-                    </span>
-                        <div class="chat-body clearfix">
-                            <div class="header">
-                                <strong class="pull-right primary-font">Bhaumik Patel</strong>
-                            </div>
-                            <p>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare
-                                dolor, quis ullamcorper ligula sodales.
-                            </p>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-            <div class="panel-footer">
-                <div class="input-group">
-                    <input id="btn-input" type="text" class="form-control input-sm" placeholder="Type your message here..." />
-                    <span class="input-group-btn">
-                        <button class="btn btn-warning btn-sm" id="btn-chat">
-                            Send</button>
-                    </span>
-                </div>
-            </div>
-        </div>
-        <!-- end chat -->                
-      </div>
+      <?php
+        $data['chat'] = $pizarra->grupo->chat;
+        $this->load->view('partials/_pizarra_privada_chat.php', $data); 
+      ?>
+      
+
       <div class="tab-pane fade" id="messages">
 
-        <h3 class="head text-center">Bootsnipp goodies</h3>
-        <p class="narrow text-center">
-          Lorem ipsum dolor sit amet, his ea mollis fabellas principes. Quo mazim facilis tincidunt ut, utinam saperet facilisi an vim.
-        </p>
-          
-        <p class="text-center">
-          <a href="" class="btn btn-success btn-outline-rounded green"> start using bootsnipp <span style="margin-left:10px;" class="glyphicon glyphicon-send"></span></a>
-        </p>
-
       </div>
+
       <div class="tab-pane fade" id="settings">
 
-        <h3 class="head text-center">Drop comments!</h3>
-        <p class="narrow text-center">
-            Lorem ipsum dolor sit amet, his ea mollis fabellas principes. Quo mazim facilis tincidunt ut, utinam saperet facilisi an vim.
-        </p>
-          
-        <p class="text-center">
-          <a href="" class="btn btn-success btn-outline-rounded green"> start using bootsnipp <span style="margin-left:10px;" class="glyphicon glyphicon-send"></span></a>
-        </p>
-
       </div>
+
       <div class="tab-pane fade" id="doner">
 
-        <div class="text-center">
-          <i class="img-intro icon-checkmark-circle"></i>
-        </div>
-        <h3 class="head text-center">thanks for staying tuned! <span style="color:#f48260;">♥</span> Bootstrap</h3>
-        <p class="narrow text-center">
-          Lorem ipsum dolor sit amet, his ea mollis fabellas principes. Quo mazim facilis tincidunt ut, utinam saperet facilisi an vim.
-        </p>
-
       </div>
+
       <div class="clearfix"></div>
     </div>
   </div>
