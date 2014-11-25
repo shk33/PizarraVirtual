@@ -55,7 +55,7 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="inputSeccion" class="control-label col-xs-1">Seccion</label>
+                    <label for="inputSeccion" class="control-label col-xs-1">Sección</label>
                     <div class="col-xs-5">
                         <?php 
                             $config = array(
@@ -63,7 +63,7 @@
                               'type'        => 'text',
                               'class'       => 'form-control',
                               'id'          => 'inputSeccion',
-                              'placeholder' => 'Seccion',
+                              'placeholder' => 'Sección',
                               'value'       => set_value('seccion')
                             );
                             echo form_input($config); 
@@ -96,6 +96,21 @@
                               'class'       => 'form-control',
                               'id'          => 'inputContrasena',
                               'placeholder' => 'Contraseña'
+                            );
+                            echo form_input($config); 
+                        ?>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputContrasena2" class="control-label col-xs-1">Confirmar Contraseña</label>
+                    <div class="col-xs-5">
+                        <?php 
+                            $config = array(
+                              'name'        => 'contrasena2',
+                              'type'        => 'password',
+                              'class'       => 'form-control',
+                              'id'          => 'inputContrasena2',
+                              'placeholder' => 'Confirmar Contraseña'
                             );
                             echo form_input($config); 
                         ?>

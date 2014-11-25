@@ -28,13 +28,13 @@ class Usuario_Model extends CI_model
     function validate_user( $correo, $contrasena ) {
         
         if ($this->validate_credentials($correo, $contrasena, Usuario_Model::USER_TYPE_ADMIN)) {
-        	return true;
-        }
-        if ($this->validate_credentials($correo, $contrasena, Usuario_Model::USER_TYPE_TUTOR)) {
-        	return true;
+            return true;
         }
         if ($this->validate_credentials($correo, $contrasena, Usuario_Model::USER_TYPE_ALUMNO)) {
-        	return true;
+            return true;
+        }
+        if ($this->validate_credentials($correo, $contrasena, Usuario_Model::USER_TYPE_TUTOR)) {
+            return true;
         }
 
         return false;
@@ -54,19 +54,20 @@ class Usuario_Model extends CI_model
     // The results of the query are stored in $login.
     // If a value exists, then the user account exists and is validated
     if ( is_array($login) && count($login) == 1 ) {
-        $this->set_session($tipo_usuario,$login[0]->id);
+        $this->set_session($tipo_usuario,$login[0]->id,$login[0]->nombre);
         return true;
     }
 
     return false;
     }
     
-    private function set_session($tipo_usuario,$usuario_id) {
+    private function set_session($tipo_usuario,$usuario_id,$usuario_nombre) {
         $this->session->set_userdata( array(
                 'isLoggedIn'      => true,
                 'userType'        => $tipo_usuario,
                 'permitionLevel'  => $this->permiso_model->get_level_permition($tipo_usuario),
-                'userId'          => $usuario_id
+                'userId'          => $usuario_id,
+                'userName'        => $usuario_nombre
             )
         );
     }

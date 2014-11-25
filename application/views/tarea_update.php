@@ -111,7 +111,7 @@
                               </td>
                               <td>
                                 <button class="btn btn-danger btn-md show-modal-confirm" data-toggle="modal"
-                                   data-url='<?php echo base_url()."tutor/destroy/$plan->id"; ?>'>
+                                   data-url='<?php echo base_url()."plan/destroy/$plan->id"; ?>'>
                                     Eliminar
                                   </button>
                               </td>

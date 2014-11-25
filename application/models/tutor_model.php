@@ -3,7 +3,7 @@
 class Tutor_model extends CI_model
 {
 	/* 	Relationships
-	*		Tutor has_many Tarea
+	*	Tutor has_many Tarea
 	*/
 	function getAll()
 	{
@@ -29,7 +29,7 @@ class Tutor_model extends CI_model
 				'apellido'   => $this->input->post('apellido'),
 				'seccion'  => $this->input->post('seccion'),
 				'correo'     => $this->input->post('correo'),
-				'contrasena' => md5($this->input->post('password'))
+				'contrasena' => md5($this->input->post('contrasena'))
 			);
 		$insert = $this->db->insert('tutor',$new_tutor_data);
 		return $insert;
@@ -41,9 +41,13 @@ class Tutor_model extends CI_model
 				'nombre'     => $this->input->post('nombre'),
 				'apellido'   => $this->input->post('apellido'),
 				'seccion'  => $this->input->post('seccion'),
-				'correo'     => $this->input->post('correo'),
-				'contrasena' => md5($this->input->post('password'))
+				'correo'     => $this->input->post('correo')
 			);
+
+		if ($this->input->post('checkNuevaContrasena')){
+			$tutor_data['contrasena'] = md5($this->input->post('contrasena'));
+		}
+
 		$this->db->where('id',$id);
 		$this->db->update('tutor',$tutor_data);
 	}
@@ -52,6 +56,18 @@ class Tutor_model extends CI_model
 	{
 		$this->db->where('id',$id);
 		$this->db->delete('tutor');
+	}
+
+	function get_options_array()
+	{
+		$options = array();
+
+		foreach ($this->getAll() as $tutor) {
+			$options[$tutor->id] = $tutor->nombre;
+		}
+
+		return $options;
+		
 	}
 
 	function count_all()

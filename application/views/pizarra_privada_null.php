@@ -1,0 +1,1 @@
+<h1>No perteneces a ningún grupo aún</h1>

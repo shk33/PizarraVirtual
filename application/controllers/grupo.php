@@ -5,15 +5,18 @@ class Grupo extends MY_Controller
 	
 	/**
 	 * Muestra todos los grupos
+	 * Require TUTOR Level Permition
 	 */
 	function index($status = '')
 	{
+		$this->permiso_model->need_tutor_permition_level();	
+
 		$data = array();
 		$data['main_content'] = 'grupo_index';
 		$data['status'] = $status;
 		$this->load->model('grupo_model');
 		
-		if ($query=$this->grupo_model->getAll()) {
+		if ($query=$this->grupo_model->get_grupos_by_user_type()) {
 			$data['grupos'] =$query;
 		}
 
@@ -23,9 +26,12 @@ class Grupo extends MY_Controller
 
 	/**
 	 * Muestra el formulario para crear un nuevo grupo
+	 * Require TUTOR Level Permition
 	 */
 	public function create()
 	{
+		$this->permiso_model->need_tutor_permition_level();	
+
 		$data = array();
 		$data['main_content'] = 'grupo_create';
 
@@ -34,9 +40,12 @@ class Grupo extends MY_Controller
 
 	/**
 	 * Show the form for editing the specified grupo.
+	 * Require TUTOR Level Permition
 	 */
 	public function edit($id)
 	{
+		$this->permiso_model->need_tutor_permition_level();	
+
 		$data= array();
 		$data['main_content'] = 'grupo_update';
 
@@ -51,9 +60,12 @@ class Grupo extends MY_Controller
 
 	/**
 	 * Update the specified resource in storage.
+	 * Require TUTOR Level Permition
 	 */
 	public function update()
 	{
+		$this->permiso_model->need_tutor_permition_level();	
+
 		$this->load->library('form_validation');
 		$this->form_validation->set_rules('nombre','Nombre','trim|required');
 		$this->form_validation->set_rules('observaciones','Observaciones','trim|required');
@@ -75,21 +87,13 @@ class Grupo extends MY_Controller
 	}
 
 	/**
-	 * Remove the specified resource from storage.
-	 */
-	/*public function destroy($id)
-	{
-		$this->load->model('grupo_model');
-		$this->grupo_model->delete($id);
-		$status = "delete_success";
-		redirect("grupo/index/$status");
-	}*/
-
-	/**
 	* Remove the a Alumno from the grupo
+	* Require TUTOR Level Permition
 	*/
 	function remove_alumno()
 	{
+		$this->permiso_model->need_tutor_permition_level();	
+
 		$this->load->model('alumno_model');
 		$this->alumno_model->remove_grupo($this->input->post('alumno_id'));
 		$grupo_id = $this->input->post('grupo_id');
@@ -99,9 +103,12 @@ class Grupo extends MY_Controller
 
 	/**
 	* Add a array of Alumnos to the grupo
+	* Require TUTOR Level Permition
 	*/
 	function add_alumnos()
 	{
+		$this->permiso_model->need_tutor_permition_level();	
+		
 		$grupo_id = $this->input->post('grupo_id'); 
 		$this->load->model('alumno_model');
 

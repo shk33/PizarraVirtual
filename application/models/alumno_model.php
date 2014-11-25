@@ -37,26 +37,38 @@ class Alumno_model extends CI_model
 	function get_alumnos_by_tutor($tutor_id)
 	{
 		$this->load->model('tarea_model');
-		$this->load->model('plan_model');
 		$this->load->model('grupo_model');
-
 		$tareas = $this->tarea_model->get_by_tutor_id($tutor_id);
-		$alumnos = array();
+
+		$all_alumnos = array();
+		$partial_alumnos = array();
+		$i = 0;
 
 		foreach ($tareas as $tarea) {
 			$planes = $tarea->planes; 
-			//Fix this foreach it only gets the alumnos of the last plan
+
 			if (isset($planes)) {
+
 				foreach ($planes as $plan) {
+
 					$grupo = $this->grupo_model->get_by_plan_id($plan->id);
+
 					if (isset($grupo->alumnos)) {
-						$alumnos = $grupo->alumnos;
+
+						$partial_alumnos[$i] = $grupo->alumnos;
+						$all_alumnos = array_merge( $all_alumnos, $partial_alumnos[$i] );
+						$i++;
 					} //end if
+
 				} //end foreach
+
 			}//end if
+
 		} //end foreach
-		
-		return $alumnos;
+
+		$all_alumnos = $this->insert_model_associations($all_alumnos);
+
+		return $all_alumnos;
 
 	}
 
@@ -80,7 +92,7 @@ class Alumno_model extends CI_model
 				'apellido'   => $this->input->post('apellido'),
 				'matricula'  => $this->input->post('matricula'),
 				'correo'     => $this->input->post('correo'),
-				'contrasena' => md5($this->input->post('password'))
+				'contrasena' => md5($this->input->post('contrasena'))
 			);
 		$insert = $this->db->insert('alumno',$new_alumno_data);
 		return $insert;
@@ -92,9 +104,13 @@ class Alumno_model extends CI_model
 				'nombre'     => $this->input->post('nombre'),
 				'apellido'   => $this->input->post('apellido'),
 				'matricula'  => $this->input->post('matricula'),
-				'correo'     => $this->input->post('correo'),
-				'contrasena' => md5($this->input->post('password'))
+				'correo'     => $this->input->post('correo')
 			);
+
+		if ($this->input->post('checkNuevaContrasena')){
+			$alumno_data['contrasena'] = md5($this->input->post('contrasena'));
+		}
+
 		$this->db->where('id',$id);
 		$this->db->update('alumno',$alumno_data);
 	}
@@ -103,6 +119,21 @@ class Alumno_model extends CI_model
 	{
 		$this->db->where('id',$id);
 		$this->db->delete('alumno');
+	}
+
+	public function get_pizarra_privada_id($alumno_id)
+	{
+		$alumno = $this->get_by_id($alumno_id);
+		$this->load->model('grupo_model');
+
+		if (isset($alumno->grupo_id)) {
+			$grupo = $this->grupo_model->get_by_id($alumno->grupo_id);
+			$id = $grupo->pizarra_privada->id;
+		}else{
+			return NULL;
+		}
+
+		return $id;
 	}
 
 	function get_all_alumnos_from_grupo($grupo_id)

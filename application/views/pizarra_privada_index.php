@@ -1,6 +1,6 @@
 <!-- Page Heading -->
 <div class="row">
-    <div class="col-lg-2">
+    <div class="col-lg-4">
         <h1 class="page-header">
             Pizarras Privadas
         </h1>
@@ -37,7 +37,7 @@
         <div class="panel panel-default filterable">
             <div class="panel-heading">
                 <h3 class="panel-title">
-                    <i class="fa fa-users user-fw"></i>Pizarras Privadas<span class="space"></span>
+                    <i class="fa fa-slideshare"></i>Pizarras Privadas<span class="space"></span>
                     <button class="btn btn-info btn-filter"><span class="glyphicon glyphicon-search"></span> Buscar</button>
                 </h3>
             </div>

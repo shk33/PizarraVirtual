@@ -102,6 +102,21 @@
                     </div>
                 </div>
                 <div class="form-group">
+                    <label for="inputContrasena2" class="control-label col-xs-1">Confirmar Contraseña</label>
+                    <div class="col-xs-5">
+                        <?php 
+                            $config = array(
+                              'name'        => 'contrasena2',
+                              'type'        => 'password',
+                              'class'       => 'form-control',
+                              'id'          => 'inputContrasena2',
+                              'placeholder' => 'Confirmar Contraseña'
+                            );
+                            echo form_input($config); 
+                        ?>
+                    </div>
+                </div>
+                <div class="form-group">
                     <div class="col-xs-offset-4 col-xs-1">
                         <button type="submit" class="btn btn-primary btn-md">Crear</button>
                     </div>

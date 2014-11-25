@@ -9,6 +9,22 @@ class Tarea_model extends CI_Model
 	*	Tarea has_many Plan
 	*/
 
+	function get_tareas_by_user_type()
+	{
+		$tareas = array();
+		
+		if ($this->permiso_model->is_level_admin()) {
+			$tareas = $this->getAll();
+		}
+
+		if ($this->permiso_model->is_level_tutor()) {
+			$tutor_id = $this->session->userdata("userId");
+			$tareas = $this->get_by_tutor_id($tutor_id);
+		}
+
+		return $tareas;
+	}
+
 	function getAll()
 	{
 		$query=$this->db->get('tarea');
@@ -43,8 +59,9 @@ class Tarea_model extends CI_Model
 	function save()
 	{
 		$new_tarea_data = array(
-				'nombre'     => $this->input->post('nombre'),
-				'descripcion'   => $this->input->post('descripcion')
+				'nombre'     	=> $this->input->post('nombre'),
+				'descripcion' => $this->input->post('descripcion'),
+				'tutor_id'    => $this->input->post('tutor_id')
 			);
 		$insert = $this->db->insert('tarea',$new_tarea_data);
 		return $insert;
@@ -67,11 +84,26 @@ class Tarea_model extends CI_Model
 	}
 	/*End of basic CRUD functionality*/
 
+	/*
+	* Return and associative array with
+	* key tarea_id value tarea_nombre
+	* Used for filling a dropdown
+	* It gets tareas according the user type
+	*/
 	function get_options_array()
 	{
 		$options = array();
+		$tareas = array();
 
-		foreach ($this->getAll() as $tarea) {
+		if ($this->permiso_model->is_level_admin()) {
+			$tareas = $this->getAll();
+		}
+		if ($this->permiso_model->is_level_tutor()) {
+			$tutor_id = $this->session->userdata('userId');
+			$tareas = $this->get_by_tutor_id($tutor_id);
+		}
+
+		foreach ($tareas as $tarea) {
 			$options[$tarea->id] = $tarea->nombre;
 		}
 

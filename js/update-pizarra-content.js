@@ -16,10 +16,10 @@ setInterval(function(){
 		pizarra_compartida.val(data.new_content);
 	})
 	.fail(function() {
-		console.log("error");
+		//console.log("error");
 	})
 	.always(function() {
-		console.log("complete");
+		//console.log("complete");
 	});
 },1000);
 
@@ -28,7 +28,7 @@ setInterval(function(){
 */
 $("#btn-share").click(function(){
 	var pizarra_local  = $('#pizarra_local');
-  var pizarra_id     = $('#pizarra_id');
+  	var pizarra_id     = $('#pizarra_id');
 	$.ajax({
 		url: pizarra_local.attr("data-ajax"),
 		type: 'POST',
@@ -40,9 +40,9 @@ $("#btn-share").click(function(){
 	.done(function(data) {
 	})
 	.fail(function() {
-		console.log("error");
+		//console.log("error");
 	})
 	.always(function() {
-		console.log("complete");
+		//console.log("complete");
 	});
 });
