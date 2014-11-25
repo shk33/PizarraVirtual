@@ -62,13 +62,14 @@
       <?php $this->load->view('partials/_pizarra_privada.php'); ?>
 
       <?php
-        $data['chat'] = $pizarra->grupo->chat;
+        $data['chat']         = $pizarra->grupo->chat;
+        $data['last_message'] = $last_message;
         $this->load->view('partials/_pizarra_privada_chat.php', $data); 
       ?>
       
 
       <div class="tab-pane fade" id="messages">
-
+        
       </div>
 
       <div class="tab-pane fade" id="settings">
@@ -87,8 +88,11 @@
   <!-- end col lg 12 -->
 </div>
 
-<!-- Table filters logic -->
+<!-- Pizarra Privada auto-update-content -->
 <script src="<?php echo base_url(); ?>js/update-pizarra-content.js"></script>
+
+<!-- Chat logic -->
+<script src="<?php echo base_url(); ?>js/chat.js"></script>
 
 <!-- Custom Pizarra Virtual CSS -->
 <link rel="stylesheet" href="<?php echo base_url(); ?>css/pizarra.css">

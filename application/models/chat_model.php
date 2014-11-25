@@ -10,43 +10,28 @@ class Chat_model extends CI_Model
 	* Chat belongs_to Grupo
 	* Chat has_many Message
 	*/
-	function get_grupos_by_user_type()
-	{
-		$grupos = array();
-
-		if ($this->permiso_model->is_level_admin()) {
-			$grupos = $this->getAll();
-		}
-
-		if ($this->permiso_model->is_level_tutor()) {
-			$tutor_id = $this->session->userdata("userId");
-			$grupos = $this->get_grupos_by_tutor($tutor_id);
-		}
-
-		return $grupos;
-	}
 
  	function getAll()
 	{
-		$query=$this->db->get('grupo');
+		$query=$this->db->get('chat');
 
-		$grupos = $query->result();
+		$chats = $query->result();
 
-		$grupos = $this->insert_model_associations($grupos);
+		$chats = $this->insert_model_associations($chats);
 		
-		return $grupos;
+		return $chats;
 	}
 
 	function get_by_id($id)
 	{
-		$query = $this->db->get_where('grupo', array('id' => $id));
+		$query = $this->db->get_where('chat', array('id' => $id));
 		
-		foreach ($query->result() as $grupo) {
-			$found_grupo = $grupo;			
+		foreach ($query->result() as $chat) {
+			$found_chat = $chat;			
 		}
 
-		$found_grupo = $this->insert_model_associations($found_grupo);
-		return $found_grupo;
+		$found_chat = $this->insert_model_associations($found_chat);
+		return $found_chat;
 	}
 
 	function get_by_grupo_id($grupo_id)
@@ -59,9 +44,7 @@ class Chat_model extends CI_Model
 
 		if ($chat) {
 			$found_chat = $chat[0]; //Getting the first element
-
-			//$found_chat = $this->insert_alumnos_in_grupo($found_chat);
-			//$found_chat = $this->insert_pizarra_in_grupo($found_chat);
+			$found_chat = $this->insert_model_associations($found_chat);
 		}
 		
 		return $found_chat; 
@@ -73,97 +56,53 @@ class Chat_model extends CI_Model
 		return $insert;
 	}
 
-	function update($id)
+	function update_content($id,$text,$username)
 	{
-		$grupo_data = array(
-				'nombre'     => $this->input->post('nombre'),
-				'observaciones'   => $this->input->post('observaciones')
+		$date = new DateTime();
+        $sent_date = $date->getTimestamp();
+
+		$this->load->model('message_model');
+		$new_message_data = array(
+				'text'      => $text,
+				'username'  => $username,
+				'sent_date' => $sent_date,
+				'chat_id'   => $id
 			);
-		$this->db->where('id',$id);
-		$this->db->update('grupo',$grupo_data);
+		$this->message_model->save($new_message_data);
 	}
 
-	function count_all()
-	{
-		return $this->db->count_all('grupo');
-	}
 	/*
 	* Rails Active Record Associations imitations starts here
 	*/
 
 	/*
-	* Imitates behaviour of belongs_to in Rails in this case
-	* Grupo belongs_to Plan
-	*/
-	private function insert_plan_in_grupo(&$grupos)
-	{
-		$this->load->model('plan_model');
-		
-		if (gettype($grupos) == "array") {
-			foreach ($grupos as $grupo) {
-				$plan = $this->plan_model->get_by_id($grupo->plan_id);
-				$grupo->plan = $plan;
-			}
-		}else{ //Asuming is an single object type
-			$plan = $this->plan_model->get_by_id($grupos->plan_id);
-			$grupos->plan = $plan;
-		}
-
-		return $grupos;
-	}
-
-	/*
 	* Imitates behaviour of has_many in Rails in this case
 	* Grupo has_many Alumnos
 	*/
-	private function insert_alumnos_in_grupo(&$grupos)
+	private function insert_messages_in_chat(&$chats)
 	{
-		$this->load->model('alumno_model');
+		$this->load->model('message_model');
 
-		if (gettype($grupos) == "array") {
-			foreach ($grupos as $grupo) {
-				$alumnos = $this->alumno_model->get_all_alumnos_from_grupo($grupo->id);
-				$grupo->alumnos = $alumnos;
+		if (gettype($chats) == "array") {
+			foreach ($chats as $chat) {
+				$messages = $this->message_model->get_all_messages_from_chat($chat->id);
+				$chat->messages = $messages;
 			}
 		}else{ //Asuming is an object type
-			//echo $grupos->id;
-			$alumnos = $this->alumno_model->get_all_alumnos_from_grupo($grupos->id);
-			$grupos->alumnos = $alumnos;
+			$messages = $this->message_model->get_all_messages_from_chat($chats->id);
+			$chats->messages = $messages;
 		}
 		
-		return $grupos;
-	}
-
-	/*
-	* Imitates behaviour of has_one in Rails in this case
-	* Grupo has_one Pizarra_Privada
-	*/
-	private function insert_pizarra_in_grupo(&$grupos)
-	{
-		$this->load->model('pizarra_privada_model');
-
-		if (gettype($grupos) == "array") {
-			foreach ($grupos as $grupo) {
-				$pizarra = $this->pizarra_privada_model->get_by_grupo($grupo->id);
-				$grupo->pizarra_privada = $pizarra;
-			}
-		}else{ //Asuming is an object type
-			$pizarra = $this->pizarra_privada_model->get_by_grupo($grupos->id);
-			$grupos->pizarra_privada = $pizarra;
-		}
-		
-		return $grupos;
+		return $chats;
 	}
 
 	/*
 	*	Hydrate the object with the others objects of model acoordings its associations
  	*/
-	private function insert_model_associations(&$grupos)
+	private function insert_model_associations(&$chats)
 	{
-		$grupos = $this->insert_plan_in_grupo($grupos);
-		$grupos = $this->insert_alumnos_in_grupo($grupos);
-		$grupos = $this->insert_pizarra_in_grupo($grupos);
+		$chats = $this->insert_messages_in_chat($chats);
 
-		return $grupos;
+		return $chats;
 	}
 }

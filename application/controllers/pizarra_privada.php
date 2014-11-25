@@ -80,7 +80,12 @@ class Pizarra_privada extends MY_Controller
 		$data['main_content'] = 'pizarra_privada_vista_colaborativa';
 
 		$this->load->model('pizarra_privada_model');
-		$data['pizarra'] = $this->pizarra_privada_model->get_by_id($pizarra_id);
+		$this->load->model('message_model');
+
+		$pizarra = $this->pizarra_privada_model->get_by_id($pizarra_id);
+
+		$data['pizarra'] = $pizarra;
+		$data['last_message'] = $this->message_model->get_last_message_from_chat($pizarra->grupo->chat->id);
 
 		$this->load->view('includes/template',$data);
 
@@ -126,7 +131,7 @@ class Pizarra_privada extends MY_Controller
 		$json_respond = array('new_content' =>  $pizarra->contenido);
 
 		header('Content-Type: application/json');
-  	echo json_encode( $json_respond );
+ 	 	echo json_encode( $json_respond );
 	}
 
 	/*

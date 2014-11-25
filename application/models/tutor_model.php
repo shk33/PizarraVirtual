@@ -3,7 +3,7 @@
 class Tutor_model extends CI_model
 {
 	/* 	Relationships
-	*		Tutor has_many Tarea
+	*	Tutor has_many Tarea
 	*/
 	function getAll()
 	{

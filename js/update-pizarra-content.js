@@ -28,7 +28,7 @@ setInterval(function(){
 */
 $("#btn-share").click(function(){
 	var pizarra_local  = $('#pizarra_local');
-  var pizarra_id     = $('#pizarra_id');
+  	var pizarra_id     = $('#pizarra_id');
 	$.ajax({
 		url: pizarra_local.attr("data-ajax"),
 		type: 'POST',

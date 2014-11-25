@@ -18,67 +18,45 @@
             </div>
         </div>
         <div class="panel-body-chat">
-            <ul class="chat">
-                <li class="left clearfix"><span class="chat-img pull-left">
-                    <img src="http://placehold.it/50/55C1E7/fff&text=U" alt="User Avatar" class="img-circle" />
-                </span>
-                    <div class="chat-body clearfix">
-                        <div class="header">
-                            <strong class="primary-font">Jack Sparrow</strong>
+            <?php 
+                $chat_id      = $chat->id;
+                $username     = $this->session->userdata('userName');
+                $chat_url     = base_url()."chat/sent_message";
+                $new_mess_url = base_url()."chat/get_new_messages";
+                $sent_date    = 00000000;
+                if ($last_message) {
+                    $sent_date = $last_message->sent_date;
+                }
+             ?>
+            <input type="hidden" id="chat_id"   value="<?php echo $chat_id  ?>" />
+            <input type="hidden" id="username"  value="<?php echo $username ?>" />
+
+            <ul class="chat" id="chat-body" data-ajax="<?php echo $chat_url ?>" data-ajax-new="<?php echo $new_mess_url ?>" data-last-timestamp="<?php echo $sent_date ?>">
+                <?php foreach ($chat->messages  as $message): ?>
+
+                    <li class="left clearfix message"><span class="chat-img pull-left">
+                        <img src="http://ymcawellington.org.nz/wp-content/uploads/2013/07/person-placeholder-36x36.jpg" alt="User Avatar" class="img-circle" />
+                    </span>
+                        <div class="chat-body clearfix">
+                            <div class="header">
+                                <strong class="primary-font"><?php echo $message->username ?></strong>
+                            </div>
+                            <p>
+                                <?php echo $message->text ?>
+                            </p>
                         </div>
-                        <p>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare
-                            dolor, quis ullamcorper ligula sodales.
-                        </p>
-                    </div>
-                </li>
-                <li class="right clearfix"><span class="chat-img pull-right">
-                    <img src="http://placehold.it/50/FA6F57/fff&text=ME" alt="User Avatar" class="img-circle" />
-                </span>
-                    <div class="chat-body clearfix">
-                        <div class="header">
-                            <strong class="pull-right primary-font">Bhaumik Patel</strong>
-                        </div>
-                        <p>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare
-                            dolor, quis ullamcorper ligula sodales.
-                        </p>
-                    </div>
-                </li>
-                <li class="left clearfix"><span class="chat-img pull-left">
-                    <img src="http://placehold.it/50/55C1E7/fff&text=U" alt="User Avatar" class="img-circle" />
-                </span>
-                    <div class="chat-body clearfix">
-                        <div class="header">
-                            <strong class="primary-font">Jack Sparrow</strong>
-                        </div>
-                        <p>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare
-                            dolor, quis ullamcorper ligula sodales.
-                        </p>
-                    </div>
-                </li>
-                <li class="right clearfix"><span class="chat-img pull-right">
-                    <img src="http://placehold.it/50/FA6F57/fff&text=ME" alt="User Avatar" class="img-circle" />
-                </span>
-                    <div class="chat-body clearfix">
-                        <div class="header">
-                            <strong class="pull-right primary-font">Bhaumik Patel</strong>
-                        </div>
-                        <p>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare
-                            dolor, quis ullamcorper ligula sodales.
-                        </p>
-                    </div>
-                </li>
+                    </li>
+
+                <?php endforeach ?>
             </ul>
         </div>
         <div class="panel-footer">
             <div class="input-group">
-                <input id="btn-input" type="text" class="form-control input-sm" placeholder="Type your message here..." />
+                <input id="text" type="text" class="form-control input-sm" placeholder="Escribe tu mensaje aquí..." />
                 <span class="input-group-btn">
-                    <button class="btn btn-warning btn-sm" id="btn-chat">
-                        Send</button>
+                    <button class="btn btn-warning btn-sm" id="btn-chat-sent">
+                        Enviar
+                    </button>
                 </span>
             </div>
         </div>
