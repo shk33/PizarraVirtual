@@ -6,7 +6,7 @@
           <h3 class="panel-title">
             <i class="fa fa-2x fa-fw fa-slideshare"></i>
             Pizarra Local  <span class="space"></span>
-            <button class="btn btn-primary btn-md">
+            <button id="btn-verify-1" class="btn btn-primary btn-md">
               <span class="glyphicon glyphicon-search"></span> Verificar
             </button>
             <button type="button" id="btn-share" class="btn btn-success btn-md">
@@ -48,7 +48,7 @@
             <h3 class="panel-title">
               <i class="fa fa-2x fa-fw fa-cloud"></i>
               Pizarra Compartida <span class="space"></span>
-              <button class="btn btn-primary btn-md">
+              <button id="btn-verify-2" class="btn btn-primary btn-md">
                 <span class="glyphicon glyphicon-search"></span> Verificar
               </button>
             </h3>

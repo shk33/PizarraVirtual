@@ -31,7 +31,7 @@
       </li>
 
       <li>
-        <a href="#messages" data-toggle="tab" title="Verificar ecuaciones">
+        <a href="#results" data-toggle="tab" title="Verificar ecuaciones">
           <span class="round-tabs three">
             <i class="fa fa-fw fa-check-square-o"></i>
           </span>
@@ -68,7 +68,7 @@
       ?>
       
 
-      <div class="tab-pane fade" id="messages">
+      <div class="tab-pane fade" id="results">
         
       </div>
 
@@ -90,6 +90,9 @@
 
 <!-- Pizarra Privada auto-update-content -->
 <script src="<?php echo base_url(); ?>js/update-pizarra-content.js"></script>
+
+<!-- Pizarra Privada Verify Ecuations -->
+<script src="<?php echo base_url(); ?>js/verify_ecuation.js"></script>
 
 <!-- Chat logic -->
 <script src="<?php echo base_url(); ?>js/chat.js"></script>
