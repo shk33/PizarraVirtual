@@ -1,20 +1,39 @@
 /*
-* Share the content of the Pizarra Local to the Pizarra Remota
+* Add Listeners to buttons verificar
 */
 $("#btn-verify-1").click(function(){
-	var pizarra_local  = $('#pizarra_local');
-  	var pizarra_id     = $('#pizarra_id');
+	$ruta    = $('#valida_ecuacion_ruta');
+  	$pizarra = $('#pizarra_local');
 	$.ajax({
-		url: pizarra_local.attr("data-ajax"),
+		url: $ruta.val(),
 		type: 'POST',
 		data:{
-			id:      pizarra_id.val(),
-			content: pizarra_local.val()
+			ecuaciones: $pizarra.val(),
 		}
 	})
 	.done(function(data) {
-	
-	
+		console.log(data);
+	})
+	.fail(function() {
+		//console.log("error");
+	})
+	.always(function() {
+		//console.log("complete");
+	});
+});
+
+$("#btn-verify-2").click(function(){
+	$ruta    = $('#valida_ecuacion_ruta');
+  	$pizarra = $('#pizarra_compartida');
+	$.ajax({
+		url: $ruta.val(),
+		type: 'POST',
+		data:{
+			ecuaciones: $pizarra.val(),
+		}
+	})
+	.done(function(data) {
+		console.log(data);
 	})
 	.fail(function() {
 		//console.log("error");
