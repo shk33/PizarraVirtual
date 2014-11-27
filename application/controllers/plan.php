@@ -56,7 +56,6 @@ class Plan extends MY_Controller
 		$this->form_validation->set_rules('tarea_id','Tarea pertenciente','required');
 		$this->form_validation->set_rules('nombre','Nombre','trim|required');
 		$this->form_validation->set_rules('materiales','materiales','trim|required');
-		$this->form_validation->set_rules('ruta_carpeta','Ruta carpeta','trim|required');
 
 		$data = array();
 
@@ -90,6 +89,9 @@ class Plan extends MY_Controller
 
 		$this->load->model('plan_model');
 		$data['plan']=$this->plan_model->get_by_id($id);
+
+		$this->load->model('archivo_model');
+		$data['archivos']=$this->archivo_model->get_all_by_plan_id($id);
 
 		$this->load->view('includes/template',$data);
 	}

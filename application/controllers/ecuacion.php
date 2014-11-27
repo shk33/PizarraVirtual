@@ -33,19 +33,4 @@ class Ecuacion extends MY_Controller
 
 	}
 
-	function test2()
-	{
-		$this->load->model('pizarra_privada_model');
-		$pizarra = $this->pizarra_privada_model->get_by_grupo(1);
-
-		$skuList = explode("\n", $pizarra->contenido);
-		var_dump($skuList);
-		die();
-	}
-
-	function test3()
-	{
-		$this->load->model('error_finder');
-		$pizarra = $this->error_finder->find_posible_errors(array("3x+1=3" => false));
-	}
 }

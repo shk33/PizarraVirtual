@@ -55,9 +55,9 @@
                             <tr class="filters">
                                 <th><input type="text" class="form-control" placeholder="Nombre" disabled></th>
                                 <th><input type="text" class="form-control" placeholder="Materiales" disabled></th>
-                                <th><input type="text" class="form-control" placeholder="Ruta Carpeta" disabled></th>
                                 <th><input type="text" class="form-control" placeholder="Plan anterior" disabled></th>
                                 <th><input type="text" class="form-control" placeholder="Tarea Perteneciente" disabled></th>
+                                <th>Gestionar Archivos</th>
                                 <th>Editar</th>
                                 <th>Eliminar</th>
                             </tr>
@@ -68,9 +68,13 @@
                                     <tr>
                                     <td><?php echo $plan->nombre; ?></td>
                                     <td><?php echo $plan->materiales; ?></td>
-                                    <td><?php echo $plan->ruta_carpeta; ?></td>
                                     <td><?php echo $plan->plan_ant_id; ?></td>
                                     <td><?php echo $plan->tarea->nombre; ?></td>
+                                    <td>
+                                        <a href='<?php echo base_url()."plan/edit/$plan->id"; ?>'>
+                                            <button class="btn btn-primary btn-md">Gestionar Archivos</button>
+                                        </a>
+                                    </td>
                                     <td>
                                         <a href='<?php echo base_url()."plan/edit/$plan->id"; ?>'>
                                             <button class="btn btn-primary btn-md">Editar</button>

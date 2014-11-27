@@ -64,22 +64,6 @@
                   </div>
               </div>
               <div class="form-group">
-                  <label for="input-ruta-carpeta" class="control-label col-xs-1">Ruta Carpeta</label>
-                  <div class="col-xs-5">
-                      <?php 
-                          $config = array(
-                            'name'        => 'ruta_carpeta',
-                            'type'        => 'text',
-                            'class'       => 'form-control',
-                            'id'          => 'input-ruta-carpeta',
-                            'placeholder' => 'Ruta de la carpeta a almacenar archivos',
-                            'value'       => set_value('ruta_carpeta')
-                          );
-                          echo form_input($config); 
-                      ?>
-                  </div>
-              </div>
-              <div class="form-group">
                   <div class="col-xs-offset-4 col-xs-1">
                       <button type="submit" class="btn btn-primary btn-md">Crear</button>
                   </div>
