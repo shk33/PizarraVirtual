@@ -82,3 +82,22 @@
   <!-- End Col lg 6 -->
   <!-- Panel de Pizarra Privada  remota ends  here -->
 </div>
+
+<!-- Loading Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" data-backdrop="static" data-keyboard="false" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title" id="myModalLabel">Espere Por Favor</h3>
+      </div>
+      <div class="modal-body">
+        <div class="text-center"> 
+          <button class="btn btn-lg btn-warning">
+            <span class="glyphicon glyphicon-refresh glyphicon-refresh-animate"></span>
+            Verificando Ecuaciones...
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

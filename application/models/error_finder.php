@@ -224,10 +224,6 @@ class Error_finder extends CI_Model
 				array_push($errores, $error_eq);
 			}
 
-			$error = $this->get_by_id(1039);
-			$error_eq = $this->create_error_eq($ecuacion,$error);
-			array_push($errores, $error_eq);
-
 		}
 		return $errores;
 	
