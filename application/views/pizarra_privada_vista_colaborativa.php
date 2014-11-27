@@ -31,7 +31,7 @@
       </li>
 
       <li>
-        <a href="#messages" data-toggle="tab" title="Verificar ecuaciones">
+        <a href="#results" data-toggle="tab" title="Verificar ecuaciones">
           <span class="round-tabs three">
             <i class="fa fa-fw fa-check-square-o"></i>
           </span>
@@ -39,7 +39,7 @@
       </li>
 
       <li>
-        <a href="#settings" data-toggle="tab" title="Archivos">
+        <a href="#files" data-toggle="tab" title="Archivos">
           <span class="round-tabs four">
             <i class="fa fa-fw fa-cloud-download"></i>
           </span> 
@@ -67,14 +67,13 @@
         $this->load->view('partials/_pizarra_privada_chat.php', $data); 
       ?>
       
+      <?php $this->load->view('partials/_pizarra_privada_results.php'); ?>
 
-      <div class="tab-pane fade" id="messages">
-        
-      </div>
-
-      <div class="tab-pane fade" id="settings">
-
-      </div>
+      <?php
+        $data['archivos'] = $archivos;         
+        $this->load->view('partials/_pizarra_privada_files.php', $data); 
+      ?>
+      
 
       <div class="tab-pane fade" id="doner">
 
@@ -90,6 +89,9 @@
 
 <!-- Pizarra Privada auto-update-content -->
 <script src="<?php echo base_url(); ?>js/update-pizarra-content.js"></script>
+
+<!-- Pizarra Privada Verify Ecuations -->
+<script src="<?php echo base_url(); ?>js/verify_ecuation.js"></script>
 
 <!-- Chat logic -->
 <script src="<?php echo base_url(); ?>js/chat.js"></script>

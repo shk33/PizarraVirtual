@@ -36,6 +36,17 @@
 		return $planes;
 	}
 
+	function get_ruta_carpeta($plan_id)
+	{
+		$query=$this->db->select('ruta_carpeta')->where('id',$plan_id)->get('plan');
+
+		$plan_array = $query->result();
+
+		$ruta_carpeta = $plan_array[0]->ruta_carpeta;
+
+		return $ruta_carpeta;
+	}
+
 	function get_planes_by_tutor($tutor_id)
 	{
 		$this->load->model('tarea_model');
@@ -81,18 +92,20 @@
 	{
 		//Creates the Plan Model
 		$new_plan_data = array(
-				'nombre'     => $this->input->post('nombre'),
+				'nombre'       => $this->input->post('nombre'),
 				'materiales'   => $this->input->post('materiales'),
-				'ruta_carpeta'  => $this->input->post('ruta_carpeta'),
 				'tarea_id'     => $this->input->post('tarea_id')
 			);
 		$insert = $this->db->insert('plan',$new_plan_data);
+		$plan_id = $this->db->insert_id(); //Gets the last id inserted
+
+		$this->insert_file_folder_upload_path($plan_id);
 
 		//Then creates the Grupo belonging to this Plan
 		//A Grupo is totally dependent of Plan
 		$new_grupo_data = array(
 				'nombre'     => "Grupo de ".$new_plan_data['nombre'],
-				'plan_id'     => $this->db->insert_id() //Gets the last id inserted
+				'plan_id'    => $plan_id
 			);
 		$this->load->model('grupo_model');
 		$this->grupo_model->save($new_grupo_data);
@@ -124,7 +137,6 @@
 		$plan_data = array(
 				'nombre'     => $this->input->post('nombre'),
 				'materiales'   => $this->input->post('materiales'),
-				'ruta_carpeta'  => $this->input->post('ruta_carpeta')
 			);
 		$this->db->where('id',$id);
 		$this->db->update('plan',$plan_data);
@@ -141,6 +153,21 @@
 		$query = $this->db->get_where('plan', array('tarea_id' => $tarea_id));
 
 		return $query->result();
+	}
+
+	//Insert the route where the files will be uploaded and create the folder
+	private function insert_file_folder_upload_path($plan_id)
+	{
+		$ruta_carpeta = "uploads/planes/$plan_id";
+
+		//Creating the folder first
+		mkdir($ruta_carpeta,0777,TRUE);
+
+		$plan_data = array(
+				'ruta_carpeta'  => $ruta_carpeta
+			);
+		$this->db->where('id',$plan_id);
+		$this->db->update('plan',$plan_data);
 	}
 
 	/*

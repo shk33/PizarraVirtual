@@ -81,10 +81,14 @@ class Pizarra_privada extends MY_Controller
 
 		$this->load->model('pizarra_privada_model');
 		$this->load->model('message_model');
+		$this->load->model('archivo_model');
 
-		$pizarra = $this->pizarra_privada_model->get_by_id($pizarra_id);
+		$pizarra  = $this->pizarra_privada_model->get_by_id($pizarra_id);
+		$plan_id  = $pizarra->grupo->plan->id;
+		$archivos = $this->archivo_model->get_all_by_plan_id($plan_id);
 
-		$data['pizarra'] = $pizarra;
+		$data['pizarra']  = $pizarra;
+		$data['archivos'] = $archivos;
 		$data['last_message'] = $this->message_model->get_last_message_from_chat($pizarra->grupo->chat->id);
 
 		$this->load->view('includes/template',$data);
