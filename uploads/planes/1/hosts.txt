@@ -1,0 +1,13 @@
+127.0.0.1	nominal.dev
+127.0.0.1	api.nominal.dev
+127.0.0.1       developers.nominal.dev
+127.0.0.1	app.nominal.dev
+
+127.0.0.1	localhost
+127.0.0.1	api.localhost
+127.0.0.1       developers.localhost
+127.0.0.1	app.localhost
+
+127.0.0.1	localhost
+
+127.0.1.1	juanku

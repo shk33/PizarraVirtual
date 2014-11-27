@@ -50,7 +50,6 @@
                                 <th><input type="text" class="form-control" placeholder="Contenido" disabled></th>
                                 <th><input type="text" class="form-control" placeholder="Grupo" disabled></th>
                                 <th><input type="text" class="form-control" placeholder="Plan" disabled></th>
-                                <th>Gestionar Archivos</th>
                                 <th>Editar</th>
                                 <th>Vista Colaborativa</th>
                             </tr>
@@ -65,11 +64,6 @@
                                     <td><?php echo $pizarra->contenido; ?></td>
                                     <td><?php echo $grupo->nombre; ?></td>
                                     <td><?php echo $plan->nombre; ?></td>
-                                    <td>
-                                        <a href='<?php echo base_url()."archivo/edit/$grupo->id"; ?>'>
-                                            <button class="btn btn-primary btn-md">Gestionar Archivos</button>
-                                        </a>
-                                    </td>
                                     <td>
                                         <a href='<?php echo base_url()."pizarra_privada/edit/$pizarra->id"; ?>'>
                                             <button class="btn btn-primary btn-md">Editar</button>

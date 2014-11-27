@@ -18,7 +18,7 @@ class Archivo extends MY_Controller
 		//Setting up the file upload path
 		$upload_path = $this->plan_model->get_ruta_carpeta($plan_id);
 		$config['upload_path']   = "./$upload_path";
-		$config['allowed_types'] = "gif|jpg|png|pdf|doc|docx|xls|xlsx|ppt|pptx|xml";
+		$config['allowed_types'] = "gif|jpg|png|pdf|doc|docx|xls|xlsx|ppt|pptx|xml|txt";
 		$config['overwrite']     = TRUE;
 		$config['remove_spaces'] = TRUE;
 
@@ -42,7 +42,7 @@ class Archivo extends MY_Controller
 			$this->archivo_model->save($archivo_data);
 		}
 
-
+		redirect("plan/edit/$plan_id");
 	}
 
 	function download($file_id)
