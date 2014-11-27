@@ -1,22 +1,15 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title></title>
 	<link rel="stylesheet" href="//code.jquery.com/ui/1.11.1/themes/smoothness/jquery-ui.css">
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 	<script src="//code.jquery.com/ui/1.11.1/jquery-ui.js"></script>  
 	<script type="text/javascript" src="<?php echo base_url()?>ckeditor/ckeditor.js"></script>
-</head>
-<body>
-	<h1>Bienvenido al sistema de registro y graficas</h1>
-	<h2>Opciones:</h2>
+
+	<h1>Registro de Resultados</h1>
 	<form id="options" action="<?php echo base_url()?>control_graficas" method="POST">
-		<input type="submit" value="Graficar" id="grafica_button"/><br>
-		<input type="button" value="Regresar" id="back_button"/>
+		<br>
+		<button type="submit" value="Graficar" id="grafica_button" class="btn btn-primary btn-md">Graficar</button>
 	</form>
 
 <br>
-	<h2>Registro de informacion: </h2>
 	<form id="registro_form">
 		<p>Fecha: <input id="datepicker" type="text" name="fecha"/></p>
 		<p>Seleccione una metrica</p>
@@ -25,19 +18,23 @@
 			<option value="1">Sin uso del entorno virtual colaborativo</option>
 			<option value="2">Con uso del entorno virtual colaborativo</option>
 		</select><br>
-		<p>Seleccione una ecuacion</p>
-		<div id="select_ecuacion_placeholder"></div>
+		<p>Escribe la ecuación</p>
+		<div id="select_ecuacion_placeholder">
+			<input type="text" name="ecuation">
+		</div>
 		<p>Numero de errores encontrados: <input type="number" min="1" max="1000" id="numero_errores"/></p>
 		<p>Lista de errores: <textarea id="lista_errores" cols="4" rows="4"></textarea></p>
 		<p>Numero de tipos de error encontrados: <input type="number" min="1" max="1000" id="numero_tipos_error"/></p>
 		<p>Lista de tipos de error: <textarea id="lista_tipos_error" cols="4" rows="4"></textarea></p>
 
-	<input type="button" value="Guardar datos" id="submit_data"/>
+		<!-- <input type="button" value="Guardar datos" id="submit_data"/> -->
+		<button type="button" id="submit_data" class="btn btn-primary btn-md">Guardar Datos</button>
+		<form id="options" action="<?php echo base_url()?>control_graficas" method="POST">
+			<button type="submit" value="Graficar" id="grafica_button" class="btn btn-primary btn-md">Graficar</button>
+		</form>
 	</form>
-</body>
 
 	<script type="text/javascript">
-	$(document).ready (function(){
 		//Convert value to datepicker
 		$('#datepicker').datepicker();
 		//Cambiando con ckeditor
@@ -88,13 +85,12 @@
 					}
 				},
 				error: function (){
-					alert('Error no esperado');
+					alert('Faltan campos por completar');
 				}
 			});
 
 		});
 
-	});
 	function emptyAll(){
 
 	}
@@ -119,4 +115,3 @@
 		});
 	}
 	</script>
-</html>

@@ -1,7 +1,3 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title>Graficas</title>
 	<link rel="stylesheet" href="//code.jquery.com/ui/1.11.1/themes/smoothness/jquery-ui.css">
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 	<script src="//code.jquery.com/ui/1.11.1/jquery-ui.js"></script> 
@@ -12,12 +8,7 @@
 	<script type="text/javascript" src="js/jqplot.categoryAxisRenderer.min.js"></script>
 	<script type="text/javascript" src="js/jqplot.pointLabels.min.js"></script>
 
-</head>
-<body>
 	
-<form action="<?php echo base_url()?>control_graficas/regresar_registro" method="POST">
-	<input type="submit" value="Regresar"/>
-</form>
 	<center>
 		<h1>
 		<font face="Georgia, Times New Roman, Times, serif">Graficas, para iniciar seleccione una metrica</font></h1>
@@ -32,7 +23,6 @@
 		</form>
 
 	</center>
-</body>
 	<script type="text/javascript">
 	function crear_grafica(numero_metrica){
 		//Primero obtener los primedios
@@ -80,4 +70,3 @@
 		});
 	}
 	</script>
-</html>

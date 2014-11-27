@@ -1,16 +1,21 @@
 <?php
 
-class Registro_error extends CI_Controller {
+class Registro_error extends MY_Controller {
     
-	function __construct() {
-    parent::__construct();
-    $this->load->model('registro_model');
+	function __construct() 
+    {
+        parent::__construct();
+        $this->permiso_model->need_tutor_permition_level(); 
+        $this->load->model('registro_model');
     }
 
     public function index()
-
     {
-    	$this->load->view('registrar_error');
+        $data = array();
+        $data['main_content'] = 'registrar_error';
+
+        $this->load->view('includes/template',$data);
+
     }
     public function salvar_datos(){
         //Obtencion de todos los datos para despues guardar

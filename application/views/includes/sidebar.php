@@ -29,6 +29,9 @@
             <li>
                 <a href="<?php echo base_url(); ?>pizarra_privada"><i class="fa fa-fw fa-slideshare"></i> Pizarras Privadas</a>
             </li>
+            <li>
+                <a href="<?php echo base_url(); ?>registro_error"><i class="fa fa-fw fa-line-chart"></i> Registros</a>
+            </li>
         <?php endif ?>
         <?php if ($permition_level == 1): ?>
         <li>
