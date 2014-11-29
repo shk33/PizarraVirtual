@@ -21,11 +21,12 @@ class Registro_error extends CI_Controller {
         $lista_errores = $this->input->post('list_error');
         $num_tipo_error = $this->input->post('num_type_errors');
         $lista_tipos_error = $this->input->post('list_type_error');
-        $numero_ecuacion = $this->input->post('ecuation');
+        //$numero_ecuacion = $this->input->post('ecuation');
+        $ecuacion = $this->input->post('ecuation');
         
        $registro = array (
             'numero_metrica'=>$numero_metrica,
-            'numero_ecuacion'=>$numero_ecuacion,
+            'ecuacion'=>$ecuacion,
             'errores_encontrados'=>$num_errors,
             'tipos_encontrados'=>$num_tipo_error,
             'fecha'=>$date_formated,
