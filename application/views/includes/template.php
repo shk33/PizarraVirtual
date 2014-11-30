@@ -11,19 +11,19 @@
 
     <title>Entorno Colaborativo - Pizarra Virtual</title>
     <!-- Favicon -->
-    <link href="<?php echo base_url() ?>css/favicon.ico" rel="shortcut icon" type="image/png" />
+    <link href="<?php echo base_url() ?>assets/css/favicon.ico" rel="shortcut icon" type="image/png" />
 
     <!-- Bootstrap Core CSS -->
-    <link href="<?php echo base_url(); ?>css/bootstrap.min.css" rel="stylesheet">
+    <link href="<?php echo base_url(); ?>assets/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom CSS -->
-    <link href="<?php echo base_url(); ?>css/sb-admin.css" rel="stylesheet">
+    <link href="<?php echo base_url(); ?>assets/css/sb-admin.css" rel="stylesheet">
 
     <!-- Morris Charts CSS -->
-    <link href="<?php echo base_url(); ?>css/plugins/morris.css" rel="stylesheet">
+    <link href="<?php echo base_url(); ?>assets/css/plugins/morris.css" rel="stylesheet">
 
     <!-- Custom Fonts -->
-    <link href="<?php echo base_url(); ?>font-awesome-4.2.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="<?php echo base_url(); ?>assets/font-awesome-4.2.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
