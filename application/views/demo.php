@@ -9,13 +9,13 @@
     <meta name="author" content="">
     <link rel="shortcut icon" href="assets/img/favicon.png">
 
-    <title>FLATTY - Free Bootstrap 3 Landing Page</title>
+    <title>Pizarra Virtual</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="assets/css/bootstrap.css" rel="stylesheet">
+    <link href="<?php echo base_url(); ?>assets/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
-    <link href="assets/css/main.css" rel="stylesheet">
+    <link href="<?php echo base_url(); ?>assets/landing/css/main.css" rel="stylesheet">
 
     <!-- Fonts from Google Fonts -->
 	<link href='http://fonts.googleapis.com/css?family=Lato:300,400,900' rel='stylesheet' type='text/css'>
@@ -38,13 +38,8 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#"><b>FLATTY</b></a>
+          <a class="navbar-brand" href="#"><b>Pizarra Virtual</b></a>
         </div>
-        <div class="navbar-collapse collapse">
-          <ul class="nav navbar-nav navbar-right">
-            <li><a href="#">Already a member?</a></li>
-          </ul>
-        </div><!--/.nav-collapse -->
       </div>
     </div>
 
@@ -52,17 +47,13 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-6">
-					<h1>Make your landing page<br/>
-					look really good.</h1>
-					<form class="form-inline" role="form">
-					  <div class="form-group">
-					    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter your email address">
-					  </div>
-					  <button type="submit" class="btn btn-warning btn-lg">Invite Me!</button>
-					</form>					
+					<h1>Haz de las matemáticas algo sencillo.</h1>
+					<a href="<?php echo base_url(); ?>login">
+						<button type="submit" class="btn btn-warning btn-lg">Ingresar al Sistema</button>
+					</a>
 				</div><!-- /col-lg-6 -->
 				<div class="col-lg-6">
-					<img class="img-responsive" src="assets/img/ipad-hand.png" alt="">
+					<img class="img-responsive" src="<?php echo base_url(); ?>assets/landing/img/ipad-hand.png" alt="">
 				</div><!-- /col-lg-6 -->
 				
 			</div><!-- /row -->
@@ -73,29 +64,29 @@
 	<div class="container">
 		<div class="row mt centered">
 			<div class="col-lg-6 col-lg-offset-3">
-				<h1>Your Landing Page<br/>Looks Wonderful Now.</h1>
-				<h3>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</h3>
+				<h1>Las matemáticas<br/>Al fin de una forma fácil.</h1>
+				<h3>Un entorno colaborativo que facilita el aprendizaje de las matemáticas.</h3>
 			</div>
 		</div><!-- /row -->
 		
 		<div class="row mt centered">
 			<div class="col-lg-4">
-				<img src="assets/img/ser01.png" width="180" alt="">
-				<h4>1 - Browser Compatibility</h4>
-				<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever.</p>
+				<img src="<?php echo base_url(); ?>assets/landing/img/ser01.png" width="180" alt="">
+				<h4>1 - Herramienta Online</h4>
+				<p>Accede desde cualquier dispositivo conectado a internet.</p>
 			</div><!--/col-lg-4 -->
 
 			<div class="col-lg-4">
-				<img src="assets/img/ser02.png" width="180" alt="">
-				<h4>2 - Email Campaigns</h4>
-				<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever.</p>
+				<img src="<?php echo base_url(); ?>assets/landing/img/ser02.png" width="180" alt="">
+				<h4>2 - Comunícate fácilmente</h4>
+				<p>Tendrás a tu disposición una forma fácil de comunicarte con tus compañeros, tutores e incluso administradores del sitio.</p>
 
 			</div><!--/col-lg-4 -->
 
 			<div class="col-lg-4">
-				<img src="assets/img/ser03.png" width="180" alt="">
-				<h4>3 - Gather Your Notes</h4>
-				<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever.</p>
+				<img src="<?php echo base_url(); ?>assets/landing/img/ser03.png" width="180" alt="">
+				<h4>3 - Verificador de Ecuaciones</h4>
+				<p> Tendrás a tu disposición un poderoso verificador de ecuaciones que te dirá si tus cálculos matemáticos son correctos o no , si encontramos algún error en tus ecuaciones te propondremos posibles errores comunes que  pudiste haber cometido.</p>
 
 			</div><!--/col-lg-4 -->
 		</div><!-- /row -->
@@ -105,117 +96,13 @@
 		<hr>
 		<div class="row centered">
 			<div class="col-lg-6 col-lg-offset-3">
-				<form class="form-inline" role="form">
-				  <div class="form-group">
-				    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter your email address">
-				  </div>
-				  <button type="submit" class="btn btn-warning btn-lg">Invite Me!</button>
-				</form>					
+				<a href="<?php echo base_url(); ?>login">
+					<button type="submit" class="btn btn-warning btn-lg">Ingresar al Sistema</button>
+				</a>
 			</div>
 			<div class="col-lg-3"></div>
 		</div><!-- /row -->
 		<hr>
-	</div><!-- /container -->
-	
-	<div class="container">
-		<div class="row mt centered">
-			<div class="col-lg-6 col-lg-offset-3">
-				<h1>Flatty is for Everyone.</h1>
-				<h3>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</h3>
-			</div>
-		</div><!-- /row -->
-	
-		<! -- CAROUSEL -->
-		<div class="row mt centered">
-			<div class="col-lg-6 col-lg-offset-3">
-				<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
-				  <!-- Indicators -->
-				  <ol class="carousel-indicators">
-				    <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-				    <li data-target="#carousel-example-generic" data-slide-to="1"></li>
-				    <li data-target="#carousel-example-generic" data-slide-to="2"></li>
-				  </ol>
-				
-				  <!-- Wrapper for slides -->
-				  <div class="carousel-inner">
-				    <div class="item active">
-				      <img src="assets/img/p01.png" alt="">
-				    </div>
-				    <div class="item">
-				      <img src="assets/img/p02.png" alt="">
-				    </div>
-				    <div class="item">
-				      <img src="assets/img/p03.png" alt="">
-				    </div>
-				  </div>
-				</div>			
-			</div><!-- /col-lg-8 -->
-		</div><!-- /row -->
-	</div><! --/container -->
-	
-	<div class="container">
-		<hr>
-		<div class="row centered">
-			<div class="col-lg-6 col-lg-offset-3">
-				<form class="form-inline" role="form">
-				  <div class="form-group">
-				    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter your email address">
-				  </div>
-				  <button type="submit" class="btn btn-warning btn-lg">Invite Me!</button>
-				</form>					
-			</div>
-			<div class="col-lg-3"></div>
-		</div><!-- /row -->
-		<hr>
-	</div><!-- /container -->
-
-	<div class="container">
-		<div class="row mt centered">
-			<div class="col-lg-6 col-lg-offset-3">
-				<h1>Our Awesome Team.<br/>Design Lovers.</h1>
-				<h3>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</h3>
-			</div>
-		</div><!-- /row -->
-		
-		<div class="row mt centered">
-			<div class="col-lg-4">
-				<img class="img-circle" src="assets/img/pic1.jpg" width="140" alt="">
-				<h4>Michael Robson</h4>
-				<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever.</p>
-				<p><i class="glyphicon glyphicon-send"></i> <i class="glyphicon glyphicon-phone"></i> <i class="glyphicon glyphicon-globe"></i></p>
-			</div><!--/col-lg-4 -->
-
-			<div class="col-lg-4">
-				<img class="img-circle" src="assets/img/pic2.jpg" width="140" alt="">
-				<h4>Pete Ford</h4>
-				<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever.</p>
-				<p><i class="glyphicon glyphicon-send"></i> <i class="glyphicon glyphicon-phone"></i> <i class="glyphicon glyphicon-globe"></i></p>
-			</div><!--/col-lg-4 -->
-
-			<div class="col-lg-4">
-				<img class="img-circle" src="assets/img/pic3.jpg" width="140" alt="">
-				<h4>Angelica Finning</h4>
-				<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever.</p>
-				<p><i class="glyphicon glyphicon-send"></i> <i class="glyphicon glyphicon-phone"></i> <i class="glyphicon glyphicon-globe"></i></p>
-			</div><!--/col-lg-4 -->
-		</div><!-- /row -->
-	</div><!-- /container -->
-	
-	<div class="container">
-		<hr>
-		<div class="row centered">
-			<div class="col-lg-6 col-lg-offset-3">
-				<form class="form-inline" role="form">
-				  <div class="form-group">
-				    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter your email address">
-				  </div>
-				  <button type="submit" class="btn btn-warning btn-lg">Invite Me!</button>
-				</form>					
-			</div>
-			<div class="col-lg-3"></div>
-		</div><!-- /row -->
-		<hr>
-		<p class="centered">Created by BlackTie.co - Attribution License 3.0 - 2013</p>
 	</div><!-- /container -->
 	
 
@@ -223,7 +110,6 @@
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
-    <script src="assets/js/bootstrap.min.js"></script>
-    <script src="http://blacktie.co/adpacks/demoad.js"></script>
+    <script src="<?php echo base_url(); ?>assets/js/bootstrap.min.js"></script>
   </body>
 </html>

@@ -46,7 +46,7 @@ class login extends CI_Controller
     function close()
     {
     	$this->session->sess_destroy();
-    	redirect('login');
+    	redirect('');
     }
 
     function not_allowed()
