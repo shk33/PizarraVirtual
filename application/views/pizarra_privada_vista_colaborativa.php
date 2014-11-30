@@ -98,7 +98,7 @@
 <script src="<?php echo base_url(); ?>assets/js/update-pizarra-content.js"></script>
 
 <!-- Pizarra Privada Verify Ecuations -->
-<script src="<?php echo base_url(); ?>jassets/s/verify_ecuation.js"></script>
+<script src="<?php echo base_url(); ?>assets/js/verify_ecuation.js"></script>
 
 <!-- Chat logic -->
 <script src="<?php echo base_url(); ?>assets/js/chat.js"></script>
