@@ -55,7 +55,6 @@
                             <tr class="filters">
                                 <th><input type="text" class="form-control" placeholder="Nombre" disabled></th>
                                 <th><input type="text" class="form-control" placeholder="Descripción" disabled></th>
-                                <th><input type="text" class="form-control" placeholder="Plan anterior" disabled></th>
                                 <th><input type="text" class="form-control" placeholder="Tarea Perteneciente" disabled></th>
                                 <th>Gestionar Archivos</th>
                                 <th>Editar</th>
@@ -68,7 +67,6 @@
                                     <tr>
                                     <td><?php echo $plan->nombre; ?></td>
                                     <td><?php echo $plan->materiales; ?></td>
-                                    <td><?php echo $plan->plan_ant_id; ?></td>
                                     <td><?php echo $plan->tarea->nombre; ?></td>
                                     <td>
                                         <a href='<?php echo base_url()."plan/edit/$plan->id"; ?>'>

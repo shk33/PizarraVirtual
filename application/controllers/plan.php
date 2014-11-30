@@ -118,7 +118,7 @@ class Plan extends MY_Controller
 		}else{
 			$this->plan_model->update($this->input->post('id'));
 			$status = "update_success";
-			redirect("tarea/index/$status");
+			redirect("plan");
 		}
 	}
 
