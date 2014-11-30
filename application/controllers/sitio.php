@@ -29,8 +29,4 @@ class Sitio extends MY_Controller
 		$this->load->view('includes/template',$data);
 	}
 
-	function demo()
-	{
-		$this->load->view('demo');
-	}
 }
