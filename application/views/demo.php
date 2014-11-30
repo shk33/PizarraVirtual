@@ -11,6 +11,9 @@
 
     <title>Pizarra Virtual</title>
 
+    <!-- Favicon -->
+    <link href="<?php echo base_url() ?>assets/css/favicon.ico" rel="shortcut icon" type="image/png" />
+
     <!-- Bootstrap core CSS -->
     <link href="<?php echo base_url(); ?>assets/css/bootstrap.min.css" rel="stylesheet">
 

@@ -14,6 +14,8 @@
       <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
       <![endif]-->
   <title>Pizarra Virtual</title>
+  <!-- Favicon -->
+    <link href="<?php echo base_url() ?>assets/css/favicon.ico" rel="shortcut icon" type="image/png" />
   <!--REQUIRED STYLE SHEETS-->
   <!-- BOOTSTRAP CORE STYLE CSS -->
   <link href="<?php echo base_url() ?>assets/css/bootstrap.css" rel="stylesheet" />
