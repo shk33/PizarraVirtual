@@ -17,9 +17,6 @@
             <h3 class="panel-title">
               <i class="fa fa-2x fa-fw fa-slideshare"></i>
               Pizarra Local  <span class="space"></span>
-              <button class="btn btn-primary btn-md">
-                <span class="glyphicon glyphicon-search"></span> Verificar
-              </button>
               <button type="button" id="btn-share" class="btn btn-success btn-md">
                 <i class="fa fa-fw fa-share-alt"></i> Compartir
               </button>
@@ -59,9 +56,6 @@
               <h3 class="panel-title">
                 <i class="fa fa-2x fa-fw fa-cloud"></i>
                 Pizarra Compartida <span class="space"></span>
-                <button class="btn btn-primary btn-md">
-                  <span class="glyphicon glyphicon-search"></span> Verificar
-                </button>
               </h3>
           </div>
           <div class="panel-body">
@@ -95,6 +89,3 @@
 
 <!-- Table filters logic -->
 <script src="<?php echo base_url(); ?>assets/js/update-pizarra-content.js"></script>
-
-<!-- Custom Pizarra Virtual CSS -->
-<link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/pizarra.css">
