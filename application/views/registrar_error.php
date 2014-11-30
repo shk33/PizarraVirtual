@@ -11,8 +11,7 @@
     <h1>Bienvenido al sistema de registro y graficas</h1>
     <h2>Opciones:</h2>
     <form id="options" action="<?php echo base_url()?>control_graficas" method="POST">
-        <input type="submit" value="Graficar" id="grafica_button"/><br>
-        <input type="button" value="Regresar" id="back_button"/>
+        <input type="submit" value="Graficar" id="grafica_button"/>
     </form>
 
 <br>

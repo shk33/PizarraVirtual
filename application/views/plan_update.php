@@ -47,7 +47,7 @@
             </div>
           </div>
           <div class="form-group">
-            <label for="inputMateriales" class="control-label col-xs-offset-1 col-xs-2">Materiales</label>
+            <label for="inputMateriales" class="control-label col-xs-offset-1 col-xs-2">Descripción</label>
             <div class="col-xs-offset-1 col-xs-10">
               <?php 
                 $config = array(
@@ -55,7 +55,7 @@
                   'type'        => 'text',
                   'class'       => 'form-control',
                   'id'          => 'inputMateriales',
-                  'placeholder' => 'Materiales',
+                  'placeholder' => 'Descripción de los materiales',
                   'value'       => $plan->materiales
                 );
                 echo form_textarea($config); 
