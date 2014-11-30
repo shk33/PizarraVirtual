@@ -97,7 +97,8 @@
                             $config = array(
                               'name'        => 'checkNuevaContrasena',
                               'id'          => 'checkNewPassword',
-                              'value'       => true,
+                              'value'      => true,
+                              'active'      => true,
                             );
                             echo form_checkbox($config); 
                         ?>
@@ -112,6 +113,7 @@
                               'type'        => 'password',
                               'class'       => 'form-control',
                               'id'          => 'inputContrasena',
+                              'disabled'    =>  'disabled',
                               'placeholder' => 'Nueva Contraseña'
                             );
                             echo form_input($config); 
@@ -127,6 +129,7 @@
                               'type'        => 'password',
                               'class'       => 'form-control',
                               'id'          => 'inputContrasena2',
+                              'disabled'    =>  'disabled',
                               'placeholder' => 'Confirmar Nueva Contraseña'
                             );
                             echo form_input($config); 
