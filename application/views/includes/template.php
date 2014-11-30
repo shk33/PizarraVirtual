@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Entorno Colobarorativo - Pizarra Virtual</title>
+    <title>Entorno Colaborativo - Pizarra Virtual</title>
     <!-- Favicon -->
     <link href="<?php echo base_url() ?>css/favicon.ico" rel="shortcut icon" type="image/png" />
 

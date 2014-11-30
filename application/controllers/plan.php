@@ -107,7 +107,7 @@ class Plan extends MY_Controller
 		$this->load->library('form_validation');
 		$this->form_validation->set_rules('nombre','Nombre','trim|required');
 		$this->form_validation->set_rules('materiales','materiales','trim|required');
-		$this->form_validation->set_rules('ruta_carpeta','Ruta carpeta','trim|required');
+		// $this->form_validation->set_rules('ruta_carpeta','Ruta carpeta','trim|required');
 
 		$this->load->model('plan_model');
 
