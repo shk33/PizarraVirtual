@@ -115,7 +115,7 @@
 </div>
 
 <!-- Table filters logic -->
-<script src="<?php echo base_url(); ?>js/table-filter.js"></script>
+<script src="<?php echo base_url(); ?>assets/js/table-filter.js"></script>
 
 <!-- Confirm delete logic -->
-<script src="<?php echo base_url(); ?>js/confirm-delete.js"></script>
+<script src="<?php echo base_url(); ?>assets/js/confirm-delete.js"></script>

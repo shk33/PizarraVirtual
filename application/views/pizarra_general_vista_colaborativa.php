@@ -94,7 +94,7 @@
 </div>
 
 <!-- Table filters logic -->
-<script src="<?php echo base_url(); ?>js/update-pizarra-content.js"></script>
+<script src="<?php echo base_url(); ?>assets/js/update-pizarra-content.js"></script>
 
 <!-- Custom Pizarra Virtual CSS -->
-<link rel="stylesheet" href="<?php echo base_url(); ?>css/pizarra.css">
+<link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/pizarra.css">

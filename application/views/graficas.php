@@ -1,12 +1,12 @@
 	<link rel="stylesheet" href="//code.jquery.com/ui/1.11.1/themes/smoothness/jquery-ui.css">
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 	<script src="//code.jquery.com/ui/1.11.1/jquery-ui.js"></script> 
-	<script src="<?php echo base_url()?>js/jquery.jqplot.js"></script>
-	<script src="<?php echo base_url()?>js/jqplot.canvasTextRenderer.js"></script>
-	<script src="<?php echo base_url()?>js/jqplot.canvasAxisLabelRenderer.min.js"></script>
-	<script src="<?php echo base_url()?>js/jqplot.barRenderer.js"></script>
-	<script type="text/javascript" src="js/jqplot.categoryAxisRenderer.min.js"></script>
-	<script type="text/javascript" src="js/jqplot.pointLabels.min.js"></script>
+	<script src="<?php echo base_url()?>assets/js/jquery.jqplot.js"></script>
+	<script src="<?php echo base_url()?>assets/js/jqplot.canvasTextRenderer.js"></script>
+	<script src="<?php echo base_url()?>assets/js/jqplot.canvasAxisLabelRenderer.min.js"></script>
+	<script src="<?php echo base_url()?>assets/js/jqplot.barRenderer.js"></script>
+	<script type="text/javascript" src="assets/js/jqplot.categoryAxisRenderer.min.js"></script>
+	<script type="text/javascript" src="assets/js/jqplot.pointLabels.min.js"></script>
 
 	
 	<center>

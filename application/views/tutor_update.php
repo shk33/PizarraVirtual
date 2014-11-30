@@ -149,4 +149,4 @@
 </div>
 
 <!-- Disable/Eneable Passwords Fields -->
-<script src="<?php echo base_url(); ?>js/change_password.js"></script>
+<script src="<?php echo base_url(); ?>assets/js/change_password.js"></script>

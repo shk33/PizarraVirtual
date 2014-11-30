@@ -1,13 +1,8 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title></title>
     <link rel="stylesheet" href="//code.jquery.com/ui/1.11.1/themes/smoothness/jquery-ui.css">
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
     <script src="//code.jquery.com/ui/1.11.1/jquery-ui.js"></script>  
     <script type="text/javascript" src="<?php echo base_url()?>assets/ckeditor/ckeditor.js"></script>
-</head>
-<body>
+
     <h1>Bienvenido al sistema de registro y graficas</h1>
     <h2>Opciones:</h2>
     <form id="options" action="<?php echo base_url()?>control_graficas" method="POST">
@@ -33,7 +28,6 @@
 
     <input type="submit" value="Guardar datos" id="submit_data"/>
     </form>
-</body>
 
     <script type="text/javascript">
     $(document).on ('click', '#submit_data', function(e){

@@ -88,13 +88,13 @@
 </div>
 
 <!-- Pizarra Privada auto-update-content -->
-<script src="<?php echo base_url(); ?>js/update-pizarra-content.js"></script>
+<script src="<?php echo base_url(); ?>assets/js/update-pizarra-content.js"></script>
 
 <!-- Pizarra Privada Verify Ecuations -->
-<script src="<?php echo base_url(); ?>js/verify_ecuation.js"></script>
+<script src="<?php echo base_url(); ?>jassets/s/verify_ecuation.js"></script>
 
 <!-- Chat logic -->
-<script src="<?php echo base_url(); ?>js/chat.js"></script>
+<script src="<?php echo base_url(); ?>assets/js/chat.js"></script>
 
 <!-- Custom Pizarra Virtual CSS -->
-<link rel="stylesheet" href="<?php echo base_url(); ?>css/pizarra.css">
+<link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/pizarra.css">
