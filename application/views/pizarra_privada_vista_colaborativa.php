@@ -76,8 +76,15 @@
       
 
       <div class="tab-pane fade" id="doner">
+        <div class="panel panel-default">
 
-      </div>
+          <div class="panel-heading">
+              <h3 class="panel-title">
+                Proximamente
+              </h3>
+          </div>
+        </div>
+      </div> <!-- enddddd tab pane -->
 
       <div class="clearfix"></div>
     </div>
