@@ -117,9 +117,9 @@ ul.alert-dropdown {
 /* Side Navigation */
 
 .navbar-inverse {
-        background-color: #ffd777;
+        background-color: #428bca;
         border-color: #ffd777;
-        border-bottom: 1px solid #c9aa5f;
+        border-bottom: 1px solid #357ebd;
     }
 
 .navbar-inverse .navbar-brand {
@@ -165,7 +165,7 @@ background-color: #68dff0;
     .side-nav li a:hover,
     .side-nav li a:focus {
         outline: none;
-        background-color: #68dff0 !important;
+        background-color: #5bc0de !important;
     }
 }
 
