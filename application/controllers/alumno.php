@@ -29,6 +29,18 @@ class Alumno extends MY_Controller
 	/**
 	 * Muestra el formulario para crear un nuevo alumno
 	 * Require ADMIN Level Permition
+	 *Agregando más código
+	 *Agregando más código
+	 *Agregando más código
+	 *Agregando más código
+	 *Agregando más código
+	 *Agregando más código
+	 *Agregando más código
+	 *Agregando más código
+	 *Agregando más código
+	 *Agregando más código
+	 *Agregando más código
+	 *Agregando más código
 	 */
 	function create()
 	{
